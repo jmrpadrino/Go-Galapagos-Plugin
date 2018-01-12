@@ -1,0 +1,65 @@
+.users-manual-container h1,
+.users-manual-container h2,
+.users-manual-container h3,
+.users-manual-container h4,
+.users-manual-container h5,
+.users-manual-container h6{
+    font-family: 'Montserrat', sans-serif;
+    
+}
+.users-manual-container h2,
+.users-manual-container h3,
+.users-manual-container h4,
+.users-manual-container h5,
+.users-manual-container h6{
+    color: #FA3C71;
+}
+.users-manual-container{
+    font-family: 'Raleway', sans-serif;
+}
+.users_manual_title{
+    color: #00ACBA;
+    font-size: 60px;
+    font-weight: 900;
+}
+.gogalapagos-user-manual-logo{
+    margin-top: 20px;
+}
+.spacing-item{
+    padding-top: 50px;
+}
+.user-manual-info{
+    line-height: 1.5;
+    font-size: 16px;
+    height: calc(100vh - 550px);
+    overflow-y: scroll;
+}
+.user-manual-info p{
+    font-size: 16px;
+}
+.user-manual-img{
+    margin: 18px;
+}
+.users-manual-intro-copy{
+    font-size: 20px;
+}
+.table-content-title{
+    padding-bottom: 18px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #00ACBA;
+}
+.table-content-list li{
+    border-left: 1px solid transparent;
+    padding-left: 18px;
+    margin-bottom: 16px;
+}
+.table-content-list li a{
+    text-decoration: none;
+    color: #00ACBA;
+}
+.table-content-list li:hover{
+    border-left: 1px solid #00ACBA;
+}
+.support-text p,.support-text ul li{
+    font-size: 24px;
+}

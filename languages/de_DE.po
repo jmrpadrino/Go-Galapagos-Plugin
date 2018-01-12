@@ -1,0 +1,1791 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: gogalapagos\n"
+"POT-Creation-Date: 2017-08-07 16:55-0500\n"
+"PO-Revision-Date: 2017-08-07 16:56-0500\n"
+"Last-Translator: Jose Rodriguez <jrodriguez@webcreek.com>\n"
+"Language-Team: Choclomedia <ceo@choclomedia.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x:2c,1;_ex:2c,1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\n"
+
+#: includes/gogalapagos_cpt.php:18
+msgctxt "Post Type General Name"
+msgid "Ships"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:19
+msgctxt "Post Type Singular Name"
+msgid "Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:20 includes/gogalapagos_cpt.php:21
+msgid "Ships"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:22
+msgid "Ship Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:23
+msgid "Ship Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:24
+#, fuzzy
+msgid "Parent Ship:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:25
+msgid "All Ships"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:26
+msgid "Add New Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:27 includes/gogalapagos_cpt.php:93
+#: includes/gogalapagos_cpt.php:159 includes/gogalapagos_cpt.php:225
+#: includes/gogalapagos_cpt.php:291 includes/gogalapagos_cpt.php:357
+msgid "Add New"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:28
+msgid "New Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:29
+#, fuzzy
+#| msgid "Editar item"
+msgid "Edit Ship"
+msgstr "Edit item"
+
+#: includes/gogalapagos_cpt.php:30
+msgid "Update Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:31
+msgid "View Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:32
+msgid "View Ships"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:33
+#, fuzzy
+#| msgid "Search"
+msgid "Search Ship"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:34 includes/gogalapagos_cpt.php:100
+#: includes/gogalapagos_cpt.php:166 includes/gogalapagos_cpt.php:232
+#: includes/gogalapagos_cpt.php:298 includes/gogalapagos_cpt.php:364
+msgid "Not found"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:35 includes/gogalapagos_cpt.php:101
+#: includes/gogalapagos_cpt.php:167 includes/gogalapagos_cpt.php:233
+#: includes/gogalapagos_cpt.php:299 includes/gogalapagos_cpt.php:365
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:36
+msgid "Hero Page Featured Image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:37
+msgid "Set Hero Page featured image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:38 includes/gogalapagos_cpt.php:104
+#: includes/gogalapagos_cpt.php:170 includes/gogalapagos_cpt.php:236
+#: includes/gogalapagos_cpt.php:302 includes/gogalapagos_cpt.php:368
+msgid "Remove featured image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:39 includes/gogalapagos_cpt.php:105
+#: includes/gogalapagos_cpt.php:171 includes/gogalapagos_cpt.php:237
+#: includes/gogalapagos_cpt.php:303 includes/gogalapagos_cpt.php:369
+msgid "Use as featured image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:40
+msgid "Insert into Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:41
+msgid "Uploaded to this Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:42
+msgid "Ships list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:43
+msgid "Ships list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:44
+msgid "Filter Ships list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:53
+msgid "Ship"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:54
+msgid "Go Galapagos Ships"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:84
+msgctxt "Post Type General Name"
+msgid "Decks"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:85
+msgctxt "Post Type Singular Name"
+msgid "Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:86 includes/gogalapagos_cpt.php:87
+msgid "Decks"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:88
+msgid "Deck Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:89
+msgid "Deck Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:90
+#, fuzzy
+msgid "Parent Deck:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:91
+msgid "All Decks"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:92
+msgid "Add New Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:94
+msgid "New Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:95
+#, fuzzy
+#| msgid "Editar Item"
+msgid "Edit Deck"
+msgstr "Edit item"
+
+#: includes/gogalapagos_cpt.php:96
+msgid "Update Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:97
+#, fuzzy
+msgid "View Deck"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:98
+#, fuzzy
+msgid "View Decks"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:99
+#, fuzzy
+msgid "Search Deck"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:102 includes/gogalapagos_cpt.php:168
+#: includes/gogalapagos_cpt.php:234 includes/gogalapagos_cpt.php:300
+#: includes/gogalapagos_cpt.php:366
+msgid "Featured Image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:103 includes/gogalapagos_cpt.php:169
+#: includes/gogalapagos_cpt.php:235 includes/gogalapagos_cpt.php:301
+#: includes/gogalapagos_cpt.php:367
+msgid "Set featured image"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:106
+msgid "Insert into Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:107
+msgid "Uploaded to this Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:108
+msgid "Decks list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:109
+msgid "Decks list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:110
+msgid "Filter Decks list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:119
+msgid "Deck"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:120
+msgid "Ship Decks"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:150
+msgctxt "Post Type General Name"
+msgid "Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:151
+msgctxt "Post Type Singular Name"
+msgid "Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:152 includes/gogalapagos_cpt.php:153
+#: includes/gogalapagos_cpt.php:185
+msgid "Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:154
+msgid "Cabin Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:155
+msgid "Cabin Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:156
+#, fuzzy
+msgid "Parent Cabin:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:157
+msgid "All Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:158
+msgid "Add New Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:160
+msgid "New Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:161
+msgid "Edit Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:162
+msgid "Update Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:163
+msgid "View Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:164
+msgid "View Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:165
+#, fuzzy
+msgid "Search Cabin"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:172
+msgid "Insert into Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:173
+msgid "Uploaded to this Cabin"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:174
+msgid "Cabins list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:175
+msgid "Cabins list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:176
+msgid "Filter Cabins list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:186
+msgid "Go Galapagos Cabins"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:216
+msgctxt "Post Type General Name"
+msgid "Itineraries"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:217
+msgctxt "Post Type Singular Name"
+msgid "Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:218 includes/gogalapagos_cpt.php:219
+msgid "Itineraries"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:220
+msgid "Itinerary Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:221
+msgid "Itinerary Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:222
+#, fuzzy
+msgid "Parent Itinerary:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:223
+msgid "All Itineraries"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:224
+msgid "Add New Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:226
+msgid "New Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:227
+#, fuzzy
+#| msgid "Editar Item"
+msgid "Edit Itinerary"
+msgstr "Edit item"
+
+#: includes/gogalapagos_cpt.php:228
+msgid "Update Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:229
+#, fuzzy
+msgid "View Itinerary"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:230
+#, fuzzy
+msgid "View Itineraries"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:231
+#, fuzzy
+msgid "Search Itinerary"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:238
+msgid "Insert into Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:239
+msgid "Uploaded to this Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:240
+msgid "Itineraries list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:241
+msgid "Itineraries list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:242
+msgid "Filter Itineraries list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:251
+msgid "Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:252
+msgid "Ship Itinararies"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:282
+msgctxt "Post Type General Name"
+msgid "Islands"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:283
+msgctxt "Post Type Singular Name"
+msgid "Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:284 includes/gogalapagos_cpt.php:285
+msgid "Islands"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:286
+msgid "Island Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:287
+msgid "Island Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:288
+#, fuzzy
+msgid "Parent Island:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:289
+msgid "All Islands"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:290
+msgid "Add New Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:292
+msgid "New Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:293
+msgid "Edit Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:294
+msgid "Update Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:295
+#, fuzzy
+msgid "View Island"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:296
+msgid "View Islands"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:297
+#, fuzzy
+msgid "Search Island"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:304
+msgid "Insert into Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:305
+msgid "Uploaded to this Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:306
+msgid "Islands list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:307
+msgid "Islands list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:308
+msgid "Filter Islands list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:317
+msgid "Island"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:318
+msgid "Galapagos Islands"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:348
+msgctxt "Post Type General Name"
+msgid "Animals"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:349
+msgctxt "Post Type Singular Name"
+msgid "Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:350 includes/gogalapagos_cpt.php:351
+msgid "Animals"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:352
+msgid "Animal Archives"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:353
+msgid "Animal Attributes"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:354
+#, fuzzy
+msgid "Parent Animal:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:355
+msgid "All Animals"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:356
+msgid "Add New Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:358
+msgid "New Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:359
+#, fuzzy
+#| msgid "Editar item"
+msgid "Edit Animal"
+msgstr "Edit item"
+
+#: includes/gogalapagos_cpt.php:360
+msgid "Update Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:361 includes/gogalapagos_cpt.php:362
+#, fuzzy
+msgid "View Animal"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:363
+#, fuzzy
+msgid "Search Animal"
+msgstr "Buscar"
+
+#: includes/gogalapagos_cpt.php:370
+msgid "Insert into Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:371
+msgid "Uploaded to this Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:372
+msgid "Animals list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:373
+msgid "Animals list navigation"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:374
+msgid "Filter Animals list"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:383
+msgid "Animal"
+msgstr ""
+
+#: includes/gogalapagos_cpt.php:384
+msgid "Galapagos Animals"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:16
+msgid "Ship Hero Page information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:22
+msgid "Logo"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:30
+msgid "Slogan"
+msgstr "Slogan"
+
+#: includes/gogalapagos_metaboxes.php:37
+msgid "Hero Short Description"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:43
+msgid "Youtube Video ID"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:49
+msgid "Video description"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:56
+msgid "Book Now URL"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:67
+msgid "Cabins section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:100
+msgid "Social Areas section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:132
+msgid "360 Virtual Tour section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:152
+msgid "Section Background Image"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:163
+msgid ""
+"Note: this field is for the 360 Virtual Tour URL. <strong>Please contact to "
+"Support Office</strong>"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:171
+msgid "Itineraries section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:195
+msgid "Activities section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:227
+msgid "Technical and Secutiry section information"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:260
+msgid "More Sections.."
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:289
+#, fuzzy
+#| msgid "Medidas"
+msgid "Media"
+msgstr "Sizes"
+
+#: includes/gogalapagos_metaboxes.php:293
+msgid "URL"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:300
+#, fuzzy
+msgid "Parent Ship"
+msgstr "Buscar"
+
+#: includes/gogalapagos_metaboxes.php:318
+msgid "Describe Itinerary"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:322
+msgid "Track name"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:327
+msgid "Release Date"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:332
+msgid "Genre"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:336
+msgid "Pop"
+msgstr ""
+
+#: includes/gogalapagos_metaboxes.php:337
+msgid "Rock"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:6
+msgctxt "Taxonomy General Name"
+msgid "Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:7
+msgctxt "Taxonomy Singular Name"
+msgid "Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:8
+msgid "Animal Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:9
+msgid "All Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:10
+msgid "Parent Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:11
+#, fuzzy
+msgid "Parent Group:"
+msgstr "Buscar"
+
+#: includes/gogalapagos_taxonomies.php:12
+msgid "New Group Name"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:13
+msgid "Add New Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:14
+msgid "Edit Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:15
+msgid "Update Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:16
+msgid "View Group"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:17
+#, fuzzy
+#| msgid "Separe con comas"
+msgid "Separate Groups with commas"
+msgstr "Separate with comas"
+
+#: includes/gogalapagos_taxonomies.php:18
+msgid "Add or remove Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:19
+msgid "Choose from the most used"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:20
+msgid "Popular Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:21
+#, fuzzy
+msgid "Search Groups"
+msgstr "Buscar"
+
+#: includes/gogalapagos_taxonomies.php:22
+msgid "Not Found"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:23
+msgid "No Groups"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:24
+msgid "Groups list"
+msgstr ""
+
+#: includes/gogalapagos_taxonomies.php:25
+msgid "Groups list navigation"
+msgstr ""
+
+#: includes/tpl_shortcodes.php:451
+msgid "Choose a Deck"
+msgstr ""
+
+#: includes/tpl_shortcodes.php:653
+msgid "Prev Page"
+msgstr ""
+
+#: includes/tpl_shortcodes.php:654
+msgid "Next Page"
+msgstr ""
+
+#: template-ship-main.php:145 template-ship-main.php:183
+msgid "Book Now"
+msgstr "Buche jetzt"
+
+#: template-ship-main.php:147 template-ship-main.php:185
+msgid "Request a Quote"
+msgstr "Angebot anfordern"
+
+#~ msgid "Anterior"
+#~ msgstr "Previous"
+
+#~ msgid "Siguiente"
+#~ msgstr "Next"
+
+#~ msgid "Establecimientos abiertos hoy"
+#~ msgstr "Establishments open today"
+
+#~ msgid "Quiero verlos todos!"
+#~ msgstr "I want to see them all!"
+
+#~ msgid "Agregar nuevo"
+#~ msgstr "Add new"
+
+#~ msgid "Establecimientos"
+#~ msgstr "Establishments"
+
+#~ msgid "Especialidades"
+#~ msgstr "Specialties"
+
+#~ msgid "Locaciones"
+#~ msgstr "Locations"
+
+#~ msgid "¿Dónde están los Foodtrucks en Quito?"
+#~ msgstr "Where are the Foodtrucks in Quito?"
+
+#~ msgid ""
+#~ "<p>Los <strong>\"food trucks\"</strong> son una de las tendencias "
+#~ "gastronómicas a posicionarse durante el 2016, año en el que el Ecuador "
+#~ "aparentemente verá proliferar la oferta de comida bajo esta modalidad.</"
+#~ "p>\n"
+#~ "                                <p>En Quito, los camiones de comida "
+#~ "aparecieron en el 2014 con tres ofertas gastronómicas que se duplicaron "
+#~ "para el 2015.</p>"
+#~ msgstr ""
+#~ "<p>The <strong>\"food trucks\"</strong> are one of the gastronomic "
+#~ "tendencies to be positioned during the 2016, year in which Ecuador will "
+#~ "apparently see a proliferation of food supply under this modality.</p><p> "
+#~ "In Quito, food trucks appeared in 2014 with three gastronomic offerings "
+#~ "that doubled by 2015.</p>"
+
+#~ msgid "Dirección"
+#~ msgstr "Address"
+
+#~ msgid "Teléfono"
+#~ msgstr "Phone"
+
+#~ msgid "¿Conóces estos Food Parks en Quito? - #SigueLaRuta"
+#~ msgstr "Do you know these Food Parks in Quito? - #FollowTheRoute"
+
+#~ msgid "Ver más"
+#~ msgstr "See more"
+
+#~ msgid "Son muchos los Food Trucks en Quito donde puedes comer y disfrutar!"
+#~ msgstr "There are many Food Trucks in Quito where you can eat and enjoy!"
+
+#~ msgid "#SigueLaRuta"
+#~ msgstr "#FollowTheRoute"
+
+#~ msgid "Quiero ver mucho mas!"
+#~ msgstr "I want to see much more!"
+
+#~ msgid "Descubre lo mejor que tiene Quito para ti"
+#~ msgstr "Discover the best Quito has for you"
+
+#~ msgid "Buscar"
+#~ msgstr "Search"
+
+#~ msgid "Sigue la Ruta"
+#~ msgstr "Follow the route"
+
+#~ msgid "Busca rápidamente lo que quieres"
+#~ msgstr "Quickly find what you want"
+
+#~ msgid "Por Especialidad"
+#~ msgstr "By Specialty"
+
+#~ msgid "Por Establecimiento"
+#~ msgstr "By Establishment"
+
+#~ msgid "Por Locacion"
+#~ msgstr "By Location"
+
+#~ msgid ""
+#~ "Los <strong>\"food trucks\"</strong> son una de las tendencias "
+#~ "gastronómicas a posicionarse durante el 2016, año en el que el Ecuador "
+#~ "aparentemente verá proliferar la oferta de comida bajo esta modalidad.</"
+#~ "p>\n"
+#~ "                                <p>En Quito, los camiones de comida "
+#~ "aparecieron en el 2014 con tres ofertas gastronómicas que se duplicaron "
+#~ "para el 2015.</p>"
+#~ msgstr ""
+#~ "<p>The <strong>\"food trucks\"</strong> are one of the gastronomic "
+#~ "tendencies to be positioned during the 2016, year in which Ecuador will "
+#~ "apparently see a proliferation of food supply under this modality.</p><p> "
+#~ "In Quito, food trucks appeared in 2014 with three gastronomic offerings "
+#~ "that doubled by 2015.</p>"
+
+#~ msgid "Servicios"
+#~ msgstr "Services"
+
+#~ msgid ""
+#~ "Aquí en <span class=\"choclo\">Choclo</span><span class=\"media\">media</"
+#~ "span> reconocemos que hay muchos retos que enfrentan nuestros usuarios, "
+#~ "nuestra familia. Es por eso que estamos felices de anunciar que estamos "
+#~ "reinventando nuestra lista de servicios. Vamos a hacer el trabajo "
+#~ "personalizado para ayudarle en su desarrollo de <strong>WordPress</"
+#~ "strong>."
+#~ msgstr ""
+#~ "Here at <span class=\"choclo\">Choclo</span><span class=\"media\">media</"
+#~ "span> we recognize that there are many challenges faced by our users, our "
+#~ "family. Therefore, we are happy to announce that we are reinventing our "
+#~ "list of services. We do custom work to help you in your "
+#~ "<strong>WordPress</strong> development."
+
+#~ msgid "Todos los derechos reservados"
+#~ msgstr "All rights reserved"
+
+#~ msgid "Inicio"
+#~ msgstr "Home"
+
+#~ msgctxt "choclomedia"
+#~ msgid "servicios"
+#~ msgstr "services"
+
+#~ msgid "clientes"
+#~ msgstr "customers"
+
+#~ msgid "Clientes"
+#~ msgstr "Customers"
+
+#~ msgid "Navegacion Principal"
+#~ msgstr "Main Navigation"
+
+#~ msgid "Lenguajes"
+#~ msgstr "Languages"
+
+#~ msgid "Aparece en la sección del footer del sitio."
+#~ msgstr "Apears in the footer section of the site"
+
+#~ msgid ""
+#~ "Somos una empresa en crecimiento dedicada al diseño y desarrollo de "
+#~ "p&aacute;ginas web en Quito."
+#~ msgstr ""
+#~ "We are a growing company dedicated to the design and development of web "
+#~ "pages in Quito."
+
+#~ msgid "P&aacute;ginas web en Quito | Diseño y desarrollo en WordPress"
+#~ msgstr "Web pages in Quito | Design and development on WordPress"
+
+#~ msgid "Todos los Servicios"
+#~ msgstr "View all Services"
+
+#~ msgid "contacto"
+#~ msgstr "contact"
+
+#~ msgid "Contacto"
+#~ msgstr "Contact"
+
+#~ msgid "Servicios de Choclomedia"
+#~ msgstr "Choclomedia's services"
+
+#~ msgid ""
+#~ "Somos diseño y desarrollo de <span class=\"yellow-words\">páginas web</"
+#~ "span> en <span class=\"yellow-words\">Quito</span>."
+#~ msgstr ""
+#~ "We are design and development of <span class=\"yellow-words\">web pages</"
+#~ "span> in <span class=\"yellow-words\">Quito</span>."
+
+#~ msgid ""
+#~ "Sabemos que nos merecemos una <span class=\"yellow-words\">mejor "
+#~ "oportunidad</span>, por eso usamos la <span class=\"yellow-words\">mejor "
+#~ "tecnología web</span>, para impulsar su proyecto."
+#~ msgstr ""
+#~ "We know that we deserve a <span class=\"yellow-words\">better chance</"
+#~ "span>, so we use <span class=\"yellow-words\">the best web technology</"
+#~ "span>, to promote your project."
+
+#~ msgid "beneficios"
+#~ msgstr "pros"
+
+#~ msgid "Son"
+#~ msgstr "There are"
+
+#~ msgid "los beneficios <br/> que obtendrás <br /> con"
+#~ msgstr "pros <br/> you will get <br /> with"
+
+#~ msgid "Obtienes una base de clientes más grande."
+#~ msgstr "Get a larger customer base."
+
+#~ msgid "Educas a los consumidores sobre tú negocio."
+#~ msgstr "Educate consumers about your business."
+
+#~ msgid "Costo de promoción y comercialización eficaz."
+#~ msgstr "Cost of promotion and effective marketing."
+
+#~ msgid "Mejoras la comunicación con tus clientes."
+#~ msgstr "Improve communication with your customers."
+
+#~ msgid "Mantienes ventaja sobre tus competidores."
+#~ msgstr "You maintain an advantage over your competitors."
+
+#~ msgid "Descubre"
+#~ msgstr "Discover"
+
+#~ msgid "c&oacute;mo impulsar tu organizaci&oacute;n"
+#~ msgstr "how to promote your organization"
+
+#~ msgid "servicios"
+#~ msgstr "services"
+
+#~ msgid ""
+#~ "Nuestros servicios de diseño y desarrollo de páginas web siempre serán de "
+#~ "una calidad excepcional, debido a que nos esforzamos por lograr la "
+#~ "excelencia en todo lo que hacemos, con el fin de agregar un valor "
+#~ "significativo a su negocio."
+#~ msgstr ""
+#~ "Our services of design and development of web pages will always be of "
+#~ "exceptional quality, since we strive to achieve excellence in everything "
+#~ "that we do, in order to add significant value to your business."
+
+#~ msgid "Hablemos"
+#~ msgstr "Let's talk"
+
+#~ msgid "Conozca nuestros servicios"
+#~ msgstr "Discover all our services"
+
+#~ msgid "<span class=\"orange\">Su página web</span> <br />a medida"
+#~ msgstr "<span class=\"orange\">Your custom</span> <br />website"
+
+#~ msgid ""
+#~ "Hacemos diseño y desarrollo de paginas web dinámico y de vanguardia para "
+#~ "organizaciones y negocios de todo tipo."
+#~ msgstr ""
+#~ "We design and develop dynamic and state-of-the-art web pages for "
+#~ "organizations and businesses of all kinds."
+
+#~ msgid ""
+#~ "Podemos adaptar requisitos complejos a una solución profesional fácil de "
+#~ "administrar."
+#~ msgstr ""
+#~ "We can adapt complex requirements to an easy-to-manage professional "
+#~ "solution."
+
+#~ msgid "Díganos que necesita?"
+#~ msgstr "Tell us what you need?"
+
+#~ msgid "Direcci&oacute;n"
+#~ msgstr "Address"
+
+#~ msgid "Tel&eacute;fono"
+#~ msgstr "Phone"
+
+#~ msgid "También somos sociales"
+#~ msgstr "We are also social"
+
+#~ msgid "Trabajemos de la mano."
+#~ msgstr "Let's work hand in hand."
+
+#~ msgid "Nombre"
+#~ msgstr "Name"
+
+#~ msgid "Correo Electr&oacute;nico"
+#~ msgstr "E-mail"
+
+#~ msgid "Compa&ntilde;&iacute;a"
+#~ msgstr "company"
+
+#~ msgid "Su mensaje"
+#~ msgstr "Your message"
+
+#~ msgid "Todos los datos son requeridos"
+#~ msgstr "All data is required"
+
+#~ msgid "Enviar"
+#~ msgstr "Submit"
+
+#~ msgid "Clientes <span class=\"satisfied\">Satisfechos</span>"
+#~ msgstr "<span class=\"satisfied\">Satisfied</span> customers"
+
+#~ msgid ""
+#~ "es un portal de noticias diseñado a medida. Trabaja bajo "
+#~ "<strong>WordPress</strong>, el home es autoadministrable a trav&eacute;s "
+#~ "de un plugin hecho a medida. <strong>3 meses de desarrollo.</strong>"
+#~ msgstr ""
+#~ "Is a bespoke news portal. It works under <strong> WordPress</strong>, the "
+#~ "home is self-administered through a custom plugin. <strong>3 months of "
+#~ "development. </strong>"
+
+#~ msgid "Beneficios"
+#~ msgstr "Pros"
+
+#~ msgid "Satisfechos"
+#~ msgstr "Satisfied"
+
+#~ msgid ""
+#~ "Sabemos que nos merecemos una <span class=\"yellow-words\">mejor "
+#~ "oportunidad</span>, por eso usamos la <span class=\"yellow-words\">mejor "
+#~ "tecnología</span> para diseñar y desarrollar <span class=\"yellow-words"
+#~ "\">páginas web</span> para usted, en <span class=\"yellow-words\">Quito</"
+#~ "span>."
+#~ msgstr ""
+#~ "We know that we deserve a <span class=\"yellow-words\">better "
+#~ "opportunity</span>, that's why we use <span class=\"yellow-words\">the "
+#~ "best technology</span> to design and develop <span class=\"yellow-words"
+#~ "\">web pages</span> in <span class=\"yellow-words\">Quito</span>."
+
+#~ msgid ""
+#~ "Nuestro servicio y diseño de páginas web siempre serán de una calidad "
+#~ "excepcional, debido a que nos esforzamos por lograr la excelencia en todo "
+#~ "lo que hacemos, con el fin de agregar un valor significativo a su negocio."
+#~ msgstr ""
+#~ "Our service and design will always be of exceptional quality as we strive "
+#~ "for excellence in everything we do, in order to add significantly to your "
+#~ "business."
+
+#~ msgid "los beneficios <br/> que tendrás <br /> con"
+#~ msgstr "pros <br/> you will get <br /> with"
+
+#~ msgid ""
+#~ "Somos diseño y desarrollo de <span class=\"yellow-words\">páginas web</"
+#~ "span> en Quito."
+#~ msgstr ""
+#~ "We design and develop <span class=\"yellow-words\">web pages</span> in "
+#~ "Quito."
+
+#~ msgid "Páginas web en Quito | Diseño y desarrollo en WordPress"
+#~ msgstr "Websites in Quito | Design and development in WordPress"
+
+#~ msgid "Fregaderos"
+#~ msgstr "DishWashers"
+
+#~ msgid "Accesorios"
+#~ msgstr "Accesories"
+
+#~ msgid "Mapa"
+#~ msgstr "Map"
+
+#~ msgid "Ver mas"
+#~ msgstr "See more"
+
+#~ msgid "Navegacion del Footer 1"
+#~ msgstr "Footer nav 1"
+
+#~ msgid "Navegacion del Footer 2"
+#~ msgstr "Footer nav 2"
+
+#~ msgid "Area de Widget 1"
+#~ msgstr "Widget area 1"
+
+#~ msgid "Modelo"
+#~ msgstr "Model"
+
+#~ msgid "Alfanumérico."
+#~ msgstr "Alphanumeric"
+
+#~ msgid "Características"
+#~ msgstr "Features"
+
+#~ msgid "Tinas"
+#~ msgstr "Tubs"
+
+#~ msgid "Use numeros."
+#~ msgstr "Use numbers"
+
+#~ msgid "Instalación"
+#~ msgstr "Instalation"
+
+#~ msgid "Ancho"
+#~ msgstr "Width"
+
+#~ msgid "Largo"
+#~ msgstr "Large"
+
+#~ msgid "Profundidad"
+#~ msgstr "Deep"
+
+#~ msgid "Lista de Accesorios"
+#~ msgstr "Accesories List"
+
+#~ msgid "Escriba la lista de accesorios que viene con el producto."
+#~ msgstr "Write the accesories list that comes with the product."
+
+#~ msgid "Documentos"
+#~ msgstr "Documents"
+
+#~ msgid "Diagrama"
+#~ msgstr "Diagram"
+
+#~ msgid "Manual de Limpieza"
+#~ msgstr "Cleaning Manual"
+
+#~ msgid "Manual de Instalación"
+#~ msgstr "Installation Manual"
+
+#~ msgid "Imagen"
+#~ msgstr "Image"
+
+#~ msgid "Imagen del banner"
+#~ msgstr "Banner Image"
+
+#~ msgid "Pegue aqui la ruta de la imagen desde el administrador de <a href=\""
+#~ msgstr "Paste here the image's url from <a href=\""
+
+#~ msgid "Mensaje"
+#~ msgstr "Mesage"
+
+#~ msgid "Mensaje Principal"
+#~ msgstr "Main Mesage"
+
+#~ msgid "Escriba un texto corto promocional para este banner."
+#~ msgstr "Write a promo text for this banner"
+
+#~ msgid "Boton \"Call to Action\""
+#~ msgstr "\"Call to Action\" buton"
+
+#~ msgid "Texto del Boton"
+#~ msgstr "Buton text"
+
+#~ msgid "Link del Boton"
+#~ msgstr "Buton Link"
+
+#~ msgid "Alineación"
+#~ msgstr "Alignment"
+
+#~ msgid "Derecha"
+#~ msgstr "Right"
+
+#~ msgid "Centro"
+#~ msgstr "Center"
+
+#~ msgid "Izquierda"
+#~ msgstr "Left"
+
+#~ msgid "Direccion"
+#~ msgstr "Address"
+
+#~ msgid "Geolocalización"
+#~ msgstr "Geolocation"
+
+#~ msgid "Coordenadas de Google Maps"
+#~ msgstr "Google Maps Coords"
+
+#~ msgid "Introduzca las coordenadas del lugar."
+#~ msgstr "Enter the coordinates of the place."
+
+#~ msgid "Contacto y Redes Sociales"
+#~ msgstr "Contact & Social Network Info"
+
+#~ msgid "Teléfono de Oficina"
+#~ msgstr "Office Telephone"
+
+#~ msgid "Correo Electrónico"
+#~ msgstr "Email"
+
+#~ msgid "Coloque aqui la dirección completa de su perfil en esta red."
+#~ msgstr "Write the entire URL of the social network"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Fregadero"
+#~ msgstr "DishWasher"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Fregaderos"
+#~ msgstr "DishWashers"
+
+#~ msgid "Item Padre:"
+#~ msgstr "Parent ítem:"
+
+#~ msgid "Todos los items"
+#~ msgstr "All items"
+
+#~ msgid "Agregar nuevo item"
+#~ msgstr "Add new ítem"
+
+#~ msgid "Nuevo Item"
+#~ msgstr "New item"
+
+#~ msgid "Actualizar Item"
+#~ msgstr "Update item"
+
+#~ msgid "Ver Item"
+#~ msgstr "View item"
+
+#~ msgid "Buscar Item"
+#~ msgstr "Search ítem"
+
+#~ msgid "No encontrado"
+#~ msgstr "Not found"
+
+#~ msgid "No encontrado en papelera"
+#~ msgstr "Not found on trash"
+
+#~ msgid "Fregaderos de Frinox"
+#~ msgstr "Frinox's DishWashers"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Accesorio"
+#~ msgstr "Accessory"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Accesorios"
+#~ msgstr "Accessories"
+
+#~ msgid "Accesorios de Frinox"
+#~ msgstr "Frinox's Accessories"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Series"
+#~ msgstr "Series"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Serie"
+#~ msgstr "Serie"
+
+#~ msgid "Series"
+#~ msgstr "Series"
+
+#~ msgid "Item padre"
+#~ msgstr "Parent ítem:"
+
+#~ msgid "Item padre:"
+#~ msgstr "Parent ítem:"
+
+#~ msgid "Nuevo nombre"
+#~ msgstr "New name"
+
+#~ msgid "Actualizar item"
+#~ msgstr "Update item"
+
+#~ msgid "Ver item"
+#~ msgstr "View item"
+
+#~ msgid "Agregar o quitar items"
+#~ msgstr "Add or remove items"
+
+#~ msgid "Escoja de los mas usados"
+#~ msgstr "Pick from most used"
+
+#~ msgid "Items populares"
+#~ msgstr "Most popular"
+
+#~ msgid "Buscar items"
+#~ msgstr "Search ítem"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Acabados"
+#~ msgstr "Workmanship"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Acabado"
+#~ msgstr "Workmanship"
+
+#~ msgid "Acabados"
+#~ msgstr "Workmanship"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Materiales"
+#~ msgstr "Materials"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Material"
+#~ msgstr "Material"
+
+#~ msgid "Materiales"
+#~ msgstr "Materials"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Calibres"
+#~ msgstr "Calibers"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Calibre"
+#~ msgstr "Caliber"
+
+#~ msgid "Calibres"
+#~ msgstr "Calibers"
+
+#~ msgid "Comparar"
+#~ msgstr "Compare"
+
+#~ msgid "Archivo .pdf / .docx"
+#~ msgstr ".pdf / .doc file"
+
+#~ msgid "Seleccione un archivo de su disco duro."
+#~ msgstr "Select a file from your hard drive."
+
+#~ msgid "Yellow"
+#~ msgstr "Amarillo"
+
+#~ msgid "Purple"
+#~ msgstr "Púrpura"
+
+#~ msgid "Blue"
+#~ msgstr "Azul"
+
+#~ msgctxt "string url"
+#~ msgid "inicio"
+#~ msgstr "home"
+
+#~ msgid "Volver"
+#~ msgstr "Go back"
+
+#~ msgctxt "string url"
+#~ msgid "contacto"
+#~ msgstr "contact"
+
+#~ msgid "Ir a Contacto"
+#~ msgstr "Go to Contact"
+
+#~ msgid "esta es la pagina de inicio"
+#~ msgstr "this is the index page"
+
+#~ msgid "este es otro texto par aprobar"
+#~ msgstr "This is another testing text"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Producto"
+#~ msgstr "Product"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Productos"
+#~ msgstr "Products"
+
+#~ msgid "Productos"
+#~ msgstr "Products"
+
+#~ msgid "productos"
+#~ msgstr "products"
+
+#~ msgid "Productos de Frinox"
+#~ msgstr "Frinox's products"
+
+#~ msgctxt "frinox"
+#~ msgid "Contacto"
+#~ msgstr "Contact"
+
+#~ msgctxt "string url"
+#~ msgid "Contacto"
+#~ msgstr "Contact"
+
+#~ msgid "Coordenadas"
+#~ msgstr "Coords"
+
+#~ msgid "Ingredientes"
+#~ msgstr "Ingredients"
+
+#~ msgid "Ingrediente"
+#~ msgstr "Ingredient"
+
+#~ msgid "Porciones"
+#~ msgstr "Portions"
+
+#~ msgctxt "string url"
+#~ msgid "nosotros"
+#~ msgstr "about-us"
+
+#~ msgid "Información Adicional"
+#~ msgstr "Aditional Information"
+
+#, fuzzy
+#~ msgid "Facebook"
+#~ msgstr "Facebook App"
+
+#~ msgid "Correos Electrónicos"
+#~ msgstr "Emails"
+
+#~ msgctxt "frinox"
+#~ msgid "esta es la pagina de inicio"
+#~ msgstr "this is the index page"
+
+#~ msgid "CATEGORÍAS"
+#~ msgstr "CATEGORIES"
+
+#~ msgid "MARCAS"
+#~ msgstr "BRANDS"
+
+#~ msgid "Nuestras Tiendas"
+#~ msgstr "Our Stores"
+
+#~ msgid "Contacto Rapido"
+#~ msgstr "Quick Contact"
+
+#~ msgid "NOMBRE"
+#~ msgstr "NAME"
+
+#~ msgid "CORREO ELECTRÓNICO"
+#~ msgstr "E-MAIL"
+
+#~ msgid "PAÍS"
+#~ msgstr "COUNTRY"
+
+#~ msgid "COMENTARIOS"
+#~ msgstr "COMMENTS"
+
+#~ msgid "Acepto los"
+#~ msgstr "I accept the"
+
+#~ msgid "terminos y condiciones"
+#~ msgstr "terms and conditions"
+
+#~ msgid "ENVIAR"
+#~ msgstr "SEND"
+
+#~ msgid "Mapa del Sitio"
+#~ msgstr "Sitemap"
+
+#~ msgid "Nosotros"
+#~ msgstr "About Us"
+
+#~ msgctxt "string url"
+#~ msgid "recetas"
+#~ msgstr "recipes"
+
+#~ msgid "Recetas"
+#~ msgstr "Recipes"
+
+#~ msgctxt "string url"
+#~ msgid "ventas-institucionales"
+#~ msgstr "institutional-sales"
+
+#~ msgid "Ventas Institucionales"
+#~ msgstr "Institutional Sales"
+
+#~ msgctxt "string url"
+#~ msgid "tiendas"
+#~ msgstr "stores"
+
+#~ msgid "Encu&eacute;ntranos"
+#~ msgstr "Find Us"
+
+#~ msgid "Categor&iacute;as"
+#~ msgstr "Categories"
+
+#~ msgid "Social Media"
+#~ msgstr "Social Media"
+
+#~ msgid "Subscripci&oacute;n al bolet&iacute;n"
+#~ msgstr "Newsletter"
+
+#~ msgid "Otro proyecto desarrollado por"
+#~ msgstr "Another project developed by"
+
+#~ msgid "Misión"
+#~ msgstr "Mission"
+
+#~ msgid "Visión"
+#~ msgstr "Vision"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Recetas"
+#~ msgstr "Recipes"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Recetas"
+#~ msgstr "Recipe"
+
+#~ msgid "Todas las recetas"
+#~ msgstr "All recipes"
+
+#~ msgid "Crear nueva receta"
+#~ msgstr "Create new recipe"
+
+#~ msgid "Nueva receta"
+#~ msgstr "New recipe"
+
+#~ msgctxt "recetas"
+#~ msgid "recetas"
+#~ msgstr "recipes"
+
+#~ msgid "recetas"
+#~ msgstr "recipes"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Tipos de Recetas"
+#~ msgstr "Types of Recipes"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Tipo de Receta"
+#~ msgstr "Recipe type"
+
+#~ msgid "Tipos de Recetas"
+#~ msgstr "Types of Recipes"
+
+#~ msgid "Todos las Recetas"
+#~ msgstr "All Recipes"
+
+#~ msgctxt "Taxonomy General Name"
+#~ msgid "Marcas"
+#~ msgstr "Brands"
+
+#~ msgctxt "Taxonomy Singular Name"
+#~ msgid "Marcas"
+#~ msgstr "Brand"
+
+#~ msgid "Marcas"
+#~ msgstr "Brands"
+
+#~ msgid "Todos las Marcas"
+#~ msgstr "All Brands"
+
+#, fuzzy
+#~ msgid "Agregar nueva Marca"
+#~ msgstr "Create new recipe"
+
+#~ msgid "Actualizar Marcas"
+#~ msgstr "Update Brands"
+
+#~ msgctxt "Post Type General Name"
+#~ msgid "Tiendas"
+#~ msgstr "Stores"
+
+#~ msgctxt "Post Type Singular Name"
+#~ msgid "Tienda"
+#~ msgstr "Store"
+
+#~ msgid "Tiendas"
+#~ msgstr "Stores"
+
+#~ msgid "Todas las tiendas"
+#~ msgstr "All stores"
+
+#~ msgctxt "tiendas"
+#~ msgid "tiendas"
+#~ msgstr "stores"
+
+#~ msgid "tiendas"
+#~ msgstr "stores"
+
+#~ msgid "Publicidad"
+#~ msgstr "Advertising"
+
+#~ msgid "Hola"
+#~ msgstr "Hello"
+
+#~ msgid "[Cerrar Sesión]"
+#~ msgstr "[Logout]"
+
+#~ msgid "NOSOTROS"
+#~ msgstr "ABOUT US"
+
+#~ msgid "RECETAS"
+#~ msgstr "RECIPES"
+
+#~ msgid "VENTAS INSTITUCIONALES"
+#~ msgstr "INSTITUTIONAL SALES"
+
+#~ msgid "ENCUÉNTRANOS"
+#~ msgstr "FIND US"
+
+#~ msgid "Encuéntranos"
+#~ msgstr "Find Us"
+
+#~ msgid "Empezar proceso"
+#~ msgstr "Start process"
+
+#~ msgid "DESCRIPCIÓN DEL PRODUCTO"
+#~ msgstr "PRODUCT DESCRIPTION"
+
+#~ msgid "CARACTERÍSTICAS"
+#~ msgstr "FEATURES"
+
+#~ msgid "RECETAS QUE NECESITAN DE ESTE PRODUCTO"
+#~ msgstr "RECIPES THAT NEED OF THIS PRODUCT"
+
+#~ msgid "INGREDIENTES"
+#~ msgstr "INGREDIENTS"
+
+#~ msgid "PROCEDIMIENTO"
+#~ msgstr "PROCEDURE"
+
+#~ msgid "PRODUCTOS USADOS EN ESTA RECETA"
+#~ msgstr "PRODUCTS USED IN THIS RECIPE"
+
+#~ msgid "COMPRAR AHORA"
+#~ msgstr "SHOP NOW"
+
+#~ msgctxt "mnt"
+#~ msgid "productos"
+#~ msgstr "items"
+
+#~ msgctxt "mnt"
+#~ msgid "producto"
+#~ msgstr "item"
+
+#~ msgid "Home"
+#~ msgstr "Inicio"
+
+#~ msgid "About Us"
+#~ msgstr "¿Quiénes Somos?"
+
+#~ msgid "Blog"
+#~ msgstr "Blog"
+
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgid "Affiliates"
+#~ msgstr "Afiliados"
+
+#~ msgid "Cookie Policy"
+#~ msgstr "Política de Cookies"
+
+#~ msgid "Calling Guide"
+#~ msgstr "Guía Telefónica"
+
+#, fuzzy
+#~ msgid "Services"
+#~ msgstr "Servicios Telefónicos"
+
+#~ msgid "Pay as you Go"
+#~ msgstr "Postpago"
+
+#~ msgid "Smart Home Phone Service"
+#~ msgstr "Servicio Telefónico Inteligente"
+
+#~ msgid "GSM / Sim card"
+#~ msgstr "GSM / Sim card"
+
+#~ msgid "Android App"
+#~ msgstr "Android App"
+
+#~ msgid "Apple iOS App"
+#~ msgstr "Apple iOS App"
+
+#~ msgid "Windows Phone App"
+#~ msgstr "Windows Phone App"
+
+#~ msgid "Phone Services"
+#~ msgstr "Servicios Telefónicos"
+
+#, fuzzy
+#~ msgid "Pay as yo Go"
+#~ msgstr "Postpago"
+
+#, fuzzy
+#~ msgid "Smart Phone Unlimited"
+#~ msgstr "Servicio Telefónico Inteligente"
+
+#, fuzzy
+#~ msgid "Smart Phone 500 Min"
+#~ msgstr "Servicio Telefónico Inteligente"
+
+#, fuzzy
+#~ msgid "Global Roaming Pay as you Go"
+#~ msgstr "Postpago"
+
+#~ msgid "Our Apps"
+#~ msgstr "Aplicaciones"
+
+#~ msgid "Sign In"
+#~ msgstr "Registrarse"
+
+#~ msgid "Green"
+#~ msgstr "Verde"
+
+#~ msgid "Red"
+#~ msgstr "Rojo"
+
+#, fuzzy
+#~ msgid "Worlwide Service"
+#~ msgstr "Servicios Telefónicos"
+
+#~ msgid "4 things Global Link"
+#~ msgstr "4 cosas en las que Global Link"
+
+#~ msgid "is really good at!"
+#~ msgstr "es realmente bueno!"
+
+#~ msgid "Online Support"
+#~ msgstr "Soporte En-línea"
+
+#~ msgid "about-us"
+#~ msgstr "¿Quiénes Somos?"
