@@ -9,6 +9,9 @@
 //require 'sendgrid-php/vendor/autoload.php';
 //require("sendgrid-php/vendor/autoload.php");
 
+// definir la zona horaria
+date_default_timezone_set ( 'America/Bogota' );
+
 
 global $pagenow, $typenow, $mensaje;
 $prefix = 'gg_';
@@ -440,28 +443,9 @@ function gogalapagos_user_manual(){
         </div>
     </div>
 </div>
-<?php
-                                   //Termina el html del manual de usuario
-                                  }
-/* Send ajax mail */
-
-function send_mail_to_sales_office0(){
-
-    // definir la zona horaria
-    date_default_timezone_set ( 'America/Bogota' );
-
-    $sendgrid = new SendGrid("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");
-    $email = new SendGrid\Email('Webmaster','web@kleintours.com.ec');
-
-    $email->addTo("test@sendgrid.com");
-    $email->setFrom("you@youremail.com");
-    $email->setSubject("Sending with SendGrid is Fun");
-    $email->setHtml("and easy to do anywhere, even with PHP");
-
-    $sendgrid->send($email);
-    var_dump($email);
-    die();
+<?php //Termina el html del manual de usuario
 }
+
 /* Send ajax mail */
 function send_mail_to_sales_office(){
     // definir la zona horaria
