@@ -2,6 +2,7 @@
 /*
  * Este archivo contiene los codigo para generar los metaboxes para cada CPT
  */
+global $post;
 
 add_filter( 'rwmb_meta_boxes', 'gogalapagos_register_meta_boxes' );
 
@@ -9,30 +10,39 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     //verificar si es la página de fechas de salida
     $prefix = 'gg_';
 
+    $post_ID = !empty($_POST['post_ID']) ? $_POST['post_ID'] : (!empty($_GET['post']) ? $_GET['post'] : FALSE);
+    
+    if (!$post_ID)
+        return $meta_boxes; // Para que no emita mensaje de error
+    
+    $current_post = get_post($post_ID);
+    
+    $current_post_type = $current_post->post_type;
 
-    // META BOXES para las páginas de presentacion de Itinerarios
-    $meta_boxes[] = array(
-        'id'         => 'page_features',
-        'title'      => '<span style="color: red;"><i class="dashicons dashicons-welcome-view-site"></i> ' . __( 'Itinerary Page Setting', 'gogalapagos' ).'</span>',
-        'post_types' => array('page'),
-        'context'    => 'side',
-        'priority'   => 'high',
-        'fields' => array(
-            array(
-                'name' => 'Assign Ship',
-                'id' => $prefix . 'page_template_ship_id',
-                'type' => 'post',
-                'post_type' => 'ggships',
-                'field_type' => 'select',
-                'query_args' => array(
-                    'orderby' => 'ID',
-                    'order' => 'ASC',
+    if ($current_post->post_name == 'galapagos-legend-itineraries' or $current_post->post_name == 'coral-yachts-itineraries'){
+        // META BOXES para las páginas de presentacion de Itinerarios
+        $meta_boxes[] = array(
+            'id'         => 'page_features',
+            'title'      => '<span style="color: red;"><i class="dashicons dashicons-welcome-view-site"></i> ' . __( 'Itinerary Page Setting ', 'gogalapagos' ).'</span>',
+            'post_types' => array('page'),
+            'context'    => 'side',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'name' => 'Assign Ship',
+                    'id' => $prefix . 'page_template_ship_id',
+                    'type' => 'post',
+                    'post_type' => 'ggships',
+                    'field_type' => 'select',
+                    'query_args' => array(
+                        'orderby' => 'ID',
+                        'order' => 'ASC',
+                    ),
+                    'desc' => __('<span style="color: red;">Just for Itineraries templates only</span>','gogalapagos'),
                 ),
-                'desc' => __('<span style="color: red;">Just for Itineraries templates only</span>','gogalapagos'),
-            ),
-        )
-    );     
-
+            )
+        );     
+    }
 
     // META BOXES para loa barcos
     
@@ -82,6 +92,14 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             array(
                 'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Ship Page Banner', 'gogalapagos' ),
                 'id'    => $prefix . 'ship_fold_bkg',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            ),
+            array(
+                'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Ship lower fold background', 'gogalapagos' ),
+                'id'    => $prefix . 'ship_fold_lower_bkg',
                 'type'  => 'file_input',
                 'mime_type' => 'png',
                 'max_file_uploads' => 1,
@@ -304,7 +322,52 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'std' => true,
             ),*/
             array(
+                'id' => $prefix . 'ship_section_tech_info_title',
+                'type' => 'wysiwyg',
+                'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Ship Name', 'gogalapagos' ),
+                'type' => 'text',
+            ),
+            array(
                 'id' => $prefix . 'ship_section_tech_info',
+                'type' => 'wysiwyg',
+                'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Technical Information Content', 'gogalapagos' ),
+                'type' => 'text',
+                'clone' => true,
+                'sort_clone' => true,
+            ),
+            /*array(
+                'id' => $prefix . 'ship_section_security_info',
+                'name' => '<i class="dashicons dashicons-edit"></i> ' . esc_html__( 'Security Information Content', 'gogalapagos' ),
+                'type' => 'wysiwyg',
+                'desc' => esc_html__( 'Note: Write a description for this section, you can use wordpress components or html with css code', 'gogalapagos' ),
+                'raw' => true,
+                'class' => 'translatethis',
+            ),*/
+        )
+    );
+    // Seccion informacion tecnica y de seguridad
+    $meta_boxes[] = array(
+        'id'         => 'ship_info_techandsec_2',
+        'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Technical and Secutiry section information Second Ship - <span style="color: darkorange;">use only if necessary</span>', 'gogalapagos' ),
+        'post_types' => 'ggships',
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            /*array(
+                'id' => $prefix . 'ship_section_techandsec_active',
+                'name' => '<i class="dashicons dashicons-visibility"></i> ' . esc_html__( 'Active on page?', 'gogalapagos' ),
+                'type' => 'checkbox',
+                'desc' => esc_html__( 'Note: Disable if you do not want this section to show on page structure.', 'gogalapagos' ),
+                'std' => true,
+            ),*/
+            array(
+                'id' => $prefix . 'ship_section_tech_info_title_second',
+                'type' => 'wysiwyg',
+                'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Ship Name', 'gogalapagos' ),
+                'type' => 'text',
+            ),
+            array(
+                'id' => $prefix . 'ship_section_tech_info_second',
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Technical Information Content', 'gogalapagos' ),
                 'type' => 'text',
@@ -1711,7 +1774,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     /* codigo de la disponibilidad */
     $meta_boxes[] = array(
         'id'         => 'ship_info_dispo_webservice',
-        'title'      => '<i class="dashicons dashicons-paperclip"></i> ' . __( 'Kleintours Dispo System', 'gogalapagos' ),
+        'title'      => '<i class="dashicons dashicons-paperclip"></i> ' . __( 'Kleintours Dispo System ' . $post->ID, 'gogalapagos' ),
         'post_types' => array('ggcabins', 'ggships', 'ggtour', 'ggpackage'),
         'context'    => 'side',
         'priority'   => 'high',
@@ -1727,7 +1790,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     
     /* ESTRELLITAS PARA COMENTARIOS */
     $meta_boxes[] = array(
-        'id'         => 'ship_info_dispo_webservice',
+        'id'         => 'ship_info_dispo_webservice_2',
         'title'      => '<i class="dashicons dashicons-star-filled"></i><i class="dashicons dashicons-star-filled"></i><i class="dashicons dashicons-star-filled"></i><i class="dashicons dashicons-star-filled"></i><i class="dashicons dashicons-star-empty"></i>',
         'post_types' => array('ggtestimonial'),
         'context'    => 'side',
@@ -1743,7 +1806,22 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         )
     );
-    
+    // Para las membresias
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="dashicons dashicons-format-image"></i> Membership Logo', 'gogalapagos' ),
+        'post_types' => 'ggmembership',
+        'fields'     => array(
+            array(
+                'name' => 'White Logo',
+                'id' => $prefix . 'membership_white_logo',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            )
+        ),
+        'context' => 'side',
+    );
     return $meta_boxes;
 }
 ?>

@@ -244,6 +244,9 @@ function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggships' ){
         $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
     }
+    if ( $_GET['post_type'] == 'ggsocialarea' ){
+        $defaults['ship_parent'] = '<i class="fa fa-ship" aria-hidden="true"></i> Ship Parent';
+    }
     return $defaults;
 }
 function gg_columns_content($column_name, $post_ID) {
@@ -343,6 +346,15 @@ function gg_columns_content($column_name, $post_ID) {
                 }
                 $i++;
             }
+        }
+    }
+    // Columnas para Areas Siciales
+    if ($column_name == 'ship_parent') {
+        $deck_ship = get_post_meta( $post_ID, $prefix . 'social_ship_id', TRUE ); // Devuelve Array
+        if ( empty ( $deck_ship ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Deck has not be asigned to any Ship', 'gogalapagos') . '</span>';
+        }else{
+            echo get_the_title( $deck_ship );
         }
     }
 }
