@@ -625,8 +625,8 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         )
     );
     $meta_boxes[] = array(
-        'title'      => __( 'Social Area set frontend template', 'gogalapagos' ),
-        'post_types' => 'ggsocialarea',
+        'title'      => __( 'Set frontend template', 'gogalapagos' ),
+        'post_types' => array('ggsocialarea','ggactivity'),
         'fields'     => array(
             array(
                 'name' => '<i class="dashicons dashicons-schedule"></i> Frontend Template',
