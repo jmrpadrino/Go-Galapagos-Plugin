@@ -620,7 +620,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<i class="dashicons dashicons-format-image"></i> Gallery Images',
                 'id' => $prefix . 'social_gallery',
                 'type' => 'image_advanced',
-                'sort_clone' => true,
             )
         )
     );
@@ -1193,9 +1192,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Image List',
                 'id' => $prefix . 'activity_gallery',
                 'type' => 'image_advanced',
-                'clone' => true,
-                'sort_clone' => true,
-                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
             )
         ),
         'context' => 'normal',

@@ -18,46 +18,47 @@ $prefix = 'gg_';
 
 function gogalapagos_set_users_roles(){
     // Add a custom user role for Go Galapagos Marketing
-    $results = add_role( 'ggmarketing', __('Go Galapagos Merketing', 'gogalalagos'), array( 
+    /*$results = add_role( 'ggmarketing', __('Go Galapagos Merketing', 'gogalalagos'), array( 
         //Capabilities
-    ) );
+    ) );*/
 
     // Add a custom user role for Go Galapagos Ventas
-    $results = add_role( 'ggmanagement', __('Go Galapagos Management', 'gogalalagos'), array( 
+    /*$results = add_role( 'ggmanagement', __('Go Galapagos Management', 'gogalalagos'), array( 
         //Capabilities
-    ) );
+    ) );*/
+    //$results = remove_role( 'ggventas' );
 
     // Add a custom user role for Go Galapagos Ventas
-    $results = add_role( 'ggventas', __('Go Galapagos Sales', 'gogalalagos') );
+    $results = add_role( 'pasantias', __('Go Galapagos Pasantes', 'gogalalagos') );
 
-    $usuariosVentas = get_role('ggventas');
+    $usuariosVentas = get_role('pasantias');
 
-    $usuariosVentas->remove_cap('read');
-    $usuariosVentas->add_cap('read_post');
-    $usuariosVentas->add_cap('edit_posts');
-    $usuariosVentas->add_cap('delete_posts');
-    $usuariosVentas->add_cap('publish_posts');
+    $usuariosVentas->add_cap('read');
+    $usuariosVentas->add_cap('read_posts');
+    $usuariosVentas->add_cap('edit_posts');    
+    $usuariosVentas->remove_cap('publish_posts');
+    $usuariosVentas->add_cap('edit_published_posts');
     $usuariosVentas->add_cap('edit_others_posts');
-    /*----------*/
-    $usuariosVentas->remove_cap('edit_ggships');
-    $usuariosVentas->remove_cap('delete_ggships');
-    $usuariosVentas->remove_cap('publish_ggships');
-    $usuariosVentas->remove_cap('edit_others_ggships');
+    $usuariosVentas->add_cap('edit_private_posts');
+    $usuariosVentas->add_cap('upload_files');
+    $usuariosVentas->remove_cap('manage_links');
+    //$usuariosVentas->add_cap('edit_others_posts');
     /*--------------*/
-    $usuariosVentas->add_cap('read_private_posts');
-    $usuariosVentas->add_cap('manage_categories');
-    $usuariosVentas->add_cap('manage_options');
-    $usuariosVentas->add_cap('level_0');
-    $usuariosVentas->add_cap('level_1');
-    $usuariosVentas->add_cap('level_2');
-    $usuariosVentas->add_cap('level_3');
-    $usuariosVentas->add_cap('level_4');
-    $usuariosVentas->add_cap('level_5');
-    $usuariosVentas->add_cap('level_6');
-    $usuariosVentas->add_cap('level_7');
-    $usuariosVentas->add_cap('level_8');
-    $usuariosVentas->add_cap('level_9');
-    $usuariosVentas->add_cap('level_10');
+    //$usuariosVentas->remove_cap('read_private_posts');
+    //$usuariosVentas->remove_cap('edit_others_posts');
+    $usuariosVentas->remove_cap('manage_categories');
+    $usuariosVentas->remove_cap('manage_options');
+    $usuariosVentas->remove_cap('level_0');
+    $usuariosVentas->remove_cap('level_1');
+    $usuariosVentas->remove_cap('level_2');
+    $usuariosVentas->remove_cap('level_3');
+    $usuariosVentas->remove_cap('level_4');
+    $usuariosVentas->remove_cap('level_5');
+    $usuariosVentas->remove_cap('level_6');
+    $usuariosVentas->remove_cap('level_7');
+    $usuariosVentas->remove_cap('level_8');
+    $usuariosVentas->remove_cap('level_9');
+    $usuariosVentas->remove_cap('level_10');
 
     //$usuariosVentas->remove_cap('edit_others_ggships');
     /*$usuariosVentas->remove_cap('create_post');
@@ -96,7 +97,7 @@ $usuariosVentas->remove_cap('publish_post');*/
         )
     */
 }
-//add_action( 'admin_init', 'gogalapagos_set_users_roles' );
+add_action( 'admin_init', 'gogalapagos_set_users_roles' );
 
 // Remove some header garbage
 
@@ -172,35 +173,63 @@ function gg_admin_dashboard(){
 <h1>Go Galapagos Dashboard</h1>
 <p><?php echo URLPLUGINGOGALAPAGOS; ?></p>
 <?php 
-                             }
+    if( is_user_logged_in() ) {
+            $user = wp_get_current_user();
+            $role = ( array ) $user->roles;            
+            echo '<pre>';
+            print_r($role);
+            echo '</pre>';
+        } else {
+            return false;
+        }
+    $usuariosVentas = get_role('pasantias');
+    echo '<pre>';
+    print_r($usuariosVentas);
+    echo '</pre>';
+}
 /**
  * Register a custom menu page.
  */
-/*
+
 function gogalapagos_admin_menu() {
+    if( is_user_logged_in() ) {
+        $user = wp_get_current_user();
+        $role = ( array ) $user->roles;            
+
+    } else {
+        return false;
+    }
     // Go Galapagos main menu
     add_menu_page(
         __( 'Go Galapagos Dashboard', 'gogalapagos' ),
         'Go Galapagos',
-        'manage_options',
+        //'publish_pages',
+        //'manage_options',
+        'upload_files',
         'go-galapagos-dashboard',
         'gg_admin_dashboard',
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
         99
     );
+
     // Go Galapagos child pages
     add_submenu_page( 'go-galapagos-dashboard', __( 'Ships', 'gogalapagos' ), __( 'Ships', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggships');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggdecks');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Cabins', 'gogalapagos' ), __( 'Cabins', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggcabins');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Social Areas', 'gogalapagos' ), __( 'Social Areas', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggsocialarea');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggitineraries');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Social Areas', 'gogalapagos' ), __( 'Social Areas', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggsocialarea');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Islands', 'gogalapagos' ), __( 'Islands', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggisland');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=gglocation');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggactivity');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Animals', 'gogalapagos' ), __( 'Animals', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=gganimal');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Animals', 'gogalapagos' ), __( 'Animals', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gganimal');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Animal Groups', 'gogalapagos' ), __( 'Animal Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=animalgroup');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gglocation');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggactivity');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Special Interest', 'gogalapagos' ), __( 'Special Interest', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialinterest');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggitineraries');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggpackage');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggtour');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Memberships', 'gogalapagos' ), __( 'Memberships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggmembership');
 }
-//add_action( 'admin_menu', 'gogalapagos_admin_menu' ); */
+add_action( 'admin_menu', 'gogalapagos_admin_menu' );
 // A callback function to add a custom field to our "presenters" taxonomy  
 function presenters_taxonomy_custom_fields($tag) {  
     // Check for existing taxonomy meta for the term you're editing  
@@ -456,7 +485,7 @@ function gogalapagos_user_manual(){
     </div>
 </div>
 <?php //Termina el html del manual de usuario
-}
+                                  }
 
 /* Send ajax mail */
 function send_mail_to_sales_office(){
