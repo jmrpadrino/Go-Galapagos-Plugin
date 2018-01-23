@@ -210,22 +210,22 @@ function gogalapagos_admin_menu() {
         'gg_admin_dashboard',
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
         99
-    );
+    );    
 
     // Go Galapagos child pages
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Ships', 'gogalapagos' ), __( 'Ships', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggships');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggdecks');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Cabins', 'gogalapagos' ), __( 'Cabins', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggcabins');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Ships', 'gogalapagos' ), __( 'Ships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggships');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggdecks');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Cabins', 'gogalapagos' ), __( 'Cabins', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggcabins');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Social Areas', 'gogalapagos' ), __( 'Social Areas', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggsocialarea');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Islands', 'gogalapagos' ), __( 'Islands', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggisland');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Islands', 'gogalapagos' ), __( 'Islands', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggisland');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Animals', 'gogalapagos' ), __( 'Animals', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gganimal');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Animal Groups', 'gogalapagos' ), __( 'Animal Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=animalgroup');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gglocation');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggactivity');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Special Interest', 'gogalapagos' ), __( 'Special Interest', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialinterest');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggitineraries');
-    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggpackage');
-    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggtour');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggitineraries');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Memberships', 'gogalapagos' ), __( 'Memberships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggmembership');
 }
@@ -244,7 +244,7 @@ function presenters_taxonomy_custom_fields($tag) {
         <input type="text" name="term_meta[presenter_id]" id="term_meta[presenter_id]" size="25" style="width:60%;" value="<?php echo $term_meta['presenter_id'] ? $term_meta['presenter_id'] : ''; ?>"><br />  
         <span class="description"><?php _e('The Presenter\'s WordPress User ID'); ?></span>  
     </td>  
-</tr>  
+</tr>
 <?php  
 } 
 // Add the fields to the "presenters" taxonomy, using our callback function  

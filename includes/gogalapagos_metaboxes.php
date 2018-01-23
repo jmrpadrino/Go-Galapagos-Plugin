@@ -11,12 +11,12 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     $prefix = 'gg_';
 
     $post_ID = !empty($_POST['post_ID']) ? $_POST['post_ID'] : (!empty($_GET['post']) ? $_GET['post'] : FALSE);
-    
+
     if (!$post_ID)
         return $meta_boxes; // Para que no emita mensaje de error
-    
+
     $current_post = get_post($post_ID);
-    
+
     $current_post_type = $current_post->post_type;
 
     if ($current_post->post_name == 'galapagos-legend-itineraries' or $current_post->post_name == 'coral-yachts-itineraries'){
@@ -43,9 +43,50 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         );     
     }
-
+    if ($current_post->post_name == 'go-galapagos-cruises'){
+        // Seccion informacion tecnica y de seguridad
+        $meta_boxes[] = array(
+            'id'         => 'services_facilities',
+            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Ship Services and Facilities', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'id' => $prefix . 'ship_facilities_onboard',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Onboard', 'gogalapagos' ),
+                    'type' => 'text',
+                    'clone' => true,
+                    'sort_clone' => true,
+                    'std' => true,
+                ),
+                array(
+                    'id' => $prefix . 'ship_facilities_cabin',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Cabin', 'gogalapagos' ),
+                    'type' => 'text',
+                    'clone' => true,
+                    'sort_clone' => true,
+                )
+            )
+        );
+        $meta_boxes[] = array(
+            'id'         => 'galapagos_cruises_after_content',
+            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'After main content', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'id' => $prefix . 'galapagos_cruises_after_content',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
+                    'type' => 'wysiwyg',
+                )
+            )
+        );
+        
+    }
     // META BOXES para loa barcos
-    
+
     // Seccion HERO
     $meta_boxes[] = array(
         'id'         => 'ship_info',
@@ -182,7 +223,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         )
     );
     */
-    
+
     // Seccion 360 Tour
     $meta_boxes[] = array(
         'id'         => 'ship_info_360',
@@ -281,31 +322,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         )
     );
     */
-    // Seccion informacion tecnica y de seguridad
-    $meta_boxes[] = array(
-        'id'         => 'services_facilities',
-        'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Ship Services and Facilities', 'gogalapagos' ),
-        'post_types' => 'ggships',
-        'context'    => 'normal',
-        'priority'   => 'high',
-        'fields' => array(
-            array(
-                'id' => $prefix . 'ship_facilities_onboard',
-                'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Onboard', 'gogalapagos' ),
-                'type' => 'text',
-                'clone' => true,
-                'sort_clone' => true,
-                'std' => true,
-            ),
-            array(
-                'id' => $prefix . 'ship_facilities_cabin',
-                'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Cabin', 'gogalapagos' ),
-                'type' => 'text',
-                'clone' => true,
-                'sort_clone' => true,
-            )
-        )
-    );
     // Seccion informacion tecnica y de seguridad
     $meta_boxes[] = array(
         'id'         => 'ship_info_techandsec',
@@ -1219,7 +1235,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     );
 
     // Metaboxes para Go Packages
-     $meta_boxes[] = array(
+    $meta_boxes[] = array(
         'title'      => '<i class="fa fa-list-ul" aria-hidden="true"></i> ' . __( 'Show Go Package', 'gogalapagos' ),
         'post_types' => array('ggpackage'),
         'fields'     => array(
@@ -1783,7 +1799,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         )
     );
-    
+
     /* ESTRELLITAS PARA COMENTARIOS */
     $meta_boxes[] = array(
         'id'         => 'ship_info_dispo_webservice_2',
