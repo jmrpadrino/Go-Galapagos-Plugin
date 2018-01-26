@@ -993,6 +993,72 @@ function gg_memberships() {
 }
 add_action( 'init', 'gg_memberships', 0 );
 
+// Register Custom Post Type
+function gg_faqs() {
+
+    $labels = array(
+        'name'                  => _x( 'FAQs', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'FAQ', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'FAQs', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'FAQs', 'gogalapagos' ),
+        'archives'              => __( 'FAQ Archives', 'gogalapagos' ),
+        'attributes'            => __( 'FAQ Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent FAQ:', 'gogalapagos' ),
+        'all_items'             => __( 'All FAQs', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New FAQ', 'gogalapagos' ),
+        'add_new'               => __( 'Add New', 'gogalapagos' ),
+        'new_item'              => __( 'New FAQ', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit FAQ', 'gogalapagos' ),
+        'update_item'           => __( 'Update FAQ', 'gogalapagos' ),
+        'view_item'             => __( 'View FAQ', 'gogalapagos' ),
+        'view_items'            => __( 'View FAQ', 'gogalapagos' ),
+        'search_items'          => __( 'Search FAQ', 'gogalapagos' ),
+        'not_found'             => __( 'Not found', 'gogalapagos' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
+        'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
+        'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
+        'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
+        'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into FAQ', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this FAQ', 'gogalapagos' ),
+        'items_list'            => __( 'FAQs list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'FAQs list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter FAQs list', 'gogalapagos' ),
+    );
+    $rewrite = array(
+        'slug'                  => 'faqs',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => true,
+    );
+    $args = array(
+        'label'                 => __( 'FAQs', 'gogalapagos' ),
+        'description'           => __( 'Galapagos FAQs', 'gogalapagos' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'excerpt', 'author', 'thumbnail',),
+        'taxonomies'            => array(''),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => false,
+        'menu_position'         => 99,
+        'menu_icon'             => URLPLUGINGOGALAPAGOS . 'images/admin-icon.png',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => '',
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'ggfaqs',
+    );
+    register_post_type( 'ggfaqs', $args );
+
+}
+add_action( 'init', 'gg_faqs', 0 );
+
 //} //Fin current user can
 
 ?>

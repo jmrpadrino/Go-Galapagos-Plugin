@@ -99,6 +99,57 @@ $usuariosVentas->remove_cap('publish_post');*/
 }
 add_action( 'admin_init', 'gogalapagos_set_users_roles' );
 
+// CAMPOS PARA PERFILES DE USUARIO
+
+add_action( 'show_user_profile', 'extra_user_profile_fields' );
+add_action( 'edit_user_profile', 'extra_user_profile_fields' );
+
+function extra_user_profile_fields( $user ) { ?>
+<?php if( current_user_can('administrator')  ) { ?>
+
+<h3><?php _e("Extra profile information", "blank"); ?></h3>
+<table class="form-table">
+    <tr>
+        <th><span class="dashicons dashicons-admin-network"></span>&nbsp;<label for="token"><?php _e("ELIGOS Token"); ?></label></th>
+        <td>
+            <input type="text" name="token" id="token" value="<?php echo esc_attr( get_the_author_meta( 'token', $user->ID ) ); ?>" class="regular-text" /><br />
+            <span class="description"><?php _e("Please set the token."); ?></span>
+        </td>
+    </tr>
+    <!--tr>
+<th><label for="city"><?php _e("City"); ?></label></th>
+<td>
+<input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" class="regular-text" /><br />
+<span class="description"><?php _e("Please enter your city."); ?></span>
+</td>
+</tr>
+<tr>
+<th><label for="postalcode"><?php _e("Postal Code"); ?></label></th>
+<td>
+<input type="text" name="postalcode" id="postalcode" value="<?php echo esc_attr( get_the_author_meta( 'postalcode', $user->ID ) ); ?>" class="regular-text" /><br />
+<span class="description"><?php _e("Please enter your postal code."); ?></span>
+</td>
+</tr-->
+</table>
+<?php } ?>
+<?php }
+add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+
+function save_extra_user_profile_fields( $user_id ) {
+    if ( !current_user_can( 'edit_user', $user_id ) ) { 
+        return false; 
+    }
+    update_user_meta( $user_id, 'token', $_POST['token'] );
+}
+
+/*---------- CAMPO PARA PERFILES DE USUARIO ------------*/
+
+
+
+
+
+
 // Remove some header garbage
 
 show_admin_bar(false);
@@ -166,27 +217,64 @@ register_sidebar( array(
     'before_title'  => '',
     'after_title'   => '',
 ) );
-
+/*-------------------------------------------------------------------------*/
 // Add admin menu page for Go Galapagos Dashboard
 function gg_admin_dashboard(){
 ?>
 <h1>Go Galapagos Dashboard</h1>
 <p><?php echo URLPLUGINGOGALAPAGOS; ?></p>
 <?php 
-    if( is_user_logged_in() ) {
-            $user = wp_get_current_user();
-            $role = ( array ) $user->roles;            
-            echo '<pre>';
-            print_r($role);
-            echo '</pre>';
-        } else {
-            return false;
-        }
-    $usuariosVentas = get_role('pasantias');
-    echo '<pre>';
-    print_r($usuariosVentas);
-    echo '</pre>';
-}
+      if( is_user_logged_in() ) {
+          $user = wp_get_current_user();
+          $role = ( array ) $user->roles;            
+          echo '<pre>';
+          print_r($role);
+          echo '</pre>';
+      } else {
+          return false;
+      }
+      $usuariosVentas = get_role('pasantias');
+      echo '<pre>';
+      print_r($usuariosVentas);
+      echo '</pre>';
+     }
+
+
+// Add admin menu page for Go Galapagos Dashboard
+function galapagos_admin_dashboard($hook){
+?>
+<h1>Galapagos Dashboard <?= $hook ?></h1>
+<p><?= _e('This list shows the information published in the frontend about the destination.','gogalapagos')?></p>
+<p> <span class="fa fa-globe"></span>Mas informacion luego.</p>
+<div class="row">
+    <div class="col-xs-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur modi numquam, corporis veritatis quasi magnam voluptatem, facilis consequuntur laborum, rem repellat ea asperiores et odio exercitationem placeat! Mollitia, inventore, deserunt!</p>
+    </div>
+    <div class="col-xs-4">
+        <h2><?= _e('Islands', 'gogalapagos')?></h2>
+    </div>
+    <div class="col-xs-4">
+        <h2><?= _e('Animals', 'gogalapagos')?></h2>
+    </div>
+</div>
+<div class="row">
+   <div class="col-xs-4">
+        <h2><?= _e('Visitor Sites', 'gogalapagos')?></h2>
+    </div>
+    <div class="col-xs-4">
+        <h2><?= _e('Activities', 'gogalapagos')?></h2>
+    </div>
+    <div class="col-xs-4">
+        <h2><?= _e('Special Interests', 'gogalapagos')?></h2>
+    </div>
+</div>
+<?php 
+                                         }
+
+
+/*-----------------------------------------------------------------------------*/
+
+
 /**
  * Register a custom menu page.
  */
@@ -210,6 +298,17 @@ function gogalapagos_admin_menu() {
         'gg_admin_dashboard',
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
         99
+    );
+    add_menu_page(
+        __( 'Galapagos', 'gogalapagos' ),
+        'Galapagos',
+        //'publish_pages',
+        //'manage_options',
+        'upload_files',
+        'galapagos-dashboard',
+        'galapagos_admin_dashboard',
+        URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
+        99
     );    
 
     // Go Galapagos child pages
@@ -217,19 +316,35 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggdecks');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Cabins', 'gogalapagos' ), __( 'Cabins', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggcabins');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Social Areas', 'gogalapagos' ), __( 'Social Areas', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggsocialarea');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Islands', 'gogalapagos' ), __( 'Islands', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggisland');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Animals', 'gogalapagos' ), __( 'Animals', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gganimal');
-    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Animal Groups', 'gogalapagos' ), __( 'Animal Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=animalgroup');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gglocation');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggactivity');
-    add_submenu_page( 'go-galapagos-dashboard', __( 'Special Interest', 'gogalapagos' ), __( 'Special Interest', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialinterest');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggitineraries');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs', 'gogalapagos' ), __( 'FAQs', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggfaqs');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Memberships', 'gogalapagos' ), __( 'Memberships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggmembership');
+
+    // Galapagos child pages
+    add_submenu_page( 'galapagos-dashboard', __( 'Islands', 'gogalapagos' ), __( 'Islands', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggisland');
+    add_submenu_page( 'galapagos-dashboard', __( 'Animals', 'gogalapagos' ), __( 'Animals', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gganimal');
+    add_submenu_page( 'galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Animal Groups', 'gogalapagos' ), __( 'Animal Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=animalgroup');
+    add_submenu_page( 'galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gglocation');
+    add_submenu_page( 'galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggactivity');
+    add_submenu_page( 'galapagos-dashboard', __( 'Special Interest', 'gogalapagos' ), __( 'Special Interest', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialinterest');
+    /* test
+    add_submenu_page( 'galapagos-dashboard', __( 'Test', 'gogalapagos' ), __( 'Test', 'gogalapagos' ), 'upload_files', 'testeo', 'test');
+    add_submenu_page( 'testeo', __( 'Test 2', 'gogalapagos' ), __( 'Test 2', 'gogalapagos' ), 'upload_files', 'testeo-2', 'test2');
+    */
 }
 add_action( 'admin_menu', 'gogalapagos_admin_menu' );
+
+function test(){
+    echo 'hola';
+}
+function test2(){
+    echo 'hola 2';
+}
+
+
 // A callback function to add a custom field to our "presenters" taxonomy  
 function presenters_taxonomy_custom_fields($tag) {  
     // Check for existing taxonomy meta for the term you're editing  
@@ -247,8 +362,12 @@ function presenters_taxonomy_custom_fields($tag) {
 </tr>
 <?php  
 } 
+
+
 // Add the fields to the "presenters" taxonomy, using our callback function  
 add_action( 'presenters_edit_form_fields', 'presenters_taxonomy_custom_fields', 10, 2 );
+
+
 // Add Custom Column Go Galapagos Post Types
 // GET SHIP, DECKS AND GALLERY IMAGES FROM CABINS
 function gg_get_featured_image($post_ID) {
@@ -261,13 +380,14 @@ function gg_get_featured_image($post_ID) {
 function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggcabins' ){
         $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
+        $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
         $defaults['cabin_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Cabin Ship';
         $defaults['cabin_deck'] = '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Cabin Deck';
         $defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
         $defaults['cabin_category_color'] = '<i class="fa fa-tint" aria-hidden="true"></i> Color';
     }
     if ( $_GET['post_type'] == 'ggdecks' ){
-        $defaults['deck_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Deck Ship';
+        $defaults['deck_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Ship';
         $defaults['deck_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Deck Gallery';
     }
     if ( $_GET['post_type'] == 'ggships' ){
@@ -275,6 +395,7 @@ function gg_columns_head($defaults) {
     }
     if ( $_GET['post_type'] == 'ggsocialarea' ){
         $defaults['ship_parent'] = '<i class="fa fa-ship" aria-hidden="true"></i> Ship Parent';
+        $defaults['deck_location'] = '<i class="fa fa-ship" aria-hidden="true"></i> Deck Location';
     }
     return $defaults;
 }
@@ -295,7 +416,7 @@ function gg_columns_content($column_name, $post_ID) {
         if ( empty ( $deck_ship ) ){
             echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Deck has not be asigned to any Ship', 'gogalapagos') . '</span>';
         }else{
-            echo get_the_title( $deck_ship );
+            echo '<a href="'.get_edit_post_link( $deck_ship[0], 'display' ).'">'.get_the_title($deck_ship[0]) . '</a>';
         }
     }
     if ($column_name == 'deck_gallery') {
@@ -322,7 +443,7 @@ function gg_columns_content($column_name, $post_ID) {
         if ( empty ( $cabin_color ) ){
             echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Cabin has not color asigned', 'gogalapagos') . '</span>';
         }else{
-            echo '<span class="category-color-admin-column" style="background:'.$cabin_color.';" title="Use this color '.$cabin_color.'">'.$cabin_color.'</span>';
+            echo '<span class="category-color-admin-column" style="background:'.$cabin_color.'; display: block; padding: 8px; text-align: center; font-size: 16px; font-weight: bold; color: white;" title="Use this color '.$cabin_color.'">'.$cabin_color.'</span>';
         }
     }
     if ($column_name == 'cabin_ship') {
@@ -334,29 +455,16 @@ function gg_columns_content($column_name, $post_ID) {
         }
     }
     if ($column_name == 'cabin_deck') {
-        $cabin_decks = get_post_meta( $post_ID, $prefix . 'cabin_decks_location', FALSE ); // Devuelve Array
+        $cabin_decks = get_post_meta( $post_ID, $prefix . 'cabin_decks_location', false ); // Devuelve Array
         if ( empty( $cabin_decks ) ){
             echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Cabin has not be asigned to any Deck or Decks', 'gogalapagos') . '</span>';
         }else{
             echo '<ul style="list-style: square;">';
             foreach ($cabin_decks as $cabin_deck){
-                switch ($cabin_deck){
-                    case 1:
-                        echo '<li>Sea</li>';
-                        break;
-                    case 2:
-                        echo '<li>Earth</li>';
-                        break;
-                    case 3:
-                        echo '<li>Sky</li>';
-                        break;
-                    case 4:
-                        echo '<li>Moon</li>';
-                        break;
-                }
+                $deck = get_post($cabin_deck);
+                echo '<li>'.$deck->post_title.'</li>';
             }
             echo '</ul>';
-
         }
     }
     if ($column_name == 'cabin_gallery') {
@@ -377,7 +485,7 @@ function gg_columns_content($column_name, $post_ID) {
             }
         }
     }
-    // Columnas para Areas Siciales
+    // Columnas para Areas Sociales
     if ($column_name == 'ship_parent') {
         $deck_ship = get_post_meta( $post_ID, $prefix . 'social_ship_id', TRUE ); // Devuelve Array
         if ( empty ( $deck_ship ) ){
@@ -386,6 +494,15 @@ function gg_columns_content($column_name, $post_ID) {
             echo get_the_title( $deck_ship );
         }
     }
+    if ($column_name == 'deck_location') {
+        $deck_ship = get_post_meta( $post_ID, $prefix . 'cabin_decks_location', true ); // Devuelve Array
+        if ( empty ( $deck_ship ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Deck has not be asigned to any Ship', 'gogalapagos') . '</span>';
+        }else{
+            echo get_the_title( $deck_ship );
+        }
+    }
+
 }
 add_filter('manage_posts_columns', 'gg_columns_head');
 add_action('manage_posts_custom_column', 'gg_columns_content', 10, 2);
@@ -398,25 +515,32 @@ function add_menu_for_user_manual(){
 
 //Agregar los estilos para esta paginate_links
 add_action('admin_enqueue_scripts','add_user_manual_style_and_scripts');
-function add_user_manual_style_and_scripts(){
+function add_user_manual_style_and_scripts($hook){
+    $template_url = get_template_directory_uri();
     if ( is_admin() ) {
         wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,900|Raleway:400,700', array(), '0.1' );
         wp_enqueue_style( 'usermanualcss', URLPLUGINGOGALAPAGOS . 'css/users-manual.css', array(), '0.1' );
         wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false, '3.3');
         wp_register_script('sticktyelements', URLPLUGINGOGALAPAGOS . 'js/jquery.sticky.js', false, '3.3');
         wp_register_script('usermanualjs', URLPLUGINGOGALAPAGOS . 'js/users-manual.js', false, '0.1');
+        wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/9671498c3e.js', array ( 'jquery' ), '1.1', true);
         wp_enqueue_script('sticktyelements');
         wp_enqueue_script('usermanualjs');
         if (isset ( $_GET['page'] ) and $_GET['page'] == "gogalapagos-user-manual" ){
-            wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3' );
+            wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . '/css/bootstrap.min.css', array(), '3.3' );
             wp_enqueue_script('bootstrapjs');
         }
     }
+    //go-galapagos-dashboard
+    if ('toplevel_page_galapagos-dashboard' !== $hook) {
+        return;
+    }else{
+        wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . '/css/bootstrap.css', array(), '3.3' );
+        wp_enqueue_script('bootstrapjs');
+    }
 }
-function gogalapagos_admin_scripts(){
 
-}
-add_action( 'admin_enqueue_scripts', 'gogalapagos_admin_scripts' );
+
 function admin_wired_styles(){
 ?>
 <style>
@@ -811,6 +935,31 @@ function gogalalagos_save_vouchers_descriptions( $post_id ){
 }
 add_action('save_post', 'gogalalagos_save_vouchers_descriptions' );
 
+/**
+ * Send an email notification to the administrator when a post is published.
+ * 
+ * @param   string  $new_status
+ * @param   string  $old_status
+ * @param   object  $post
+ */
+function wpse_19040_notify_admin_on_publish( $new_status, $old_status, $post ) {
+    if ( $new_status !== 'publish' || $old_status === 'publish' )
+        return;
+    if ( ! $post_type = get_post_type_object( $post->post_type ) )
+        return;
 
+    // Recipient, in this case the administrator email
+    $emailto = get_option( 'admin_email' );
+
+    // Email subject, "New {post_type_label}"
+    $subject = 'Edicion en Wordpress ' . $post_type->labels->singular_name;
+
+    // Email body
+    $message = 'Ver: ' . get_permalink( $post->ID ) . "\nEditar: " . get_edit_post_link( $post->ID );
+
+    wp_mail( 'web@kleintours.com.ec', $subject, $message );
+}
+
+add_action( 'transition_post_status', 'wpse_19040_notify_admin_on_publish', 10, 3 );
 
 ?>

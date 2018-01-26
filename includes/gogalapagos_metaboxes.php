@@ -497,8 +497,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'cabin_category_color',
                 'type' => 'color',
                 'alpha_channel' => false,
-                'clone' => true,
-                'sort_clone' => true,
                 'desc' => __('If not set, it will be gray','gogalapagos'),
             ),
         ),
@@ -594,6 +592,19 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         'context' => 'side',
     );
     $meta_boxes[] = array(
+        'title'      => __( 'Frontend Name', 'gogalapagos' ),
+        'post_types' => 'ggdecks',
+        'fields'     =>
+        array(
+            array(
+                'name' => '<i class="dashicons dashicons-editor-textcolor"></i> Frontend Name',
+                'id' => $prefix . 'deck_frontend_name',
+                'type' => 'text',
+                'desc' => __('If not set, this item won\'t show on website','gogalapagos'),
+            )
+        )
+    );
+    $meta_boxes[] = array(
         'title'      => __( 'Deck Gallery', 'gogalapagos' ),
         'post_types' => 'ggdecks',
         'fields'     =>
@@ -652,6 +663,24 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     '2' => 'Image left bigger'
                 )
             )
+        ),
+        'context' => 'side',
+    );
+    $meta_boxes[] = array(
+        'title'      => __( 'Ship\'s Deck', 'gogalapagos' ),
+        'post_types' => 'ggsocialarea',
+        'fields'     => array(
+            array(
+                'name' => 'Assign Ship\'s Deck',
+                'id' => $prefix . 'cabin_decks_location',
+                'type' => 'post',
+                'post_type' => 'ggdecks',
+                'field_type' => 'select',
+                /*'query_args' => array(
+
+                    ),*/
+                'desc' => __('If not checked, this cabin won\'t show on website','gogalapagos'),
+            ),
         ),
         'context' => 'side',
     );
@@ -1198,6 +1227,46 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         ),
         'context' => 'normal',
+    );
+    // metaboxes para islas
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Island Featured Information', 'gogalapagos' ),
+        'post_types' => 'ggisland',
+        'fields'     => array(
+            array(
+                'name' => 'Image List',
+                'id' => $prefix . 'island_gallery',
+                'type' => 'image_advanced',
+                'clone' => true,
+                'sort_clone' => true,
+                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+            ),
+            array(
+                'name' => 'Google Maps Location',
+                'id' => $prefix . 'island_location',
+                'type' => 'text',
+            )
+        ),
+        'context' => 'normal',
+    );
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Activity on this island', 'gogalapagos' ),
+        'post_types' => 'ggisland',
+        'fields'     => array(
+            array(
+                'name' => 'Activity list',
+                'id' => $prefix . 'island_activity_list',
+                'type' => 'post',
+                'post_type' => 'ggactivity',
+                'field_type' => 'checkbox_list',
+                'query_args' => array(
+                    'orderby' => 'ID',
+                    'order' => 'ASC',
+                ),
+                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+            ),
+        ),
+        'context' => 'side',
     );
     // Metaboxes para Actividades
     $meta_boxes[] = array(
