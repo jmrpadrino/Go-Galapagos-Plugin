@@ -18,6 +18,82 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     $current_post = get_post($post_ID);
 
     $current_post_type = $current_post->post_type;
+    
+    $pageID = get_option('page_on_front');
+    
+    if($current_post->ID == $pageID){
+        $meta_boxes[] = array(
+            'id'         => 'home_fold_features',
+            'title'      => '<i class="dashicons dashicons-welcome-view-site"></i> ' . __( 'FOLD Section Settings', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'name' => 'Title (h1)',
+                    'id' => $prefix . 'homepage_fold_h1',
+                    'type' => 'text',
+                    'std' => 'Enjoy',
+                ),
+                array(
+                    'name' => 'Subtitle (p)',
+                    'id' => $prefix . 'homepage_fold_subtitle',
+                    'type' => 'textarea',
+                ),
+                array(
+                    'name' => 'Background Video',
+                    'id' => $prefix . 'homepage_fold_backgropund_video',
+                    'type' => 'file_input',
+                ),
+            )
+        );
+        $meta_boxes[] = array(
+            'id'         => 'home_experience_features',
+            'title'      => '<i class="dashicons dashicons-welcome-view-site"></i> ' . __( 'EXPERIENCE Section Settings', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'name' => 'Title (h1)',
+                    'id' => $prefix . 'homepage_fold_h1',
+                    'type' => 'text',
+                    'std' => 'Enjoy',
+                ),
+                array(
+                    'name' => 'Subtitle (p)',
+                    'id' => $prefix . 'homepage_fold_subtitle',
+                    'type' => 'textarea',
+                ),
+                array(
+                    'name' => 'Background Video',
+                    'id' => $prefix . 'homepage_fold_backgropund_video',
+                    'type' => 'file_input',
+                ),
+            )
+        );
+        $meta_boxes[] = array(
+            'id'         => 'home_extra_features',
+            'title'      => '<span style="color: red;"><i class="dashicons dashicons-welcome-view-site"></i> ' . __( 'Itinerary Page Setting ', 'gogalapagos' ).'</span>',
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'name' => 'Assign Ship',
+                    'id' => $prefix . 'page_template_ship_id',
+                    'type' => 'post',
+                    'post_type' => 'ggships',
+                    'field_type' => 'select',
+                    'query_args' => array(
+                        'orderby' => 'ID',
+                        'order' => 'ASC',
+                    ),
+                    'desc' => __('<span style="color: red;">Just for Itineraries templates only</span>','gogalapagos'),
+                ),
+            )
+        );  
+    }
 
     if ($current_post->post_name == 'galapagos-legend-itineraries' or $current_post->post_name == 'coral-yachts-itineraries'){
         // META BOXES para las páginas de presentacion de Itinerarios
@@ -70,8 +146,56 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         );
         $meta_boxes[] = array(
+            'id'         => 'galapagos_cruises_crew',
+            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Crew &amp; Guides', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'id' => $prefix . 'galapagos_cruises_crew_title',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Section title', 'gogalapagos' ),
+                    'type' => 'text',
+                ),
+                array(
+                    'id' => $prefix . 'galapagos_cruises_crew_image',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Featured Image', 'gogalapagos' ),
+                    'type' => 'file_input',
+                ),
+                array(
+                    'id' => $prefix . 'galapagos_cruises_crew_content',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
+                    'type' => 'textarea',
+                )
+            )
+        );
+        $meta_boxes[] = array(
+            'id'         => 'galapagos_cruises_eco_luxury',
+            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Eco Luxury', 'gogalapagos' ),
+            'post_types' => array('page'),
+            'context'    => 'normal',
+            'priority'   => 'high',
+            'fields' => array(
+                array(
+                    'id' => $prefix . 'galapagos_cruises_eco_title',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Section title', 'gogalapagos' ),
+                    'type' => 'text',
+                ),
+                array(
+                    'id' => $prefix . 'galapagos_cruises_eco_image',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Featured Image', 'gogalapagos' ),
+                    'type' => 'file_input',
+                ),
+                array(
+                    'id' => $prefix . 'galapagos_cruises_eco_content',
+                    'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
+                    'type' => 'textarea',
+                )
+            )
+        );
+        $meta_boxes[] = array(
             'id'         => 'galapagos_cruises_after_content',
-            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'After main content', 'gogalapagos' ),
+            'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Folder main content', 'gogalapagos' ),
             'post_types' => array('page'),
             'context'    => 'normal',
             'priority'   => 'high',

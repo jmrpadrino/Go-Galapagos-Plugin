@@ -1026,7 +1026,7 @@ function gg_faqs() {
         'filter_items_list'     => __( 'Filter FAQs list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'faqs',
+        'slug'                  => 'general-faqs',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -1046,7 +1046,7 @@ function gg_faqs() {
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => '',
+        'has_archive'           => true,
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
