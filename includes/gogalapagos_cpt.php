@@ -589,36 +589,36 @@ add_action( 'init', 'gg_registerPostTypeForActivities', 0 );
 function gg_registerPostTypeForSpecialInterest() {
 
     $labels = array(
-        'name'                  => _x( 'Especial Interests', 'Post Type General Name', 'gogalapagos' ),
-        'singular_name'         => _x( 'Especial Interest', 'Post Type Singular Name', 'gogalapagos' ),
-        'menu_name'             => __( 'Especial Interests', 'gogalapagos' ),
-        'name_admin_bar'        => __( 'Especial Interests', 'gogalapagos' ),
-        'archives'              => __( 'Especial Interest Archives', 'gogalapagos' ),
-        'attributes'            => __( 'Especial Interest Attributes', 'gogalapagos' ),
-        'parent_item_colon'     => __( 'Parent Especial Interest:', 'gogalapagos' ),
-        'all_items'             => __( 'All Especial Interests', 'gogalapagos' ),
-        'add_new_item'          => __( 'Add New Especial Interest', 'gogalapagos' ),
+        'name'                  => _x( 'Special Interests', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'Special Interest', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'Special Interests', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'Special Interests', 'gogalapagos' ),
+        'archives'              => __( 'Special Interest Archives', 'gogalapagos' ),
+        'attributes'            => __( 'Special Interest Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent Special Interest:', 'gogalapagos' ),
+        'all_items'             => __( 'All Special Interests', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New Special Interest', 'gogalapagos' ),
         'add_new'               => __( 'Add New', 'gogalapagos' ),
-        'new_item'              => __( 'New Especial Interest', 'gogalapagos' ),
-        'edit_item'             => __( 'Edit Especial Interest', 'gogalapagos' ),
-        'update_item'           => __( 'Update Especial Interest', 'gogalapagos' ),
-        'view_item'             => __( 'View Especial Interest', 'gogalapagos' ),
-        'view_items'            => __( 'View Especial Interests', 'gogalapagos' ),
-        'search_items'          => __( 'Search Especial Interest', 'gogalapagos' ),
+        'new_item'              => __( 'New Special Interest', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit Special Interest', 'gogalapagos' ),
+        'update_item'           => __( 'Update Special Interest', 'gogalapagos' ),
+        'view_item'             => __( 'View Special Interest', 'gogalapagos' ),
+        'view_items'            => __( 'View Special Interests', 'gogalapagos' ),
+        'search_items'          => __( 'Search Special Interest', 'gogalapagos' ),
         'not_found'             => __( 'Not found', 'gogalapagos' ),
         'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
         'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
         'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
         'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
         'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
-        'insert_into_item'      => __( 'Insert into Especial Interest', 'gogalapagos' ),
-        'uploaded_to_this_item' => __( 'Uploaded to this Especial Interest', 'gogalapagos' ),
-        'items_list'            => __( 'Especial Interests list', 'gogalapagos' ),
-        'items_list_navigation' => __( 'Especial Interests list navigation', 'gogalapagos' ),
-        'filter_items_list'     => __( 'Filter Especial Interests list', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into Special Interest', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Special Interest', 'gogalapagos' ),
+        'items_list'            => __( 'Special Interests list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'Special Interests list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter Special Interests list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'especial-interest',
+        'slug'                  => 'Special-interest',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -653,12 +653,87 @@ function gg_registerPostTypeForSpecialInterest() {
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
         'show_in_rest'          => true,
-        'rest_base'             => 'ggespecialinterest',
+        'rest_base'             => 'ggSpecialinterest',
     );
     register_post_type( 'ggspecialinterest', $args );
 
 }
 add_action( 'init', 'gg_registerPostTypeForSpecialInterest', 0 );
+
+// Register Custom Post Type Special Interest
+function gg_registerPostTypeForSpecialOffers() {
+
+    $labels = array(
+        'name'                  => _x( 'Special Offers', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'Special Offer', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'Special Offers', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'Special Offers', 'gogalapagos' ),
+        'archives'              => __( 'Special Offer Archives', 'gogalapagos' ),
+        'attributes'            => __( 'Special Offer Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent Special Offer:', 'gogalapagos' ),
+        'all_items'             => __( 'All Special Offers', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New Special Offer', 'gogalapagos' ),
+        'add_new'               => __( 'Add New', 'gogalapagos' ),
+        'new_item'              => __( 'New Special Offer', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit Special Offer', 'gogalapagos' ),
+        'update_item'           => __( 'Update Special Offer', 'gogalapagos' ),
+        'view_item'             => __( 'View Special Offer', 'gogalapagos' ),
+        'view_items'            => __( 'View Special Offers', 'gogalapagos' ),
+        'search_items'          => __( 'Search Special Offer', 'gogalapagos' ),
+        'not_found'             => __( 'Not found', 'gogalapagos' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
+        'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
+        'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
+        'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
+        'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into Special Offer', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Special Offer', 'gogalapagos' ),
+        'items_list'            => __( 'Special Offers list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'Special Offers list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter Special Offers list', 'gogalapagos' ),
+    );
+    $rewrite = array(
+        'slug'                  => 'Special-offers',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => true,
+    );
+    $capabilities = array(
+		'edit_post'             => 'edit_post',
+		'read_post'             => 'read_post',
+		'delete_post'           => 'delete_post',
+		'edit_posts'            => 'edit_posts',
+		'edit_others_posts'     => 'edit_others_posts',
+		'publish_posts'         => 'publish_posts',
+		'read_private_posts'    => 'read_private_posts',
+	);
+    $args = array(
+        'label'                 => __( 'Special Offers', 'gogalapagos' ),
+        'description'           => __( 'Go Galapagos Special Offers', 'gogalapagos' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions', ),
+        'taxonomies'            => array(''),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => false,
+        'menu_position'         => 99,
+        'menu_icon'             => URLPLUGINGOGALAPAGOS . 'images/admin-icon.png',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => 'special-offers',
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'ggspecialoffers',
+    );
+    register_post_type( 'ggspecialoffer', $args );
+
+}
+add_action( 'init', 'gg_registerPostTypeForSpecialOffers', 0 );
 
 
 // Register Custom Post Type

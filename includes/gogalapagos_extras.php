@@ -143,10 +143,7 @@ function save_extra_user_profile_fields( $user_id ) {
     update_user_meta( $user_id, 'token', $_POST['token'] );
 }
 
-/*---------- CAMPO PARA PERFILES DE USUARIO ------------*/
-
-
-
+/*---------- FIN CAMPO PARA PERFILES DE USUARIO ------------*/
 
 
 
@@ -218,6 +215,23 @@ register_sidebar( array(
     'after_title'   => '',
 ) );
 /*-------------------------------------------------------------------------*/
+
+add_action( 'admin_init', 'gg_ajustes_wordpress');
+function gg_ajustes_wordpress(){
+    
+    /*add_settings_field(
+        'gg_home_carousel_slides', //id
+        'Home Experience Carousel Slides', // titulo
+        'gg_home_carousel_slides_input', // la funcion
+        //'go-galapagos-dashboard'
+        'go-galapagos-dashboard'
+    );*/
+    register_setting(
+        'go-galapagos-dashboard',
+        'gg_home_carousel_slides'
+        //go-galapagos-dashboard
+    );
+}
 // Add admin menu page for Go Galapagos Dashboard
 function gg_admin_dashboard(){
 ?>
@@ -237,7 +251,22 @@ function gg_admin_dashboard(){
       echo '<pre>';
       print_r($usuariosVentas);
       echo '</pre>';
-     }
+?>
+  <h1>Go Galapagos WordPress Settings</h1>
+  <form method="post" action="options.php">
+    <?php settings_fields( 'go-galapagos-dashboard' ); ?>
+    <?php do_settings_sections( 'go-galapagos-dashboard' ); ?>
+    <table class="form-table">
+      <tr valign="top">
+      <th scope="row">Home Experience Slides</th>
+      <td><input type="number" name="gg_home_carousel_slides" min="1" max="10" value="<?php echo get_option( 'gg_home_carousel_slides' ); ?>"/></td>
+      </tr>
+    </table>
+    <?php submit_button(); ?>
+  </form>
+<?php 
+} // FIN FUNCION ADMIN DASHBOARD
+
 
 
 // Add admin menu page for Go Galapagos Dashboard
@@ -258,7 +287,7 @@ function galapagos_admin_dashboard($hook){
     </div>
 </div>
 <div class="row">
-   <div class="col-xs-4">
+    <div class="col-xs-4">
         <h2><?= _e('Visitor Sites', 'gogalapagos')?></h2>
     </div>
     <div class="col-xs-4">
@@ -310,7 +339,6 @@ function gogalapagos_admin_menu() {
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
         99
     );    
-
     // Go Galapagos child pages
     add_submenu_page( 'go-galapagos-dashboard', __( 'Ships', 'gogalapagos' ), __( 'Ships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggships');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggdecks');
@@ -319,6 +347,7 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggitineraries');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Special Offers', 'gogalapagos' ), __( 'Special Offers', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialoffer');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs', 'gogalapagos' ), __( 'FAQs', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggfaqs');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Memberships', 'gogalapagos' ), __( 'Memberships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggmembership');
@@ -351,7 +380,7 @@ function presenters_taxonomy_custom_fields($tag) {
     $t_id = $tag->term_id; // Get the ID of the term you're editing  
     $term_meta = get_option( "taxonomy_term_$t_id" ); // Do the check  
 ?>  
-<tr class="form-field">  
+<tr class="form-field">     
     <th scope="row" valign="top">  
         <label for="presenter_id"><?php _e('WordPress User ID'); ?></label>  
     </th>  
