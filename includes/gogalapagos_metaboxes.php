@@ -2149,6 +2149,22 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         )
     );
+    // Para las ofertas y promociones
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Special Offer Gallery', 'gogalapagos' ),
+        'post_types' => 'ggspecialoffer',
+        'fields'     => array(
+            array(
+                'name' => 'Image List',
+                'id' => $prefix . 'offer_gallery',
+                'type' => 'image_advanced',
+                'clone' => true,
+                'sort_clone' => true,
+                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+            )
+        ),
+        'context' => 'normal',
+    );
     // Para las membresias
     $meta_boxes[] = array(
         'title'      => __( '<i class="dashicons dashicons-format-image"></i> Membership Logo', 'gogalapagos' ),

@@ -390,7 +390,7 @@ function gg_registerPostTypeForIslands() {
         'filter_items_list'     => __( 'Filter Islands list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'galapagos-island',
+        'slug'                  => 'island',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -693,7 +693,7 @@ function gg_registerPostTypeForSpecialOffers() {
         'filter_items_list'     => __( 'Filter Special Offers list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'Special-offers',
+        'slug'                  => 'special-offer',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,

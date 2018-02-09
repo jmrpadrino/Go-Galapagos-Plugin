@@ -116,20 +116,6 @@ function extra_user_profile_fields( $user ) { ?>
             <span class="description"><?php _e("Please set the token."); ?></span>
         </td>
     </tr>
-    <!--tr>
-<th><label for="city"><?php _e("City"); ?></label></th>
-<td>
-<input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" class="regular-text" /><br />
-<span class="description"><?php _e("Please enter your city."); ?></span>
-</td>
-</tr>
-<tr>
-<th><label for="postalcode"><?php _e("Postal Code"); ?></label></th>
-<td>
-<input type="text" name="postalcode" id="postalcode" value="<?php echo esc_attr( get_the_author_meta( 'postalcode', $user->ID ) ); ?>" class="regular-text" /><br />
-<span class="description"><?php _e("Please enter your postal code."); ?></span>
-</td>
-</tr-->
 </table>
 <?php } ?>
 <?php }
@@ -347,6 +333,7 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggitineraries');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Tour Groups', 'gogalapagos' ), __( 'Tour Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=go_tours');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Special Offers', 'gogalapagos' ), __( 'Special Offers', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialoffer');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs', 'gogalapagos' ), __( 'FAQs', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggfaqs');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
