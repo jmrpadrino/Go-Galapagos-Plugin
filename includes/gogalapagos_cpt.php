@@ -1134,6 +1134,72 @@ function gg_faqs() {
 }
 add_action( 'init', 'gg_faqs', 0 );
 
+// Register Custom Post Type
+function gg_salesexpert() {
+
+    $labels = array(
+        'name'                  => _x( 'Sales Experts', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'Sales Expert', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'Sales Experts', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'Sales Experts', 'gogalapagos' ),
+        'archives'              => __( 'Sales Expert Archives', 'gogalapagos' ),
+        'attributes'            => __( 'Sales Expert Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent Sales Expert:', 'gogalapagos' ),
+        'all_items'             => __( 'All Sales Experts', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New Sales Expert', 'gogalapagos' ),
+        'add_new'               => __( 'Add New', 'gogalapagos' ),
+        'new_item'              => __( 'New Sales Expert', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit Sales Expert', 'gogalapagos' ),
+        'update_item'           => __( 'Update Sales Expert', 'gogalapagos' ),
+        'view_item'             => __( 'View Sales Expert', 'gogalapagos' ),
+        'view_items'            => __( 'View Sales Expert', 'gogalapagos' ),
+        'search_items'          => __( 'Search Sales Expert', 'gogalapagos' ),
+        'not_found'             => __( 'Not found', 'gogalapagos' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
+        'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
+        'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
+        'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
+        'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into Sales Expert', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Sales Expert', 'gogalapagos' ),
+        'items_list'            => __( 'Sales Experts list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'Sales Experts list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter Sales Experts list', 'gogalapagos' ),
+    );
+    $rewrite = array(
+        'slug'                  => 'sales-expert',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => true,
+    );
+    $args = array(
+        'label'                 => __( 'Sales Experts', 'gogalapagos' ),
+        'description'           => __( 'Go Galapagos Sales Experts', 'gogalapagos' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'excerpt', 'editor', 'author', 'thumbnail',),
+        'taxonomies'            => array(''),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => false,
+        'menu_position'         => 99,
+        'menu_icon'             => URLPLUGINGOGALAPAGOS . 'images/admin-icon.png',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'ggfaqs',
+    );
+    register_post_type( 'ggsalesexpert', $args );
+
+}
+add_action( 'init', 'gg_salesexpert', 0 );
+
 //} //Fin current user can
 
 ?>

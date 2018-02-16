@@ -181,43 +181,7 @@ function show_brochure_box( $attributos ) {
 }
 add_shortcode( 'gogabrochure', 'show_brochure_box' );
 
-// Sidebar widgets
-register_sidebar( array(
-    'name'          => __( 'Multi Idioma', 'gogalapagos' ),
-    'id'            => 'translation',
-    'description'   => __( 'Uso exclusivo del qTranslate-x', 'gogalapagos' ),
-    'before_widget' => '<div class="qtranxs_widget">',
-    'after_widget'  => '</div>',
-    'before_title'  => '',
-    'after_title'   => '',
-) );
-register_sidebar( array(
-    'name'          => __( 'Suscribe', 'gogalapagos' ),
-    'id'            => 'suscribe',
-    'description'   => __( 'Uso exclusivo de Constant Contact', 'gogalapagos' ),
-    'before_widget' => '<div class="cc_widget">',
-    'after_widget'  => '</div>',
-    'before_title'  => '',
-    'after_title'   => '',
-) );
-/*-------------------------------------------------------------------------*/
 
-add_action( 'admin_init', 'gg_ajustes_wordpress');
-function gg_ajustes_wordpress(){
-    
-    /*add_settings_field(
-        'gg_home_carousel_slides', //id
-        'Home Experience Carousel Slides', // titulo
-        'gg_home_carousel_slides_input', // la funcion
-        //'go-galapagos-dashboard'
-        'go-galapagos-dashboard'
-    );*/
-    register_setting(
-        'go-galapagos-dashboard',
-        'gg_home_carousel_slides'
-        //go-galapagos-dashboard
-    );
-}
 // Add admin menu page for Go Galapagos Dashboard
 function gg_admin_dashboard(){
 ?>
@@ -237,20 +201,6 @@ function gg_admin_dashboard(){
       echo '<pre>';
       print_r($usuariosVentas);
       echo '</pre>';
-?>
-  <h1>Go Galapagos WordPress Settings</h1>
-  <form method="post" action="options.php">
-    <?php settings_fields( 'go-galapagos-dashboard' ); ?>
-    <?php do_settings_sections( 'go-galapagos-dashboard' ); ?>
-    <table class="form-table">
-      <tr valign="top">
-      <th scope="row">Home Experience Slides</th>
-      <td><input type="number" name="gg_home_carousel_slides" min="1" max="10" value="<?php echo get_option( 'gg_home_carousel_slides' ); ?>"/></td>
-      </tr>
-    </table>
-    <?php submit_button(); ?>
-  </form>
-<?php 
 } // FIN FUNCION ADMIN DASHBOARD
 
 
@@ -304,16 +254,28 @@ function gogalapagos_admin_menu() {
     }
     // Go Galapagos main menu
     add_menu_page(
-        __( 'Go Galapagos Dashboard', 'gogalapagos' ),
-        'Go Galapagos',
+        __( 'GO Galapagos Theme Settings', 'gogalapagos' ),
+        'GO WP Theme',
+        //'publish_pages',
+        //'manage_options',
+        'upload_files',
+        'go-galapagos-theme-setings',
+        'gg_theme_dashboard',
+        URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
+        80
+    );
+    add_menu_page(
+        __( 'GO Galapagos Dashboard', 'gogalapagos' ),
+        'GO Galapagos',
         //'publish_pages',
         //'manage_options',
         'upload_files',
         'go-galapagos-dashboard',
         'gg_admin_dashboard',
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
-        99
+        85
     );
+    // Galapagos main menu
     add_menu_page(
         __( 'Galapagos', 'gogalapagos' ),
         'Galapagos',
@@ -323,8 +285,20 @@ function gogalapagos_admin_menu() {
         'galapagos-dashboard',
         'galapagos_admin_dashboard',
         URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
-        99
-    );    
+        80
+    );
+    
+    add_menu_page(
+        __( 'GO Office', 'gogalapagos' ),
+        'GO Office',
+        //'publish_pages',
+        //'manage_options',
+        'upload_files',
+        'go-office-dashboard',
+        'go_office_dashboard',
+        URLPLUGINGOGALAPAGOS . '/images/admin-icon.png',
+        95
+    );
     // Go Galapagos child pages
     add_submenu_page( 'go-galapagos-dashboard', __( 'Ships', 'gogalapagos' ), __( 'Ships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggships');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggdecks');
@@ -346,6 +320,10 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'galapagos-dashboard', __( 'Visitor\'s Sites', 'gogalapagos' ), __( 'Visitor\'s Sites', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=gglocation');
     add_submenu_page( 'galapagos-dashboard', __( 'Activities', 'gogalapagos' ), __( 'Activities', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggactivity');
     add_submenu_page( 'galapagos-dashboard', __( 'Special Interest', 'gogalapagos' ), __( 'Special Interest', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialinterest');
+    
+    // Go Office child pages
+    add_submenu_page( 'go-office-dashboard', __('GO Galapagos user\'s manual','gogalapagos'), __('GO user\'s manual','gogalapagos'), 'publish_posts', 'users-manual', gogalapagos_user_manual );
+    add_submenu_page( 'go-office-dashboard', __( 'Sales Experts', 'gogalapagos' ), __( 'Sales Experts', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggsalesexpert');
     /* test
     add_submenu_page( 'galapagos-dashboard', __( 'Test', 'gogalapagos' ), __( 'Test', 'gogalapagos' ), 'upload_files', 'testeo', 'test');
     add_submenu_page( 'testeo', __( 'Test 2', 'gogalapagos' ), __( 'Test 2', 'gogalapagos' ), 'upload_files', 'testeo-2', 'test2');
@@ -353,6 +331,9 @@ function gogalapagos_admin_menu() {
 }
 add_action( 'admin_menu', 'gogalapagos_admin_menu' );
 
+function go_office_dashboard(){
+    echo '<h1>Go Office</h1>';
+}
 function test(){
     echo 'hola';
 }
@@ -526,7 +507,7 @@ add_action('manage_posts_custom_column', 'gg_columns_content', 10, 2);
 // ADD MENU PAGE FOR PAGE TUTORIAL
 add_action('admin_menu', 'add_menu_for_user_manual');
 function add_menu_for_user_manual(){
-    add_menu_page(__('Go Galapagos user\'s manual','gogalapagos'), __('GO user\'s manual','gogalapagos'), 'publish_posts', 'gogalapagos-user-manual', gogalapagos_user_manual, URLPLUGINGOGALAPAGOS . '/images/admin-icon.png' );
+    
 }
 
 //Agregar los estilos para esta paginate_links
@@ -542,7 +523,7 @@ function add_user_manual_style_and_scripts($hook){
         wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/9671498c3e.js', array ( 'jquery' ), '1.1', true);
         wp_enqueue_script('sticktyelements');
         wp_enqueue_script('usermanualjs');
-        if (isset ( $_GET['page'] ) and $_GET['page'] == "gogalapagos-user-manual" ){
+        if (isset ( $_GET['page'] ) and $_GET['page'] == "/users-manual" ){
             wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . '/css/bootstrap.min.css', array(), '3.3' );
             wp_enqueue_script('bootstrapjs');
         }

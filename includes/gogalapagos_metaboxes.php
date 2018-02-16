@@ -21,6 +21,22 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     
     $pageID = get_option('page_on_front');
     
+    // Metaboxes del home
+    $meta_boxes[] = array(
+        'id'         => 'pages_fold_text',
+        'title'      => '<i class="fa fa-desktop"></i> ' . __( 'FOLD Section Text', 'gogalapagos' ),
+        'post_types' => array('page'),
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name' => 'Paragraph (p)',
+                'id' => $prefix . 'page_first_section_content',
+                'type' => 'wysiwyg',
+            )
+        )
+    );
+    
     if($current_post->ID == $pageID){
         //obtener la cantidad de sliden del home
         $numeroSlides = get_option( 'gg_home_carousel_slides' );
@@ -2180,6 +2196,46 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         ),
         'context' => 'side',
+    );
+    // Para los vendedores
+    // Seccion HERO
+    $meta_boxes[] = array(
+        'id'         => 'ship_info',
+        'title'      => '<i class="fa fa-user-circle"></i> ' . __( 'Sales Expert information', 'gogalapagos' ),
+        'post_types' => 'ggsalesexpert',
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name'  => '<i class="fa fa-envelope"></i> ' . __( 'Email Address', 'gogalapagos' ),
+                'desc'  => 'Note: type a valid email address',
+                'id'    => $prefix . 'salesexpert_email',
+                'type'  => 'email',                
+            ),
+            array(
+                'name'  => '<i class="fa fa-phone"></i> ' . __( 'Extension', 'gogalapagos' ),
+                'desc'  => 'Note: This field is for numbers only.',
+                'id'    => $prefix . 'salesexpert_ext',
+                'type'  => 'number',
+                'min'   => 0,
+                'max'   => 999,
+            ),
+            array(
+                'name'  => '<i class="fa fa-check"></i> ' . __( 'Charge', 'gogalapagos' ),
+                'id'    => $prefix . 'salesexpert_charge',
+                'type'  => 'select',
+                'options' => array(
+                    '0' => _x('Direct Sales','gogalapagos'),
+                    '1' => _x('Incoming Sales','gogalapagos'),
+                    '2' => _x('Business Development','gogalapagos'),
+                ),
+            ),
+            array(
+                'name'  => '<i class="fa fa-globe"></i> ' . __( 'Region (Countries)', 'gogalapagos' ),
+                'id'    => $prefix . 'salesexpert_region',
+                'type'  => 'text',
+            )
+        )
     );
     return $meta_boxes;
 }
