@@ -15,14 +15,18 @@
 
 // If try to access directly
 if(!defined ('ABSPATH') ){
-	exit('There is nothing here!');
+	exit('Are you crazy motherfucker? there is nothing here!');
 }
 
 // Definitions
 define('URLPLUGINGOGALAPAGOS', plugin_dir_url( __FILE__ )); // Plugins URL
+define('PATHPLUGINGOGALAPAGOS', plugin_dir_path( __FILE__ )); // Plugins PATH
 
 // Libraries
 require_once('includes/gogalapagos_extras.php');
 require_once('includes/gogalapagos_cpt.php');
 require_once('includes/gogalapagos_taxonomies.php');
 require_once('includes/gogalapagos_metaboxes.php');
+require_once('includes/gogalapagos_ui_office.php');
+require_once('includes/gogalapagos_class_quote.php');
+require_once('includes/gogalapagos_quote.php');

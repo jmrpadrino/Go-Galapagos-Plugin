@@ -159,7 +159,49 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         );  
     }
-
+    
+    // METABOXES PAGINA WHY GALAPAGOS
+    if($current_post->post_name == 'why-galapagos'){
+        $i = 1;
+        $whyGalapagosnumberofsections = get_option('gg_why_galapagos_sections');
+        while ($i <= $whyGalapagosnumberofsections){
+            $meta_boxes[] = array(
+                'id'         => 'why_galapagos_page_'. $i,
+                'title'      => '<i class="fa fa-desktop"></i> ' . __( 'Why Galapagos Section '. $i .' Settings', 'gogalapagos' ),
+                'post_types' => array('page'),
+                'context'    => 'normal',
+                'priority'   => 'high',
+                'fields' => array(
+                    array(
+                        'name' => 'Title (h2)',
+                        'id' => $prefix . 'why_galapagos_section_h2_'. $i,
+                        'type' => 'text',
+                        'std' => 'Enjoy',
+                    ),
+                    array(
+                        'name' => 'Paragraph (p)',
+                        'id' => $prefix . 'why_galapagos_section_content_'. $i,
+                        'type' => 'wysiwyg',
+                        'std' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem placeat, voluptatum ab quibusdam veritatis provident voluptatibus nobis repudiandae exercitationem necessitatibus molestiae quod numquam ea dolorum rerum laboriosam voluptates minus enim.'
+                    ),
+                    array(
+                        'name' => 'Menu Link (a)',
+                        'id' => $prefix . 'why_galapagos_section_link_'. $i,
+                        'type' => 'post',
+                        'post_type' => 'nav_menu_item',
+                        'field_type' => 'select'
+                    ),
+                    array(
+                        'name' => '<i class="fa fa-image"></i> Right Side Image',
+                        'id' => $prefix . 'why_galapagos_section_image_'. $i,
+                        'type' => 'file_input',
+                    ),
+                )
+            );
+            $i++;
+        }
+    }
+    // METABOXES PARA LAS PAGINAS DE LOS ITINERARIOS.
     if ($current_post->post_name == 'galapagos-legend-itineraries' or $current_post->post_name == 'coral-yachts-itineraries'){
         // META BOXES para las páginas de presentacion de Itinerarios
         $meta_boxes[] = array(

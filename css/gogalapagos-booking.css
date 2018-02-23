@@ -1,0 +1,139 @@
+.no-padding{
+    padding: 0px;
+}
+.booking-filters-view{
+    min-height: 100vh;
+    padding: 0px;
+    padding-top: 50px;
+}
+.booking-filters-header{
+    background: #ED9016;
+    color: white;
+    text-align: center;
+}
+.booking-system-wrapper h1,
+.booking-system-wrapper h2{
+    font-size: 18px;
+}
+
+/*---- BOTONERA ---*/
+.btn-order-details{
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    height: 60px;
+    width: 60px;
+    background: #ED9016;
+    color: white;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;    
+    -webkit-box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4);    
+    box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4);
+}
+.btn-alter{
+    background: #a25a0f;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: white;
+    -webkit-box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.4);
+}
+.btn-right-upper{
+    right: 30px;
+    bottom: 110px;
+}
+.btn-choose-month{
+    margin: 18px auto;
+    display: block;
+}
+/*------------------*/
+/*---- MONTH PICKER -*/
+.month-picker,.order-details-box{
+    background: white;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    color: #2d2d2d;
+    padding-top: 80px;
+    -webkit-transition: left ease-in .2s;
+    transition: left ease-in .2s;
+}
+.month-picker.active, .order-details-box.active{
+    left: 0;
+}
+.months-placeholder{
+}
+.month-placeholder{
+    min-height: 80px;
+    padding: 15px;
+}
+.inner-month{
+    font-size: 18px;
+    font-weight: 900;
+    min-height: 48px;
+    border-radius: 6px;
+    background: #ED9016;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.inner-month.disable{
+    opacity: .4;
+    cursor: not-allowed;
+}
+.inner-month.selected{
+    background: #a3ff60;
+    color: #393939;
+    -webkit-box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4); 
+    box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4);
+}
+.btn-go-back{
+    position: relative;
+    top: 0;
+    left: 15px;
+    height: 60px;
+    width: 60px;
+    background: #ED9016;
+    color: white;
+    border-radius: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;    
+    -webkit-box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4); 
+    box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.4);
+}

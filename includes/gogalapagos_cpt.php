@@ -467,7 +467,7 @@ function gg_registerPostTypeForLocations() {
         'filter_items_list'     => __( 'Filter Locations list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'location',
+        'slug'                  => 'visitor-sites',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,

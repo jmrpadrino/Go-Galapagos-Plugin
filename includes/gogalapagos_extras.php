@@ -331,17 +331,6 @@ function gogalapagos_admin_menu() {
 }
 add_action( 'admin_menu', 'gogalapagos_admin_menu' );
 
-function go_office_dashboard(){
-    echo '<h1>Go Office</h1>';
-}
-function test(){
-    echo 'hola';
-}
-function test2(){
-    echo 'hola 2';
-}
-
-
 // A callback function to add a custom field to our "presenters" taxonomy  
 function presenters_taxonomy_custom_fields($tag) {  
     // Check for existing taxonomy meta for the term you're editing  
@@ -513,26 +502,31 @@ function add_menu_for_user_manual(){
 //Agregar los estilos para esta paginate_links
 add_action('admin_enqueue_scripts','add_user_manual_style_and_scripts');
 function add_user_manual_style_and_scripts($hook){
-    $template_url = get_template_directory_uri();
-    if ( is_admin() ) {
-        wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,900|Raleway:400,700', array(), '0.1' );
-        wp_enqueue_style( 'usermanualcss', URLPLUGINGOGALAPAGOS . 'css/users-manual.css', array(), '0.1' );
-        wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false, '3.3');
-        wp_register_script('sticktyelements', URLPLUGINGOGALAPAGOS . 'js/jquery.sticky.js', false, '3.3');
-        wp_register_script('usermanualjs', URLPLUGINGOGALAPAGOS . 'js/users-manual.js', false, '0.1');
-        wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/9671498c3e.js', array ( 'jquery' ), '1.1', true);
-        wp_enqueue_script('sticktyelements');
-        wp_enqueue_script('usermanualjs');
+    
+    $plugin_pages = array(
+        'toplevel_page_go-galapagos-theme-setings',
+        'toplevel_page_galapagos-dashboard',
+        'toplevel_page_go-galapagos-dashboard',
+        'toplevel_page_go-office-dashboard',
+        'go-office_page_users-manual'
+    );
+    wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/9671498c3e.js', array ( 'jquery' ), '1.1', true);
+    
+    /*if ( is_admin() ) {
         if (isset ( $_GET['page'] ) and $_GET['page'] == "/users-manual" ){
             wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . '/css/bootstrap.min.css', array(), '3.3' );
             wp_enqueue_script('bootstrapjs');
         }
-    }
-    //go-galapagos-dashboard
-    if ('toplevel_page_galapagos-dashboard' !== $hook) {
-        return;
-    }else{
-        wp_enqueue_style( 'bootstrap', URLPLUGINGOGALAPAGOS . '/css/bootstrap.css', array(), '3.3' );
+    }*/
+    if ( in_array( $hook, $plugin_pages ) ) {        
+        wp_enqueue_style( 'usermanualcss', URLPLUGINGOGALAPAGOS . 'css/users-manual.css', array(), '0.1' );
+        wp_register_script('sticktyelements', URLPLUGINGOGALAPAGOS . 'js/jquery.sticky.js', false, '3.3');
+        wp_register_script('usermanualjs', URLPLUGINGOGALAPAGOS . 'js/users-manual.js', false, '0.1');
+        wp_enqueue_script('sticktyelements');
+        wp_enqueue_script('usermanualjs');
+        wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,900|Raleway:400,700', array(), '0.1' );
+        wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', array(), '3.3.7' );
+        wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false, '3.3.7');
         wp_enqueue_script('bootstrapjs');
     }
 }
@@ -582,22 +576,22 @@ function gogalapagos_user_manual(){
                                    /**
                         * Carga la pagina de bienvenida del manual de usuarios
                         */
-                                   include ( RUTAPLUGINGOGALAPAGOS . 'includes/users-manual/welcome.php');
+                                   include ( PATHPLUGINGOGALAPAGOS . '/includes/users-manual/welcome.php');
 
                                    /**
                         * Carga la pagina del manual para administradores y sistemas
                         */
-                                   include ( RUTAPLUGINGOGALAPAGOS . 'includes/users-manual/administrator-manual.php');
+                                   include ( PATHPLUGINGOGALAPAGOS . '/includes/users-manual/administrator-manual.php');
 
                                    /**
                         * Carga la pagina del manual para administradores y sistemas
                         */
-                                   include ( RUTAPLUGINGOGALAPAGOS . 'includes/users-manual/users-manual-content.php');
+                                   include ( PATHPLUGINGOGALAPAGOS . '/includes/users-manual/users-manual-content.php');
 
                                    /**
                         * Carga la pagina del manual para administradores y sistemas
                         */
-                                   include ( RUTAPLUGINGOGALAPAGOS . 'includes/users-manual/users-manual-support.php');
+                                   include ( PATHPLUGINGOGALAPAGOS . '/includes/users-manual/users-manual-support.php');
                         ?>
                     </div>
                 </div>
