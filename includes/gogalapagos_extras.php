@@ -378,10 +378,14 @@ function gg_columns_head($defaults) {
     }
     if ( $_GET['post_type'] == 'ggships' ){
         $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
+        $defaults['dispo_group_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Group Code';
     }
     if ( $_GET['post_type'] == 'ggsocialarea' ){
         $defaults['ship_parent'] = '<i class="fa fa-ship" aria-hidden="true"></i> Ship Parent';
         $defaults['deck_location'] = '<i class="fa fa-ship" aria-hidden="true"></i> Deck Location';
+    }
+    if ( $_GET['post_type'] == 'ggitineraries' ){
+        $defaults['itinerary_year'] = '<i class="fa fa-calendar" aria-hidden="true"></i> Operation Year';
     }
     return $defaults;
 }
@@ -390,6 +394,14 @@ function gg_columns_content($column_name, $post_ID) {
     // Columnas para Barcos
     if ($column_name == 'dispo_code') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'dispo_ID', TRUE ); // Devuelve Array
+        if ( empty ( $ship_dispo_code ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
+        }else{
+            echo esc_html($ship_dispo_code);
+        }
+    }
+    if ($column_name == 'dispo_group_code') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'ship_group_code', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
             echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
         }else{
@@ -488,6 +500,24 @@ function gg_columns_content($column_name, $post_ID) {
             echo get_the_title( $deck_ship );
         }
     }
+    
+    // Columnas para Itinerarios
+    if ($column_name == 'itinerary_year') {
+        $itinerary_year = get_post_meta( $post_ID, $prefix . 'itinerary_year', false ); // Devuelve Array
+        if ( empty ( $itinerary_year ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This itinerary has not Year set yet', 'gogalapagos') . '</span>';
+        }else{
+            $anioActual = date ('Y');
+            $marca = 'green';
+            if ( $anioActual < $itinerary_year[0] ){
+                $marca = 'orange';
+            }else if( $anioActual > $itinerary_year[0] ){
+                $marca = 'red';
+            }
+            echo '<span style=" color:'.$marca.'; font-weight: bold;">' . $itinerary_year[0] . '</span>';
+            
+        }
+    }
 
 }
 add_filter('manage_posts_columns', 'gg_columns_head');
@@ -525,7 +555,9 @@ function add_user_manual_style_and_scripts($hook){
         wp_enqueue_script('sticktyelements');
         wp_enqueue_script('usermanualjs');
         wp_enqueue_style( 'googlefonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,900|Raleway:400,700', array(), '0.1' );
-        wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', array(), '3.3.7' );
+        wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', array(), '3.3.7' );
+        wp_enqueue_style( 'bootstrap-theme', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', array(), '3.3.7' );
+        wp_enqueue_style( 'gogalapagos-default', URLPLUGINGOGALAPAGOS . 'css/styles.css', array(), '1.0' );
         wp_register_script('bootstrapjs', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', false, '3.3.7');
         wp_enqueue_script('bootstrapjs');
     }
@@ -806,7 +838,7 @@ function gogalapagos_metaboxes() {
     // Metaboxes para Descripcion corta y larga del Voucher
     add_meta_box( 'itinerario_descripcion_corta', __( 'Go Galapagos descripción Voucher', 'gogalapagos' ), 'gogalapagos_metabox_drawing', 'ggitineraries', 'normal', 'high' );
 }
-add_action( 'add_meta_boxes', 'gogalapagos_metaboxes' );
+//add_action( 'add_meta_boxes', 'gogalapagos_metaboxes' );
 // Render de los metaboxes
 function gogalapagos_metabox_drawing( $post )
 { 
@@ -933,24 +965,104 @@ add_action('save_post', 'gogalalagos_save_vouchers_descriptions' );
  * @param   string  $old_status
  * @param   object  $post
  */
-function wpse_19040_notify_admin_on_publish( $new_status, $old_status, $post ) {
+function wpse_19040_notify_admin_on_publish( $new_status, $old_status, $post, $user = '' ) {
     if ( $new_status !== 'publish' || $old_status === 'publish' )
         return;
     if ( ! $post_type = get_post_type_object( $post->post_type ) )
         return;
 
+    // User
+    $user = wp_get_current_user();
+    
+    // Headers
+    $headers[] = 'From: Go Galapagos Wordpress';
+    $headers[] = 'Cc: Marketing <market@gogalapagos.com.ec>';
+    $headers[] = 'Cc: Webmaster <web@kleintours.com.ec>'; 
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    
     // Recipient, in this case the administrator email
     $emailto = get_option( 'admin_email' );
 
     // Email subject, "New {post_type_label}"
-    $subject = 'Edicion en Wordpress ' . $post_type->labels->singular_name;
-
+    $subject = 'Edici&oacute;n en Wordpress ' . $post_type->labels->singular_name;
+    
     // Email body
-    $message = 'Ver: ' . get_permalink( $post->ID ) . "\nEditar: " . get_edit_post_link( $post->ID );
+    ob_start();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Cambios en WordPress - Go Galapagos</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <table border="0" cellspacing="0" cellpadding="0" align="center" style="width: 100%; background-color: #e5e5e5; margin: 0; font-family: Arial, Helvetica, sans serif;">
+            <tr>
+                <td>
+                    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family: Arial, Helvetica, sans serif; margin-top:48px; border: 1px solid #cccccc; background: #ffffff;">
+                        <tr>
+                            <td style="background: #003a57;">
+                                <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+                                    <tr>
+                                        <td height="80"><h1 style="color: #e5e5e5; font-size: 1.5em; font-weight: 400; margin-left: 36px;">Go Galapagos - WordPress</h1></td>
+                                        <td align="right">
+                                            <img style="display: block; margin-right: 36px;" src="<?php echo URLPLUGINGOGALAPAGOS; ?>images/wordpress-notification-icon.png" alt="Wordpress Notification Icon">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2 align="center" style="font-family: 'Arial', sans-serif; color: #003a57; font-size: 2.1em; fotn-weight: 400; margin-bottom: 12px;">Se ha realizado un cambio</h2>
+                                <p align="center" style="font-family: 'Arial', sans-serif; color: #7b7b7b; margin-top: 0px; margin-bottom: 36px;">en la informaci&oacute;n de la p&aacute;gina web de Go Galapagos</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table width="550" border="0" cellspacing="0" cellpadding="0" align="center">
+                                    <tr>
+                                        <td width="300" align="left">
+                                            <a href="<?= get_permalink( $post->ID ) ?>"><img style="display: block;" src="<?php echo URLPLUGINGOGALAPAGOS; ?>images/wordpress-notification-view-btn.png" alt="Wordpress Notification View Post"></a>
+                                        </td>
+                                        <td width="300" align="right">
+                                            <a href="<?= get_edit_post_link( $post->ID ) ?>"><img style="display: block;" src="<?php echo URLPLUGINGOGALAPAGOS; ?>images/wordpress-notification-edit-btn.png" alt="Wordpress Notification Edit Post"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p style="margin-left: 36px; color: #7b7b7b;">El Cambio fue realizado por <span style="color: red; text-transform: uppercase; font-weight: bold;"><?= $user ?></span></p>
+                                <p style="margin-left: 36px; color: #7b7b7b;">Para m&aacute;s informaci&oacute;n cont&aacute;ctese con:</p>
+                                <ul style="margin-left: 36px;">
+                                    <li><a href="mailto:web@kleintours.com.ec">web@kleintours.com.ec</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="font-family: Arial, Helvetica, sans serif; margin-bottom:36px;">
+                        <tr>
+                            <td align="center">
+                                <p style="line-height: 2; color: #7b7b7b;">Este mail fue enviado desde <a href="https://www.gogalapagos.com">gogalapagos.com</a>, debido a la normas de notificaci&oacute;n configuradas por Go Galapagos.</p>
+                                <p style="color: #7b7b7b;">Notificaci&oacute;n enviada el d&iacute;a <strong style="color: black;">08/05/2018</strong>, a las <strong style="color: black;">12:54</strong></p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
+<?php    
+    $message = ob_get_clean();
 
-    wp_mail( 'web@kleintours.com.ec', $subject, $message );
+    wp_mail( 'web@gogalapagos.com.ec', $subject, $message, $headers );
 }
 
-add_action( 'transition_post_status', 'wpse_19040_notify_admin_on_publish', 10, 3 );
+//add_action( 'transition_post_status', 'wpse_19040_notify_admin_on_publish', 1, 4 );
+add_action( 'post_updated', 'wpse_19040_notify_admin_on_publish', 10, 4 );
 
 ?>

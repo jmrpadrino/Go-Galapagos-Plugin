@@ -18,9 +18,11 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     $current_post = get_post($post_ID);
 
     $current_post_type = $current_post->post_type;
-    
+
     $pageID = get_option('page_on_front');
-    
+
+
+
     // Metaboxes del home
     $meta_boxes[] = array(
         'id'         => 'pages_fold_text',
@@ -36,12 +38,35 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         )
     );
-    
+
+    $touchTemplate = get_page_template_slug( $current_post );
+    if( $touchTemplate == 'touch/ship-interactive-itineraries.php' or $touchTemplate == 'touch/ship-interactive.php' or  $touchTemplate == 'touch/ship-interactive-activity.php'){
+        // Metaboxes del touch
+        $meta_boxes[] = array(
+            'title'      => __( '<i class="fa fa-ship" aria-hidden="true"></i> Parent Ship', 'gogalapagos' ),
+            'post_types' => 'page',
+            'fields'     => array(
+                array(
+                    'name' => 'Assign Parent Ship',
+                    'id' => $prefix . 'touch_itinerary_ship_id',
+                    'type' => 'post',
+                    'post_type' => 'ggships',
+                    'field_type' => 'select',
+                    'query_args' => array(
+                        'orderby' => 'ID',
+                        'order' => 'ASC',
+                    ),
+                ),
+            ),
+            'context' => 'side',
+        );
+    }
+
     if($current_post->ID == $pageID){
         //obtener la cantidad de sliden del home
         $numeroSlides = get_option( 'gg_home_carousel_slides' );
         $i = 1;
-        
+
         // Metaboxes del home
         $meta_boxes[] = array(
             'id'         => 'home_fold_features',
@@ -159,7 +184,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         );  
     }
-    
+
     // METABOXES PAGINA WHY GALAPAGOS
     if($current_post->post_name == 'why-galapagos'){
         $i = 1;
@@ -314,9 +339,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 )
             )
         );
-        
+
     }
-    // META BOXES para loa barcos
+    // META BOXES para los barcos
 
     // Seccion HERO
     $meta_boxes[] = array(
@@ -493,6 +518,49 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             ),
         )
     );
+    
+    $meta_boxes[] = array(
+        'id'         => 'ship_info_360',
+        'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Extended Cruises Itineraries Images', 'gogalapagos' ),
+        'post_types' => 'ggships',
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Extended AB', 'gogalapagos' ),
+                'id'    => $prefix . 'ship_extended_img_ab',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            ),
+            array(
+                'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Extended BC', 'gogalapagos' ),
+                'id'    => $prefix . 'ship_extended_img_bc',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            ),
+            array(
+                'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Extended CD', 'gogalapagos' ),
+                'id'    => $prefix . 'ship_extended_img_cd',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            ),
+            array(
+                'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Extended DA', 'gogalapagos' ),
+                'id'    => $prefix . 'ship_extended_img_da',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            ),
+        )
+    );
+    
     /*
     // Seccion Itineraries
     $meta_boxes[] = array(
@@ -638,7 +706,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             ),*/
         )
     );
-    
+
     $meta_boxes[] = array(
         'id'         => 'ship_home_image',
         'title'      => '<i class="dashicons dashicons-paperclip"></i> ' . __( 'Home Image', 'gogalapagos' ),
@@ -652,8 +720,30 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'file_input',
             )
         )
-    ); /*
-    
+    ); 
+
+    $meta_boxes[] = array(
+        'id'         => 'ship_gruop_id',
+        'title'      => '<i class="fa fa-cog"></i> ' . __( 'Dispo metadata', 'gogalapagos' ),
+        'post_types' => 'ggships',
+        'context'    => 'side',
+        'priority'   => 'high',
+        'fields' => array(
+            array(
+                'id' => $prefix . 'ship_group_code',
+                'name' => '<i class="fa fa-cog"></i> ' . esc_html__( 'Dispo Group Code', 'gogalapagos' ),
+                'type' => 'text',
+            ),
+            array(
+                'id' => $prefix . 'ship_capacity',
+                'name' => '<i class="fa fa-users"></i> ' . esc_html__( 'Ship Capacity', 'gogalapagos' ),
+                'type' => 'text',
+            )
+        )
+    );
+
+    /*
+
     // Datos para la DISPO(web service) 
     /*
     $meta_boxes[] = array(
@@ -719,7 +809,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'orderby' => 'ID',
                     'order' => 'ASC',
                 ),
-                'desc' => __('If not selectec, this cabin won\'t show on website','gogalapagos'),
+                'desc' => __('If not selected, this cabin won\'t show on website','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -810,7 +900,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'orderby' => 'ID',
                     'order' => 'ASC',
                 ),
-                'desc' => __('If not selectec, this cabin won\'t show on website','gogalapagos'),
+                'desc' => __('If not selected, this cabin won\'t show on website','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -954,7 +1044,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'orderby' => 'ID',
                     'order' => 'ASC',
                 ),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
         ),
         'validation' => array(
@@ -967,9 +1057,10 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             ),
         ),
         'context' => 'side',
+        'priority' => 'high'
     );
     $meta_boxes[] = array(
-        'title'      => __( 'Itinerary Color', 'gogalapagos' ),
+        'title'      => __( '<i class="fa fa-paint-brush" aria-hidden="true"></i> Itinerary Color', 'gogalapagos' ),
         'post_types' => 'ggitineraries',
         'fields'     => array(
             array(
@@ -977,7 +1068,45 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'itinerary_frontend_color',
                 'type' => 'color',
                 'alpha_channel' => false,
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
+            ),
+        ),
+        'context' => 'side',
+    );
+    $anios = [];
+    $anioInicial = date('Y');
+    for( $i = 0; $i < 5; $i++ ){
+        $anios[$anioInicial + $i] = $anioInicial + $i;
+    }
+
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-calendar" aria-hidden="true"></i> Operation Year', 'gogalapagos' ),
+        'post_types' => 'ggitineraries',
+        'fields'     => array(
+            array(
+                'name' => 'Set year',
+                'id' => $prefix . 'itinerary_year',
+                'type' => 'select',
+                'options' => $anios
+            ),
+        ),
+        'context' => 'side',
+        'priority' => 'high'
+    );
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-history" aria-hidden="true"></i> Duration', 'gogalapagos' ),
+        'post_types' => 'ggitineraries',
+        'fields'     => array(
+            array(
+                'name' => 'Select a day',
+                'id' => $prefix . 'itinerary_duration',
+                'type' => 'select',
+                'placeholder' => _x('Please select...','gogalapagos'),
+                'options' => array(
+                    '4' => _x('4 Days / 3 Nights','gogalapagos'),
+                    '5' => _x('5 Days / 4 Nights','gogalapagos'),
+                ),
+                'desc' => __('If not selected this itinerary won\'t show on frontend','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -1000,7 +1129,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     '5' => _x('Saturday','gogalapagos'),
                     '6' => _x('Sunday','gogalapagos'),
                 ),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -1022,7 +1151,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     );
     $meta_boxes[] = array(
         'title'      => __( '<i class="fa fa-eye" aria-hidden="true"></i> Animals likely to be seen', 'gogalapagos' ),
-        'post_types' => 'ggitineraries',
+        'post_types' => array('ggitineraries', 'gglocation'),
         'fields'     => array(
             array(
                 'name' => 'Animals list',
@@ -1034,7 +1163,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'orderby' => 'ID',
                     'order' => 'ASC',
                 ),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -1061,67 +1190,153 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         ),
         'context' => 'normal',
     );
+
+    $items_sugerencias = array(
+        'baston'        => 'Baston',
+        'bloqueador'    => 'Bloqueador Solar',
+        'botas'         => 'Botas',
+        'botella'       => 'Agua Mineral Embotellada',
+        'camara'        => 'Camara',
+        'chaqueta'      => 'Chaqueta',
+        'lentes'        => 'Lentes de Sol',
+        'repelente'     => 'Repelente',
+        'short'         => 'Short',
+        'snorkel'       => 'Snorkel',
+        'sombrero'      => 'Sombrero',
+        'traje'         => 'Traje',
+    );
+
     $meta_boxes[] = array(
-        'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Itinery Day by Day - Day 1', 'gogalapagos' ),
+        'title'      => __( '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Pax Sugerencias', 'gogalapagos' ),
         'post_types' => 'ggitineraries',
         'fields'     => array(
             array(
-                'name' => 'Day active?',
-                'id' => $prefix . 'itinerary_active_day_1',
-                'type' => 'checkbox',
-                'desc' => '<span class="text-danger">' . __('If not checked, this day won\'t show on frontend','gogalapagos') . '</span>',
-            ),
-            array(
-                'name' => 'Day Featured Image',
-                'id' => $prefix . 'itinerary_featured_image_day_1',
-                'type' => 'image_advanced',
-                'placeholder' => _x('Please select...','gogalapagos'),
-            ),
-            array(
-                'name' => 'Day description',
-                'id' => $prefix . 'itinerary_description_day_1',
-                'type' => 'textarea',
-            ),
-            array(
-                'name' => 'AM Places list',
-                'id' => $prefix . 'itinerary_am_activities_list_day_1',
-                'type' => 'post',
-                'post_type' => 'gglocation',
-                'field_type'  => 'select_advanced',
-                'clone' => true,
-                'sort_clone' => true,
-                'placeholder' => _x('Please select...','gogalapagos'),
-                'add_button' => '+ Add another item',
-                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
-            ),
-            array(
-                'name' => 'PM Places list',
-                'id' => $prefix . 'itinerary_pm_activities_list_day_1',
-                'type' => 'post',
-                'post_type' => 'gglocation',
-                'field_type'  => 'select_advanced',
-                'clone' => true,
-                'sort_clone' => true,
-                'placeholder' => _x('Please select...','gogalapagos'),
-                'add_button' => '+ Add another item',
-                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+                'name'    => 'Item Sugerido',
+                'id'      => $prefix . 'pax_sugerencia',
+                'type'    => 'checkbox_list',
+                // Options of checkboxes, in format 'value' => 'Label'
+                'options' => $items_sugerencias,
+                'inline' => true,
+                'select_all_none' => true,
             ),
         ),
         'validation' => array(
             'rules'  => array(
-                $prefix . 'itinerary_active_day_1' => array(
+                $prefix . 'pax_sugerencia' => array(
                     'required'  => true,
+                    // More rules here
                 ),
-                $prefix . 'itinerary_am_activities_list_day_1' => array(
-                    'required'  => true,
-                ),
-                $prefix . 'itinerary_pm_activities_list_day_1' => array(
-                    'required'  => true,
-                ),
+                // Rules for other fields
             ),
         ),
         'context' => 'normal',
     );
+
+
+    $duracion  = get_post_meta($post_ID, $prefix . 'itinerary_duration', true);
+
+    for ($i = 1; $i <= $duracion; $i++){
+
+        $mostrarAm = $mostrarPm = array(
+            'type' => 'divider',
+        );
+
+        if($i == 1 /*|| $i == $duracion*/){
+            $mostrarAm = array(
+                'name' => 'AM Places list - Extended Only',
+                'id' => $prefix . 'itinerary_am_activities_list_extended_day_' . $i,
+                'type' => 'post',
+                'post_type' => 'gglocation',
+                'field_type'  => 'select_advanced',
+                'clone' => true,
+                'sort_clone' => true,
+                'placeholder' => _x('Please select...','gogalapagos'),
+                'add_button' => '+ Add another item',
+                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+            );
+
+            $mostrarPm = array(
+                'name' => 'PM Places list - Extended Only',
+                'id' => $prefix . 'itinerary_pm_activities_list_extended_day_' . $i,
+                'type' => 'post',
+                'post_type' => 'gglocation',
+                'field_type'  => 'select_advanced',
+                'clone' => true,
+                'sort_clone' => true,
+                'placeholder' => _x('Please select...','gogalapagos'),
+                'add_button' => '+ Add another item',
+                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+            );
+        }
+
+
+        $meta_boxes[] = array(
+            'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Itinery Day by Day - Day ', 'gogalapagos' ) . $i,
+            'post_types' => 'ggitineraries',
+            'fields'     => array(
+                array(
+                    'name' => 'Day active?',
+                    'id' => $prefix . 'itinerary_active_day_' . $i,
+                    'type' => 'checkbox',
+                    'desc' => '<span class="text-danger">' . __('If not checked, this day won\'t show on frontend','gogalapagos') . '</span>',
+                ),
+                array(
+                    'name' => 'Day Featured Image',
+                    'id' => $prefix . 'itinerary_featured_image_day_' . $i,
+                    'type' => 'image_advanced',
+                    'placeholder' => _x('Please select...','gogalapagos'),
+                ),
+                array(
+                    'name' => 'Day description',
+                    'id' => $prefix . 'itinerary_description_day_' . $i,
+                    'type' => 'textarea',
+                ),
+                array(
+                    'name' => 'AM Places list',
+                    'id' => $prefix . 'itinerary_am_activities_list_day_' . $i,
+                    'type' => 'post',
+                    'post_type' => 'gglocation',
+                    'field_type'  => 'select_advanced',
+                    'clone' => true,
+                    'sort_clone' => true,
+                    'placeholder' => _x('Please select...','gogalapagos'),
+                    'add_button' => '+ Add another item',
+                    'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+                ),
+                $mostrarAm,
+                array(
+                    'name' => 'PM Places list',
+                    'id' => $prefix . 'itinerary_pm_activities_list_day_' . $i,
+                    'type' => 'post',
+                    'post_type' => 'gglocation',
+                    'field_type'  => 'select_advanced',
+                    'clone' => true,
+                    'sort_clone' => true,
+                    'placeholder' => _x('Please select...','gogalapagos'),
+                    'add_button' => '+ Add another item',
+                    'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
+                ),
+                $mostrarPm
+            ),
+            'validation' => array(
+                'rules'  => array(
+                    $prefix . 'itinerary_active_day_' . $i => array(
+                        'required'  => true,
+                    ),
+                    $prefix . 'itinerary_am_activities_list_day_' . $i => array(
+                        'required'  => true,
+                    ),
+                    $prefix . 'itinerary_pm_activities_list_day_' . $i => array(
+                        'required'  => true,
+                    ),
+                ),
+            ),
+            'context' => 'normal',
+        );
+
+    } //END for day by day
+
+    /*
     $meta_boxes[] = array(
         'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Itinery Day by Day - Day 2', 'gogalapagos' ),
         'post_types' => 'ggitineraries',
@@ -1137,13 +1352,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'itinerary_featured_image_day_2',
                 'type' => 'image_advanced',
                 'placeholder' => _x('Please select...','gogalapagos'),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'Day description',
                 'id' => $prefix . 'itinerary_description_day_2',
                 'type' => 'textarea',
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'AM Places list',
@@ -1200,13 +1415,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'itinerary_featured_image_day_3',
                 'type' => 'image_advanced',
                 'placeholder' => _x('Please select...','gogalapagos'),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'Day description',
                 'id' => $prefix . 'itinerary_description_day_3',
                 'type' => 'textarea',
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'AM Places list',
@@ -1263,13 +1478,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'itinerary_featured_image_day_4',
                 'type' => 'image_advanced',
                 'placeholder' => _x('Please select...','gogalapagos'),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'Day description',
                 'id' => $prefix . 'itinerary_description_day_4',
                 'type' => 'textarea',
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'AM Places list',
@@ -1326,13 +1541,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'itinerary_featured_image_day_5',
                 'type' => 'image_advanced',
                 'placeholder' => _x('Please select...','gogalapagos'),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'Day description',
                 'id' => $prefix . 'itinerary_description_day_5',
                 'type' => 'textarea',
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
             array(
                 'name' => 'AM Places list',
@@ -1363,7 +1578,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         ),
         'context' => 'normal',
     );
-
+    */
     // Metaboxes para Locaciones
     $meta_boxes[] = array(
         'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Visitor\'s Site Island', 'gogalapagos' ),
@@ -1375,9 +1590,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'post',
                 'post_type' => 'ggisland',
                 'field_type' => 'select',
-                'size' => '100%',
-                'placeholder' => _x('Please select...','gogalapagos'),
-                'desc' => __('If not set, this activity won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
             )
         ),
         'context' => 'side',
@@ -1476,6 +1688,38 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         ),
         'context' => 'normal',
+    );
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Visitor\'s Site Recommendations', 'gogalapagos' ),
+        'post_types' => 'gglocation',
+        'fields'     => array(
+            array(
+                'name' => 'Select the island',
+                'id' => $prefix . 'visitors_site_recomendation',
+                'type' => 'checkbox_list',
+                'options' => array(
+                    'pants' => 'Pants',
+                    'hikingshoes' => 'Hiking shoes',
+                    'hat/cap' => 'Hat/cap',
+                    'walkingstick' => 'Walking stick',
+                    'sunglasses' => 'Sunglasses',
+                    'camera' => 'Camera',
+                    'water' => 'Water',
+                    'sunblock' => 'Sun block',
+                    'insectrepellent' => 'Insect repellent',
+                    'waterproofwindbreaker' => 'Waterproof Windbreaker',
+                    'wetsuit' => 'Wetsuit',
+                    'snorkelinggear' => 'Snorkeling gear',
+                    'shorts' => 'Shorts',
+                    'watershoes' => 'Water shoes',
+                    't-shirt' => 'T-shirt',
+                    'money' => 'Money',
+                    'binoculars' => 'Binoculars',                    
+                ),
+                'inline' => true,
+                'select_all_none' => true,
+            )
+        ),
     );
     $meta_boxes[] = array(
         'title'      => __( '<i class="fa fa-list-ul" aria-hidden="true"></i> Visitor\'s Site Gallery', 'gogalapagos' ),
@@ -1583,7 +1827,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'orderby' => 'ID',
                     'order' => 'ASC',
                 ),
-                'desc' => __('If not selectec, this itinerary won\'t show on frontend','gogalapagos'),
+                'desc' => __('If not selected, this itinerary won\'t show on frontend','gogalapagos'),
             ),
         ),
         'context' => 'side',
@@ -1601,7 +1845,24 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         ),
         'context' => 'normal',
     );
-
+    $meta_boxes[] = array(
+            'title'      => __( '<i class="fa fa-ship" aria-hidden="true"></i> Parent Ship', 'gogalapagos' ),
+            'post_types' => 'ggactivity',
+            'fields'     => array(
+                array(
+                    'name' => 'Assign Parent Ship',
+                    'id' => $prefix . 'activity_ship_id',
+                    'type' => 'post',
+                    'post_type' => 'ggships',
+                    'field_type' => 'checkbox_list',
+                    'query_args' => array(
+                        'orderby' => 'ID',
+                        'order' => 'ASC',
+                    ),
+                ),
+            ),
+            'context' => 'side',
+        );
     // Metaboxes para Tours
     $meta_boxes[] = array(
         'title'      => '<i class="fa fa-list-ul" aria-hidden="true"></i> ' . __( 'Tour Featured Information', 'gogalapagos' ),
