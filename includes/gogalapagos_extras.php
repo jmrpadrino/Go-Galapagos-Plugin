@@ -308,6 +308,8 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Tour Groups', 'gogalapagos' ), __( 'Tour Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=go_tours');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'South America Tours', 'gogalapagos' ), __( 'South America Tours', 'gogalapagos' ), 'manage_options', 'edit.php?post_type=ggsatour');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'South America Tour Groups', 'gogalapagos' ), __( 'South America Tour Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=go_sa_tours');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Special Offers', 'gogalapagos' ), __( 'Special Offers', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialoffer');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs', 'gogalapagos' ), __( 'FAQs', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggfaqs');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
@@ -366,7 +368,7 @@ function gg_get_featured_image($post_ID) {
 function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggcabins' ){
         $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
-        $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
+        $defaults['dispo_alias'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Alias';
         $defaults['cabin_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Cabin Ship';
         $defaults['cabin_deck'] = '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Cabin Deck';
         $defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
@@ -400,6 +402,14 @@ function gg_columns_content($column_name, $post_ID) {
             echo esc_html($ship_dispo_code);
         }
     }
+    if ($column_name == 'dispo_alias') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_quote_system_alias', TRUE ); // Devuelve Array
+        if ( empty ( $ship_dispo_code ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
+        }else{
+            echo esc_html($ship_dispo_code);
+        }
+    }   
     if ($column_name == 'dispo_group_code') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'ship_group_code', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){

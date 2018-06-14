@@ -21,7 +21,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
 
     $pageID = get_option('page_on_front');
 
-
+    $user = wp_get_current_user();
+    
+    $disabled = true;
+    
+    if( $user->roles[0] == 'administrator' ){
+        $disabled = false;
+    }
 
     // Metaboxes del home
     $meta_boxes[] = array(
@@ -145,7 +151,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             'fields' => array(
                 array(
                     'name' => 'Special Offer',
-                    'id' => $prefix . 'page_template_ship_id',
+                    'id' => $prefix . 'front_page_special_offers',
                     'type' => 'post',
                     'post_type' => 'ggspecialoffer',
                     'field_type' => 'select',
@@ -212,9 +218,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     array(
                         'name' => 'Menu Link (a)',
                         'id' => $prefix . 'why_galapagos_section_link_'. $i,
-                        'type' => 'post',
-                        'post_type' => 'nav_menu_item',
-                        'field_type' => 'select'
+                        'type' => 'url',
                     ),
                     array(
                         'name' => '<i class="fa fa-image"></i> Right Side Image',
@@ -718,6 +722,11 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'ship_home_image',
                 'name' => '<i class="fa fa-image"></i> ' . esc_html__( 'Select Home Image', 'gogalapagos' ),
                 'type' => 'file_input',
+            ),
+            array(
+                'id' => $prefix . 'ship_wiki_image',
+                'name' => '<i class="fa fa-image"></i> ' . esc_html__( 'Select Wiki Menu Image', 'gogalapagos' ),
+                'type' => 'file_input',
             )
         )
     ); 
@@ -810,7 +819,13 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'order' => 'ASC',
                 ),
                 'desc' => __('If not selected, this cabin won\'t show on website','gogalapagos'),
-            ),
+            ),            
+            array(
+                'name' => 'Quote System Alias',
+                'id' => $prefix . 'cabin_quote_system_alias',
+                'type' => 'text',
+                'desc' => __('Please specify feartures one by one','gogalapagos'),
+            )
         ),
         'context' => 'side',
     );
@@ -875,7 +890,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 /*'clone' => true,
                     'sort_clone' => true,*/
                 'desc' => __('If not checked, this cabin won\'t show on website','gogalapagos'),
-            ),
+            )
             /*array(
                 'name' => 'Gallery Images',
                 'id' => $prefix . 'cabin_gallery',
@@ -1644,7 +1659,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'placeholder' => _x('Please select...','gogalapagos'),
                 'desc' => __('If not set, this item won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
             ),
-            array(
+            /*array(
                 'name' => 'Difficulty Level',
                 'id' => $prefix . 'visitors_site_difficulty',
                 'type' => 'select',
@@ -1659,7 +1674,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'multiple' => true,
                 'placeholder' => _x('Please select...','gogalapagos'),
                 'desc' => __('If not set, this item won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
-            ),
+            ),*/
             array(
                 'name' => 'Physical Conditions Required',
                 'id' => $prefix . 'visitors_site_physical',
@@ -1697,25 +1712,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Select the island',
                 'id' => $prefix . 'visitors_site_recomendation',
                 'type' => 'checkbox_list',
-                'options' => array(
-                    'pants' => 'Pants',
-                    'hikingshoes' => 'Hiking shoes',
-                    'hat/cap' => 'Hat/cap',
-                    'walkingstick' => 'Walking stick',
-                    'sunglasses' => 'Sunglasses',
-                    'camera' => 'Camera',
-                    'water' => 'Water',
-                    'sunblock' => 'Sun block',
-                    'insectrepellent' => 'Insect repellent',
-                    'waterproofwindbreaker' => 'Waterproof Windbreaker',
-                    'wetsuit' => 'Wetsuit',
-                    'snorkelinggear' => 'Snorkeling gear',
-                    'shorts' => 'Shorts',
-                    'watershoes' => 'Water shoes',
-                    't-shirt' => 'T-shirt',
-                    'money' => 'Money',
-                    'binoculars' => 'Binoculars',                    
-                ),
+                'options' => $items_sugerencias,
                 'inline' => true,
                 'select_all_none' => true,
             )
@@ -1866,24 +1863,37 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     // Metaboxes para Tours
     $meta_boxes[] = array(
         'title'      => '<i class="fa fa-list-ul" aria-hidden="true"></i> ' . __( 'Tour Featured Information', 'gogalapagos' ),
-        'post_types' => array('ggtour', 'ggpackage'),
+        'post_types' => array('ggtour', 'ggpackage', 'ggsatour'),
         'fields'     => array(
             array(
                 'name' => 'Dispo CODE',
                 'id' => $prefix . 'dispo_code',
                 'type' => 'text',
                 'maxlength' => 10,
+                'disabled' => $disabled
             ),
             array(
                 'name' => 'Price / $ - From',
                 'id' => $prefix . 'tour_price',
-                'type' => 'text',
-                'pattern' => '[0-9]+.+[0-9]{2}'
-            )
+                'type' => 'number',
+                'step' => '0,2',
+                'disabled' => $disabled
+            ),
+            array(
+                'name' => 'Package Map .png',
+                'id' => $prefix . 'package_map',
+                'type' => 'image_advanced',
+            ),
+            array(
+                'name' => 'Services Ammount',
+                'id' => $prefix . 'package_service_ammount',
+                'type' => 'number',                
+            )           
         ),
         'context' => 'side',
     );
-
+    
+    //wp_get_current_user();
     // Metaboxes para Go Packages
     $meta_boxes[] = array(
         'title'      => '<i class="fa fa-list-ul" aria-hidden="true"></i> ' . __( 'Show Go Package', 'gogalapagos' ),
@@ -2445,7 +2455,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'dispo_ID',
                 'name' => '<i class="dashicons dashicons-arrow-right"></i> ' . esc_html__( 'Dispo Code', 'gogalapagos' ),
                 'type' => 'text',
-                //'disabled' => true,
+                'disabled' => $disabled
             )
         )
     );
@@ -2540,6 +2550,74 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             )
         )
     );
+    
+    //Fondos para animales sitios de visita y actividades
+    // Para las membresias
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="dashicons dashicons-format-image"></i> Background content', 'gogalapagos' ),
+        'post_types' => array( 'gglocation', 'gganimal', 'ggactivity', 'ggtour' ),
+        'fields'     => array(
+            array(
+                'name' => 'Image',
+                'id' => $prefix . 'background_image_content',
+                'type'  => 'file_input',
+                'mime_type' => 'png',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PNG format image.',
+            )
+        ),
+        'context' => 'side',
+    );
+    
+    
+    // SOUTH AMERICA GO GALAPAGOS TOURS
+    // 
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="dashicons dashicons-backup"></i> Duration', 'gogalapagos' ),
+        'post_types' => array( 'ggsatour' ),
+        'fields'     => array(
+            array(
+                'name' => 'Days',
+                'id' => $prefix . 'sa_tourduration',
+                'type'  => 'number',
+                'min' => 0,
+                'std' => 0
+            )
+        ),
+        'context' => 'side',
+    );
+    $meta_boxes[] = array(
+        'title'      => __( 'Highlights', 'gogalapagos' ),
+        'post_types' => array( 'ggsatour' ),
+        'fields'     => array(
+            array(
+                'name' => 'Item',
+                'id' => $prefix . 'sa_highlights',
+                'type'  => 'text',
+                'clone' => true,
+                'sort_clone' => true
+            )
+        ),
+        'context' => 'normal',
+        'priority' => 'high'
+    );
+    $meta_boxes[] = array(
+        'title'      => __( 'What\'s included?', 'gogalapagos' ),
+        'post_types' => array( 'ggsatour' ),
+        'fields'     => array(
+            array(
+                'name' => 'Item',
+                'id' => $prefix . 'sa_included',
+                'type'  => 'text',
+                'clone' => true,
+                'sort_clone' => true
+            )
+        ),
+        'context' => 'normal',
+        'priority' => 'high'
+    );
+    
+    
     return $meta_boxes;
 }
 ?>

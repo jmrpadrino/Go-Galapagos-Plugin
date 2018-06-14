@@ -47,6 +47,55 @@ function tours_tax() {
 }
 add_action( 'init', 'tours_tax', 0 );
 
+
+// Register Custom Taxonomy
+function sa_tours_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Galapagos South America Tours Groups', 'Taxonomy General Name', 'gogalapagos' ),
+		'singular_name'              => _x( 'South America Group', 'Taxonomy Singular Name', 'gogalapagos' ),
+		'menu_name'                  => __( 'South America Tours Groups', 'gogalapagos' ),
+		'all_items'                  => __( 'All South America Groups', 'gogalapagos' ),
+		'parent_item'                => __( 'Parent South America Group', 'gogalapagos' ),
+		'parent_item_colon'          => __( 'Parent South America Group:', 'gogalapagos' ),
+		'new_item_name'              => __( 'New South America Group Name', 'gogalapagos' ),
+		'add_new_item'               => __( 'Add New South America Group', 'gogalapagos' ),
+		'edit_item'                  => __( 'Edit South America Group', 'gogalapagos' ),
+		'update_item'                => __( 'Update South America Group', 'gogalapagos' ),
+		'view_item'                  => __( 'View South America Group', 'gogalapagos' ),
+		'separate_items_with_commas' => __( 'Separate South America Groups with commas', 'gogalapagos' ),
+		'add_or_remove_items'        => __( 'Add or remove South America Groups', 'gogalapagos' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'gogalapagos' ),
+		'popular_items'              => __( 'Popular South America Groups', 'gogalapagos' ),
+		'search_items'               => __( 'Search South America Groups', 'gogalapagos' ),
+		'not_found'                  => __( 'Not Found', 'gogalapagos' ),
+		'no_terms'                   => __( 'No South America Groups', 'gogalapagos' ),
+		'items_list'                 => __( 'South America Groups list', 'gogalapagos' ),
+		'items_list_navigation'      => __( 'South America Groups list navigation', 'gogalapagos' ),
+	);
+	$rewrite = array(
+		'slug'                       => 'gogalapagos-south-america-tours',
+		'with_front'                 => true,
+		'hierarchical'               => true,
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'query_var'                  => 'south-america-tour-group',
+		'rewrite'                    => $rewrite,
+		'show_in_rest'               => true,
+		'rest_base'                  => 'ggsatoursgroup',
+	);
+	register_taxonomy( 'go_sa_tours', array( 'ggsatour' ), $args );
+
+}
+add_action( 'init', 'sa_tours_tax', 0 );
+
 // Register Custom Taxonomy
 function animals_tax() {
 

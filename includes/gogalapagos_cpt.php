@@ -618,7 +618,7 @@ function gg_registerPostTypeForSpecialInterest() {
         'filter_items_list'     => __( 'Filter Special Interests list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'Special-interest',
+        'slug'                  => 'special-interest',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -844,7 +844,7 @@ function gg_packages() {
         'label'                 => __( 'Go Package', 'gogalapagos' ),
         'description'           => __( 'Galapagos Packages', 'gogalapagos' ),
         'labels'                => $labels,
-        'supports'              => array( 'title', 'excerpt', 'author', 'thumbnail', 'revisions'),
+        'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions'),
         'taxonomies'            => array(''),
         'hierarchical'          => false,
         'public'                => true,
@@ -934,6 +934,75 @@ function gg_tours() {
 
 }
 add_action( 'init', 'gg_tours', 0 );
+
+
+// Register Custom Post Type
+function gg_sa_tours() {
+
+    $labels = array(
+        'name'                  => _x( 'South America Tours', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'South America Tour', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'South America Tours', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'South America Tours', 'gogalapagos' ),
+        'archives'              => __( 'South America Tour Archives', 'gogalapagos' ),
+        'attributes'            => __( 'South America Tour Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent South America Tour:', 'gogalapagos' ),
+        'all_items'             => __( 'All South America Tours', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New South America Tour', 'gogalapagos' ),
+        'add_new'               => __( 'Add New', 'gogalapagos' ),
+        'new_item'              => __( 'New South America Tour', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit South America Tour', 'gogalapagos' ),
+        'update_item'           => __( 'Update South America Tour', 'gogalapagos' ),
+        'view_item'             => __( 'View South America Tour', 'gogalapagos' ),
+        'view_items'            => __( 'View South America Tour', 'gogalapagos' ),
+        'search_items'          => __( 'Search South America Tour', 'gogalapagos' ),
+        'not_found'             => __( 'Not found', 'gogalapagos' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
+        'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
+        'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
+        'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
+        'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into South America Tour', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this South America Tour', 'gogalapagos' ),
+        'items_list'            => __( 'South America Tours list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'South America Tours list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter South America Tours list', 'gogalapagos' ),
+    );
+    $rewrite = array(
+        'slug'                  => 'gogalapagos-south-america-tour',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => true,
+    );
+    $args = array(
+        'label'                 => __( 'South America Tours', 'gogalapagos' ),
+        'description'           => __( 'Go Galapagos South America Tours', 'gogalapagos' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'revisions' ),
+        'taxonomies'            => array(''),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => false,
+        'menu_position'         => 99,
+        'menu_icon'             => URLPLUGINGOGALAPAGOS . 'images/admin-icon.png',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => 'gogalapagos-south-america-tours',
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'ggsatours',
+    );
+    register_post_type( 'ggsatour', $args );
+
+}
+add_action( 'init', 'gg_sa_tours', 0 );
+
+
 
 // Register Custom Post Type
 function gg_testimonials() {
