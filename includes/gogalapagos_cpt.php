@@ -68,7 +68,7 @@ function gg_registerPostTypeForShips() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => 'galapagos-cruises',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -128,7 +128,7 @@ function gg_registerPostTypeForDecks() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => '',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'capability_type'       => 'post',
         'show_in_rest'          => true,
@@ -193,7 +193,7 @@ function gg_registerPostTypeForCabins() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => 'our-cabins',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',    
@@ -268,7 +268,7 @@ function gg_registerPostTypeForSocialAreas() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => 'social-areas-on-board',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -344,7 +344,7 @@ function gg_registerPostTypeForItineraries() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => 'itineraries',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -835,7 +835,7 @@ function gg_packages() {
         'filter_items_list'     => __( 'Filter Packages list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'gogalapagos_package',
+        'slug'                  => 'gogalapagos-package',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -855,7 +855,7 @@ function gg_packages() {
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => 'gogalapagos_packages',
+        'has_archive'           => 'gogalapagos-packages',
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
@@ -902,7 +902,7 @@ function gg_tours() {
         'filter_items_list'     => __( 'Filter Tours list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'gogalapagos_tour',
+        'slug'                  => 'ecuador-tour',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -922,7 +922,7 @@ function gg_tours() {
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => 'gogalapagos_tours',
+        'has_archive'           => 'ecuador-tours',
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
@@ -1058,7 +1058,7 @@ function gg_testimonials() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => '',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         //'capability_type'       => 'post',
@@ -1125,7 +1125,7 @@ function gg_memberships() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => '',
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -1191,7 +1191,7 @@ function gg_faqs() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => true,
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -1257,7 +1257,7 @@ function gg_salesexpert() {
         'show_in_nav_menus'     => true,
         'can_export'            => true,
         'has_archive'           => true,
-        'exclude_from_search'   => false,
+        'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
         'capability_type'       => 'post',
@@ -1268,6 +1268,72 @@ function gg_salesexpert() {
 
 }
 add_action( 'init', 'gg_salesexpert', 0 );
+
+// Register Custom Post Type
+function gg_onboardServices() {
+
+    $labels = array(
+        'name'                  => _x( 'Onboard Services', 'Post Type General Name', 'gogalapagos' ),
+        'singular_name'         => _x( 'Onboard Service', 'Post Type Singular Name', 'gogalapagos' ),
+        'menu_name'             => __( 'Onboard Services', 'gogalapagos' ),
+        'name_admin_bar'        => __( 'Onboard Services', 'gogalapagos' ),
+        'archives'              => __( 'Onboard Service Archives', 'gogalapagos' ),
+        'attributes'            => __( 'Onboard Service Attributes', 'gogalapagos' ),
+        'parent_item_colon'     => __( 'Parent Onboard Service:', 'gogalapagos' ),
+        'all_items'             => __( 'All Onboard Services', 'gogalapagos' ),
+        'add_new_item'          => __( 'Add New Onboard Service', 'gogalapagos' ),
+        'add_new'               => __( 'Add New', 'gogalapagos' ),
+        'new_item'              => __( 'New Onboard Service', 'gogalapagos' ),
+        'edit_item'             => __( 'Edit Onboard Service', 'gogalapagos' ),
+        'update_item'           => __( 'Update Onboard Service', 'gogalapagos' ),
+        'view_item'             => __( 'View Onboard Service', 'gogalapagos' ),
+        'view_items'            => __( 'View Onboard Service', 'gogalapagos' ),
+        'search_items'          => __( 'Search Onboard Service', 'gogalapagos' ),
+        'not_found'             => __( 'Not found', 'gogalapagos' ),
+        'not_found_in_trash'    => __( 'Not found in Trash', 'gogalapagos' ),
+        'featured_image'        => __( 'Featured Image', 'gogalapagos' ),
+        'set_featured_image'    => __( 'Set featured image', 'gogalapagos' ),
+        'remove_featured_image' => __( 'Remove featured image', 'gogalapagos' ),
+        'use_featured_image'    => __( 'Use as featured image', 'gogalapagos' ),
+        'insert_into_item'      => __( 'Insert into Onboard Service', 'gogalapagos' ),
+        'uploaded_to_this_item' => __( 'Uploaded to this Onboard Service', 'gogalapagos' ),
+        'items_list'            => __( 'Onboard Services list', 'gogalapagos' ),
+        'items_list_navigation' => __( 'Onboard Services list navigation', 'gogalapagos' ),
+        'filter_items_list'     => __( 'Filter Onboard Services list', 'gogalapagos' ),
+    );
+    $rewrite = array(
+        'slug'                  => 'onboard-services',
+        'with_front'            => true,
+        'pages'                 => true,
+        'feeds'                 => true,
+    );
+    $args = array(
+        'label'                 => __( 'Onboard Services', 'gogalapagos' ),
+        'description'           => __( 'Go Galapagos Onboard Services', 'gogalapagos' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title', 'excerpt', 'editor', 'author', 'thumbnail',),
+        'taxonomies'            => array(''),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => false,
+        'menu_position'         => 99,
+        'menu_icon'             => URLPLUGINGOGALAPAGOS . 'images/admin-icon.png',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => true,
+        'publicly_queryable'    => true,
+        'rewrite'               => $rewrite,
+        'capability_type'       => 'post',
+        'show_in_rest'          => true,
+        'rest_base'             => 'ggonboardservice',
+    );
+    register_post_type( 'ggonboardservices', $args );
+
+}
+add_action( 'init', 'gg_onboardServices', 0 );
 
 //} //Fin current user can
 

@@ -28,5 +28,3 @@ require_once('includes/gogalapagos_cpt.php');
 require_once('includes/gogalapagos_taxonomies.php');
 require_once('includes/gogalapagos_metaboxes.php');
 require_once('includes/gogalapagos_ui_office.php');
-require_once('includes/gogalapagos_class_quote.php');
-require_once('includes/gogalapagos_quote.php');

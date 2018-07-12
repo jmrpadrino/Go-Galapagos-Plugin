@@ -304,6 +304,8 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', __( 'Decks', 'gogalapagos' ), __( 'Decks', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggdecks');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Cabins', 'gogalapagos' ), __( 'Cabins', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggcabins');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Social Areas', 'gogalapagos' ), __( 'Social Areas', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggsocialarea');
+    add_submenu_page( 'go-galapagos-dashboard', __( 'Onboard Services', 'gogalapagos' ), __( 'Onboard Services', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggonboardservices');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Onboard Service Package Groups', 'gogalapagos' ), __( 'Onboard Service Package Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=onboard-service-package');
     add_submenu_page( 'go-galapagos-dashboard', __( 'Itineraries', 'gogalapagos' ), __( 'Itineraries', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggitineraries');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Packages', 'gogalapagos' ), __( 'Go Packages', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggpackage');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Go Tours', 'gogalapagos' ), __( 'Go Tours', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtour');

@@ -191,4 +191,52 @@ function faqs_tax() {
 
 }
 add_action( 'init', 'faqs_tax', 0 );
+
+// Register Custom Taxonomy
+function onboardservices_tax() {
+
+	$labels = array(
+		'name'                       => _x( 'Onboard Service Package Groups', 'Taxonomy General Name', 'gogalapagos' ),
+		'singular_name'              => _x( 'Onboard Service Package Group', 'Taxonomy Singular Name', 'gogalapagos' ),
+		'menu_name'                  => __( 'Onboard Service Package Groups', 'gogalapagos' ),
+		'all_items'                  => __( 'All Groups', 'gogalapagos' ),
+		'parent_item'                => __( 'Parent Group', 'gogalapagos' ),
+		'parent_item_colon'          => __( 'Parent Group:', 'gogalapagos' ),
+		'new_item_name'              => __( 'New Group Name', 'gogalapagos' ),
+		'add_new_item'               => __( 'Add New Group', 'gogalapagos' ),
+		'edit_item'                  => __( 'Edit Group', 'gogalapagos' ),
+		'update_item'                => __( 'Update Group', 'gogalapagos' ),
+		'view_item'                  => __( 'View Group', 'gogalapagos' ),
+		'separate_items_with_commas' => __( 'Separate Groups with commas', 'gogalapagos' ),
+		'add_or_remove_items'        => __( 'Add or remove Groups', 'gogalapagos' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'gogalapagos' ),
+		'popular_items'              => __( 'Popular Groups', 'gogalapagos' ),
+		'search_items'               => __( 'Search Groups', 'gogalapagos' ),
+		'not_found'                  => __( 'Not Found', 'gogalapagos' ),
+		'no_terms'                   => __( 'No Groups', 'gogalapagos' ),
+		'items_list'                 => __( 'Groups list', 'gogalapagos' ),
+		'items_list_navigation'      => __( 'Groups list navigation', 'gogalapagos' ),
+	);
+	$rewrite = array(
+		'slug'                       => 'onboard-service-packages',
+		'with_front'                 => true,
+		'hierarchical'               => true,
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+		'query_var'                  => 'onboardservicepackage',
+		'rewrite'                    => $rewrite,
+		'show_in_rest'               => true,
+		'rest_base'                  => 'ggonboardservicepackage',
+	);
+	register_taxonomy( 'onboard-service-package', array( 'ggonboardservices' ), $args );
+
+}
+add_action( 'init', 'onboardservices_tax', 0 );
 ?>
