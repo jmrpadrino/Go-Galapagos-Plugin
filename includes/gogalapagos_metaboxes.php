@@ -2631,6 +2631,19 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     
     // METABOXES PARA SERVICIOS A BORDO
     $meta_boxes[] = array(
+        'title'      => __( 'Pack Code', 'gogalapagos' ),
+        'post_types' => array( 'ggonboardservices' ),
+        'fields'     => array(
+            array(
+                'name' => 'CODE',
+                'id' => $prefix . 'onboard_service_code',
+                'type'  => 'text',
+            )
+        ),
+        'context' => 'side',
+        'priority' => 'high'
+    );
+    $meta_boxes[] = array(
         'title'      => __( 'Pack Price', 'gogalapagos' ),
         'post_types' => array( 'ggonboardservices' ),
         'fields'     => array(
