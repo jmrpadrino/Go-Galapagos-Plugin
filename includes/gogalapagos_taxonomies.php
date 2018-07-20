@@ -25,7 +25,7 @@ function tours_tax() {
 		'items_list_navigation'      => __( 'Groups list navigation', 'gogalapagos' ),
 	);
 	$rewrite = array(
-		'slug'                       => 'galapagos-tour-package',
+		'slug'                       => 'tour-packages',
 		'with_front'                 => true,
 		'hierarchical'               => true,
 	);
@@ -74,7 +74,7 @@ function sa_tours_tax() {
 		'items_list_navigation'      => __( 'South America Groups list navigation', 'gogalapagos' ),
 	);
 	$rewrite = array(
-		'slug'                       => 'gogalapagos-south-america-tours',
+		'slug'                       => 'south-america-tours',
 		'with_front'                 => true,
 		'hierarchical'               => true,
 	);

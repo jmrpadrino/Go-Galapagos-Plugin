@@ -196,7 +196,11 @@ function gg_registerPostTypeForCabins() {
         'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,
-        'capability_type'       => 'post',    
+        'capability_type'       => 'post',  
+        'capabilities' => array(
+            'create_posts' => 'do_not_allow',
+        ),
+        'map_meta_cap' => true,
         'show_in_rest'          => true,
         'rest_base'             => 'ggcabins',
     );
@@ -969,7 +973,7 @@ function gg_sa_tours() {
         'filter_items_list'     => __( 'Filter South America Tours list', 'gogalapagos' ),
     );
     $rewrite = array(
-        'slug'                  => 'gogalapagos-south-america-tour',
+        'slug'                  => 'south-america-tour',
         'with_front'            => true,
         'pages'                 => true,
         'feeds'                 => true,
@@ -989,7 +993,7 @@ function gg_sa_tours() {
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => 'gogalapagos-south-america-tours',
+        'has_archive'           => 'south-america-tours',
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'rewrite'               => $rewrite,

@@ -105,12 +105,12 @@ add_action( 'show_user_profile', 'extra_user_profile_fields' );
 add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 
 function extra_user_profile_fields( $user ) { ?>
-<?php if( current_user_can('administrator')  ) { ?>
+<?php if( current_user_can('administrator') && $user->roles[0] == 'administrator' ) { ?>
 
-<h3><?php _e("Extra profile information", "blank"); ?></h3>
+<h3><?php _e("ELIGOS profile information", "gogalapagos"); ?></h3>
 <table class="form-table">
     <tr>
-        <th><span class="dashicons dashicons-admin-network"></span>&nbsp;<label for="token"><?php _e("ELIGOS Token"); ?></label></th>
+        <th><span class="dashicons dashicons-admin-network"></span>&nbsp;<label for="token"><?php _e("ELIGOS Token", 'gogalapagos'); ?></label></th>
         <td>
             <input type="text" name="token" id="token" value="<?php echo esc_attr( get_the_author_meta( 'token', $user->ID ) ); ?>" class="regular-text" /><br />
             <span class="description"><?php _e("Please set the token."); ?></span>

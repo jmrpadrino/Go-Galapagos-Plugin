@@ -951,6 +951,21 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         'context' => 'side',
     );
     $meta_boxes[] = array(
+        'title'      => __( '<i class="dashicons dashicons-media-document"></i> Deck Plan PDF', 'gogalapagos' ),
+        'post_types' => 'ggdecks',
+        'fields'     => array(
+            array(
+                'name' => 'Deck Plan PDF document',
+                'id' => $prefix . 'deck_plan_pdf',
+                'type'  => 'file_input',
+                'mime_type' => 'pdf',
+                'max_file_uploads' => 1,
+                'desc'  => 'Note: Upload or Select a PDF format document.',
+            )
+        ),
+        'context' => 'side',
+    );
+    $meta_boxes[] = array(
         'title'      => __( 'Frontend Name', 'gogalapagos' ),
         'post_types' => 'ggdecks',
         'fields'     =>

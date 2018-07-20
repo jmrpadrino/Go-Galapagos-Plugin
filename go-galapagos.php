@@ -23,6 +23,7 @@ define('URLPLUGINGOGALAPAGOS', plugin_dir_url( __FILE__ )); // Plugins URL
 define('PATHPLUGINGOGALAPAGOS', plugin_dir_path( __FILE__ )); // Plugins PATH
 
 // Libraries
+require_once('includes/gogalapagos_sync_eligos.php');
 require_once('includes/gogalapagos_extras.php');
 require_once('includes/gogalapagos_cpt.php');
 require_once('includes/gogalapagos_taxonomies.php');
