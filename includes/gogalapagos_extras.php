@@ -369,8 +369,11 @@ function gg_get_featured_image($post_ID) {
 }
 function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggcabins' ){
-        $defaults['dispo_code'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Code';
-        $defaults['dispo_alias'] = '<i class="fa fa-ship" aria-hidden="true"></i> Dispo Alias';
+        $defaults['dispo_cid'] = 'Eligos CabinID';
+        $defaults['dispo_code'] = 'Eligos Code';
+        $defaults['dispo_alias'] = 'Eligos Alias';
+        $defaults['dispo_yearid'] = 'Eligos YearID';
+        $defaults['dispo_year'] = 'Eligos Year';
         $defaults['cabin_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Cabin Ship';
         $defaults['cabin_deck'] = '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Cabin Deck';
         $defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
@@ -396,10 +399,18 @@ function gg_columns_head($defaults) {
 function gg_columns_content($column_name, $post_ID) {
     $prefix = 'gg_';
     // Columnas para Barcos
+    if ($column_name == 'dispo_cid') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_eligos_id', TRUE ); // Devuelve Array
+        if ( empty ( $ship_dispo_code ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
+        }else{
+            echo esc_html($ship_dispo_code);
+        }
+    }
     if ($column_name == 'dispo_code') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'dispo_ID', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo esc_html($ship_dispo_code);
         }
@@ -407,15 +418,31 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'dispo_alias') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_quote_system_alias', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo esc_html($ship_dispo_code);
         }
-    }   
+    }
+    if ($column_name == 'dispo_yearid') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_year_id', TRUE ); // Devuelve Array
+        if ( empty ( $ship_dispo_code ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
+        }else{
+            echo esc_html($ship_dispo_code);
+        }
+    }
+    if ($column_name == 'dispo_year') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_year', TRUE ); // Devuelve Array
+        if ( empty ( $ship_dispo_code ) ){
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
+        }else{
+            echo esc_html($ship_dispo_code);
+        }
+    }
     if ($column_name == 'dispo_group_code') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'ship_group_code', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('Please set the Dispo Code of this Ship', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo esc_html($ship_dispo_code);
         }
@@ -424,7 +451,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'deck_ship') {
         $deck_ship = get_post_meta( $post_ID, $prefix . 'deck_ship_id', FALSE ); // Devuelve Array
         if ( empty ( $deck_ship ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Deck has not be asigned to any Ship', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo '<a href="'.get_edit_post_link( $deck_ship[0], 'display' ).'">'.get_the_title($deck_ship[0]) . '</a>';
         }
@@ -432,7 +459,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'deck_gallery') {
         $deck_pictures = get_post_meta( $post_ID, $prefix . 'deck_gallery', FALSE ); // Devuelve Array
         if ( empty ( $deck_pictures ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('There is not gallery on this Deck', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             $i = 0;
             foreach ($deck_pictures as $deck_picture){
@@ -451,7 +478,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'cabin_category_color') {
         $cabin_color = get_post_meta( $post_ID, $prefix . 'cabin_category_color', true ); // Devuelve Array
         if ( empty ( $cabin_color ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Cabin has not color asigned', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo '<span class="category-color-admin-column" style="background:'.$cabin_color.'; display: block; padding: 8px; text-align: center; font-size: 16px; font-weight: bold; color: white;" title="Use this color '.$cabin_color.'">'.$cabin_color.'</span>';
         }
@@ -459,7 +486,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'cabin_ship') {
         $cabin_ship = get_post_meta( $post_ID, $prefix . 'cabin_ship_id', TRUE ); // Devuelve Array
         if ( empty ( $cabin_ship ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Cabin has not be asigned to any Ship', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo get_the_title( $cabin_ship );
         }
@@ -467,7 +494,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'cabin_deck') {
         $cabin_decks = get_post_meta( $post_ID, $prefix . 'cabin_decks_location', false ); // Devuelve Array
         if ( empty( $cabin_decks ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('This Cabin has not be asigned to any Deck or Decks', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             echo '<ul style="list-style: square;">';
             foreach ($cabin_decks as $cabin_deck){
@@ -480,7 +507,7 @@ function gg_columns_content($column_name, $post_ID) {
     if ($column_name == 'cabin_gallery') {
         $cabin_pictures = get_post_meta( $post_ID, $prefix . 'cabin_gallery', FALSE ); // Devuelve Array
         if ( empty ( $cabin_pictures ) ){
-            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> ' . __('There is not gallery on this Cabin', 'gogalapagos') . '</span>';
+            echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{
             $i = 0;
             foreach ($cabin_pictures as $cabin_picture){

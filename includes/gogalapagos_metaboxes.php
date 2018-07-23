@@ -41,6 +41,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Paragraph (p)',
                 'id' => $prefix . 'page_first_section_content',
                 'type' => 'wysiwyg',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ) 
             )
         )
     );
@@ -86,11 +89,17 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'homepage_fold_h1',
                     'type' => 'text',
                     'std' => 'Enjoy',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    )
                 ),
                 array(
                     'name' => 'Subtitle (p)',
                     'id' => $prefix . 'homepage_fold_subtitle',
                     'type' => 'textarea',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    )
                 ),
                 array(
                     'name' => '<i class="fa fa-image"></i> Background Image',
@@ -127,11 +136,17 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                         'id' => $prefix . 'homepage_fold_h1'. $i,
                         'type' => 'text',
                         'std' => 'Enjoy',
+                        'attributes' => array(
+                            'class' => 'gogalapagos-field'
+                        )
                     ),
                     array(
                         'name' => 'Paragraph (p)',
                         'id' => $prefix . 'homepage_fold_subtitle'. $i,
                         'type' => 'textarea',
+                        'attributes' => array(
+                            'class' => 'gogalapagos-field'
+                        )
                     ),
                     array(
                         'name' => '<i class="fa fa-image"></i> Background Image',
@@ -208,11 +223,17 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                         'id' => $prefix . 'why_galapagos_section_h2_'. $i,
                         'type' => 'text',
                         'std' => 'Enjoy',
+                        'attributes' => array(
+                            'class' => 'gogalapagos-field'
+                        ),
                     ),
                     array(
                         'name' => 'Paragraph (p)',
                         'id' => $prefix . 'why_galapagos_section_content_'. $i,
                         'type' => 'wysiwyg',
+                        'attributes' => array(
+                            'class' => 'gogalapagos-field'
+                        ),
                         'std' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem placeat, voluptatum ab quibusdam veritatis provident voluptatibus nobis repudiandae exercitationem necessitatibus molestiae quod numquam ea dolorum rerum laboriosam voluptates minus enim.'
                     ),
                     array(
@@ -268,6 +289,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'ship_facilities_onboard',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Onboard', 'gogalapagos' ),
                     'type' => 'text',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                     'clone' => true,
                     'sort_clone' => true,
                     'std' => true,
@@ -276,6 +300,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'ship_facilities_cabin',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Cabin', 'gogalapagos' ),
                     'type' => 'text',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                     'clone' => true,
                     'sort_clone' => true,
                 )
@@ -292,6 +319,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'galapagos_cruises_crew_title',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Section title', 'gogalapagos' ),
                     'type' => 'text',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 ),
                 array(
                     'id' => $prefix . 'galapagos_cruises_crew_image',
@@ -302,6 +332,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'galapagos_cruises_crew_content',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
                     'type' => 'textarea',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 )
             )
         );
@@ -316,6 +349,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'galapagos_cruises_eco_title',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Section title', 'gogalapagos' ),
                     'type' => 'text',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 ),
                 array(
                     'id' => $prefix . 'galapagos_cruises_eco_image',
@@ -326,6 +362,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'galapagos_cruises_eco_content',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
                     'type' => 'textarea',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 )
             )
         );
@@ -340,6 +379,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'id' => $prefix . 'galapagos_cruises_after_content',
                     'name' => '<i class="dashicons dashicons-admin-plugins"></i> ' . esc_html__( 'Content', 'gogalapagos' ),
                     'type' => 'wysiwyg',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 )
             )
         );
@@ -368,7 +410,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'desc'  => 'Note: This field is for alphanumeric only.',
                 'id'    => $prefix . 'ship_slogan',
                 'type'  => 'text',
-                'class' => ' translatethis'
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             /*array(
                 'name'  => '<i class="dashicons dashicons-edit"></i> ' . __( 'Hero Short Description', 'gogalapagos' ),
@@ -380,6 +424,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name'  => '<i class="dashicons dashicons-admin-links"></i> ' . __( 'Video file URL', 'gogalapagos' ),
                 'id'    => $prefix . 'ship_videourl',
                 'type'  => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'name'  => '<i class="dashicons dashicons-format-image"></i> ' . __( 'Ship Image', 'gogalapagos' ),
@@ -518,7 +565,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'text',
                 'name' => '<i class="dashicons dashicons-admin-links"></i> ' . esc_html__( '360 Virtual Tour section link', 'gogalapagos' ),
                 'desc' => __( 'Note: this field is for the 360 Virtual Tour URL. <strong>Please contact to Support Office</strong>', 'gogalapagos' ),
-                'class' => ' translatethis',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
         )
     );
@@ -645,12 +694,18 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Ship Name', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'id' => $prefix . 'ship_section_sec_info',
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Security Information Content', 'gogalapagos' ),
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'rows' => 8
             ),
             array(
@@ -658,6 +713,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Technical Information Content', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'clone' => true,
                 'sort_clone' => true,
             ),
@@ -691,12 +749,18 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Ship Name', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'id' => $prefix . 'ship_section_tech_info_second',
                 'type' => 'wysiwyg',
                 'name' => '<i class="dashicons dashicons-editor-edit"></i> ' . esc_html__( 'Technical Information Content', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'clone' => true,
                 'sort_clone' => true,
             ),
@@ -742,11 +806,17 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'ship_group_code',
                 'name' => '<i class="fa fa-cog"></i> ' . esc_html__( 'Dispo Group Code', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'id' => $prefix . 'ship_capacity',
                 'name' => '<i class="fa fa-users"></i> ' . esc_html__( 'Ship Capacity', 'gogalapagos' ),
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             )
         )
     );
@@ -805,7 +875,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     */
     // METABOXES para los decks, las Cabinas y areas sociales
     $meta_boxes[] = array(
-        'title'      => __( '<i class="fa fa-ship" aria-hidden="true"></i> Parent Ship', 'gogalapagos' ),
+        'title'      => __( '<i class="fa fa-ship" aria-hidden="true"></i> Wordpress DATA', 'gogalapagos' ),
         'post_types' => 'ggcabins',
         'fields'     => array(
             array(
@@ -819,12 +889,78 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'order' => 'ASC',
                 ),
                 'desc' => __('If not selected, this cabin won\'t show on website','gogalapagos'),
+            ),
+        ),
+        'context' => 'side',
+        'priority' => 'high'
+    );
+    $meta_boxes[] = array(
+        'title'      => __( '<i class="fa fa-ship" aria-hidden="true"></i> Eligos DATA', 'gogalapagos' ),
+        'post_types' => 'ggcabins',
+        'fields'     => array(
+            array(
+                'name' => 'WordPress Parent Ship',
+                'id' => $prefix . 'cabin_ship_id',                
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ),                
+                'readonly'  => true,
+            ),
+            array(
+                'name' => 'ELIGOS Cabin ID',
+                'id' => $prefix . 'cabin_eligos_id',                
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ), 
+                'readonly'  => true,
+            ),
+            array(
+                'name' => 'ELIGOS Ship CODE',
+                'id' => $prefix . 'cabin_eligos_ship_code',                
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ), 
+                'readonly'  => true,
+            ),
+            array(
+                'name' => 'Dispo CODE',
+                'id' => $prefix . 'dispo_ID',
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ),
+                'maxlength' => 10,
+                'readonly' => true
+            ),
+            array(
+                'name' => 'ELIGOS Cabin CODE',
+                'id' => $prefix . 'cabin_eligos_code',                
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ), 
+                'readonly'  => true,
             ),            
             array(
-                'name' => 'Quote System Alias',
-                'id' => $prefix . 'cabin_quote_system_alias',
+                'name' => 'Year ID',
+                'id' => $prefix . 'cabin_year_id',
                 'type' => 'text',
-                'desc' => __('Please specify feartures one by one','gogalapagos'),
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ), 
+                'readonly'  => true,
+            ),            
+            array(
+                'name' => 'Year',
+                'id' => $prefix . 'cabin_year',
+                'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ), 
+                'readonly'  => true,
             )
         ),
         'context' => 'side',
@@ -870,6 +1006,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'General Specifycations',
                 'id' => $prefix . 'cabin_featurelist',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'clone' => true,
                 'sort_clone' => true,
                 'desc' => __('Please specify feartures one by one','gogalapagos'),
@@ -974,6 +1113,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<i class="dashicons dashicons-editor-textcolor"></i> Frontend Name',
                 'id' => $prefix . 'deck_frontend_name',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => __('If not set, this item won\'t show on website','gogalapagos'),
             )
         )
@@ -1206,6 +1348,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Name',
                 'id' => $prefix . 'itinerary_single_name',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => __('This name will be shown as the tab name.','gogalapagos'),
             ),
         ),
@@ -1320,6 +1465,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'name' => 'Day description',
                     'id' => $prefix . 'itinerary_description_day_' . $i,
                     'type' => 'textarea',
+                    'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 ),
                 array(
                     'name' => 'AM Places list',
@@ -1708,12 +1856,18 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Duration',
                 'id' => $prefix . 'visitors_site_duration',
                 'type' => 'textarea',
+                'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 'desc' => __('If not set, this item won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
             ),
             array(
                 'name' => 'Highlights',
                 'id' => $prefix . 'visitors_site_highlights',
                 'type' => 'textarea',
+                'attributes' => array(
+                        'class' => 'gogalapagos-field'
+                    ),
                 'desc' => __('If not set, this item won\'t show on frontend. Drag n\' Drop to sort the list. If item is a link, copy entire link.','gogalapagos'),
             )
         ),
@@ -1758,19 +1912,25 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Scientific name',
                 'id' => $prefix . 'scientific_name',
                 'type' => 'text',
-                'size' => '100%',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'name' => 'Size',
                 'id' => $prefix . 'animal_size',
                 'type' => 'text',
-                'size' => '100%',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'name' => 'Weight',
                 'id' => $prefix . 'animal_weight',
                 'type' => 'text',
-                'size' => '100%',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             ),
             array(
                 'name' => 'Map Location Image',
@@ -1782,7 +1942,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Google Map LAT/LONG',
                 'id' => $prefix . 'gmap_coords',
                 'type' => 'text',
-                'size' => '100%',
                 'clone' => true,
                 'desc' => 'SET THE LATTITUDE AND LONGITUDE, SEPARATED WITH A COMA'
             )
@@ -1896,8 +2055,11 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Dispo CODE',
                 'id' => $prefix . 'dispo_code',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'eligos-field'
+                ),
                 'maxlength' => 10,
-                'disabled' => $disabled
+                'readonly' => true
             ),
             array(
                 'name' => 'Price / $ - From',
@@ -1947,6 +2109,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_1',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -1963,6 +2128,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_1',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -1985,6 +2153,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_1',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -1992,6 +2163,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_1',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2006,6 +2180,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_2',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2022,6 +2199,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_2',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2044,6 +2224,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_2',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2051,6 +2234,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_2',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2065,6 +2251,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_3',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2081,6 +2270,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_3',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2103,6 +2295,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_3',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2110,6 +2305,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_3',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2124,6 +2322,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_4',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2140,6 +2341,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_4',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2162,6 +2366,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_4',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2169,6 +2376,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_4',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2183,6 +2393,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_5',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2199,6 +2412,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_5',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2221,6 +2437,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_5',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2228,6 +2447,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_5',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2242,6 +2464,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_6',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2258,6 +2483,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_6',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2280,6 +2508,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_6',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2287,6 +2518,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_6',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2301,6 +2535,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_7',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2317,6 +2554,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_7',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2339,6 +2579,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_7',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2346,6 +2589,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_7',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2360,6 +2606,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_8',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2376,6 +2625,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_8',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2398,6 +2650,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_8',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2405,6 +2660,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_8',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2419,6 +2677,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Group Title',
                 'id' => $prefix . 'service_group_title_9',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2435,6 +2696,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Services Description',
                 'id' => $prefix . 'service_group_description_9',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: darkorange; font-weight: bold;">If this item has an alternative, please complete the next section</span>'
             ),
             array(
@@ -2457,6 +2721,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Group Title</span>',
                 'id' => $prefix . 'service_group_title_alter_9',
                 'type' => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'placeholder' => 'Type a short title',
                 'desc' => 'This content will appear in the boucher information'
             ),
@@ -2464,6 +2731,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => '<span style="color: darkorange; font-weight: bold;">Alter Services Description</span>',
                 'id' => $prefix . 'service_group_description_alter_9',
                 'type' => 'textarea',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'desc' => 'This content will appear in the website, <span style="color: green; font-weight: bold;">Please complete this items to show on website and boucher</span>'
             ),
         ),
@@ -2474,7 +2744,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     $meta_boxes[] = array(
         'id'         => 'ship_info_dispo_webservice',
         'title'      => '<i class="dashicons dashicons-paperclip"></i> ' . __( 'Kleintours Dispo System ' . $post->ID, 'gogalapagos' ),
-        'post_types' => array('ggcabins', 'ggships', 'ggtour', 'ggpackage'),
+        'post_types' => array('ggships', 'ggtour', 'ggpackage'),
         'context'    => 'side',
         'priority'   => 'high',
         'fields' => array(
@@ -2482,7 +2752,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'dispo_ID',
                 'name' => '<i class="dashicons dashicons-arrow-right"></i> ' . esc_html__( 'Dispo Code', 'gogalapagos' ),
                 'type' => 'text',
-                'disabled' => $disabled
+                'readonly' => true
             )
         )
     );
@@ -2574,6 +2844,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name'  => '<i class="fa fa-globe"></i> ' . __( 'Region (Countries)', 'gogalapagos' ),
                 'id'    => $prefix . 'salesexpert_region',
                 'type'  => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             )
         )
     );
@@ -2621,6 +2894,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Item',
                 'id' => $prefix . 'sa_highlights',
                 'type'  => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'clone' => true,
                 'sort_clone' => true
             )
@@ -2636,6 +2912,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'Item',
                 'id' => $prefix . 'sa_included',
                 'type'  => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'clone' => true,
                 'sort_clone' => true
             )
@@ -2653,6 +2932,9 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'name' => 'CODE',
                 'id' => $prefix . 'onboard_service_code',
                 'type'  => 'text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             )
         ),
         'context' => 'side',
@@ -2679,8 +2961,14 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
         'fields'     => array(
             array(
                 'name' => 'Text',
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
                 'id' => $prefix . 'onboard_service_slogan',
-                'type'  => 'text',                
+                'type'  => 'text', 
+                'attributes' => array(
+                    'class' => 'gogalapagos-field'
+                ),
             )
         ),
         'context' => 'side',
