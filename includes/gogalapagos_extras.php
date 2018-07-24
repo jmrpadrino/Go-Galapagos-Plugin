@@ -371,13 +371,14 @@ function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggcabins' ){
         $defaults['dispo_cid'] = 'Eligos CabinID';
         $defaults['dispo_code'] = 'Eligos Code';
-        $defaults['dispo_alias'] = 'Eligos Alias';
+        //$defaults['dispo_alias'] = 'Eligos Alias';
         $defaults['dispo_yearid'] = 'Eligos YearID';
         $defaults['dispo_year'] = 'Eligos Year';
         $defaults['cabin_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Cabin Ship';
         $defaults['cabin_deck'] = '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Cabin Deck';
-        $defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
+        //$defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
         $defaults['cabin_category_color'] = '<i class="fa fa-tint" aria-hidden="true"></i> Color';
+        $defaults['cabin_clone_content'] = '<i class="fa fa-clone" aria-hidden="true"></i> Clone Content';
     }
     if ( $_GET['post_type'] == 'ggdecks' ){
         $defaults['deck_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Ship';
@@ -398,6 +399,11 @@ function gg_columns_head($defaults) {
 }
 function gg_columns_content($column_name, $post_ID) {
     $prefix = 'gg_';
+    $args = array(
+        'post_type' => 'ggcabins',
+        'posts_per_page' => -1,
+    );
+    $cabinas = get_posts($args);
     // Columnas para Barcos
     if ($column_name == 'dispo_cid') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_eligos_id', TRUE ); // Devuelve Array
@@ -406,6 +412,15 @@ function gg_columns_content($column_name, $post_ID) {
         }else{
             echo esc_html($ship_dispo_code);
         }
+    }
+    if ($column_name == 'cabin_clone_content') {
+        echo '<span style="font-height: bold;">Clone from</span>';
+        echo '<select id="'.$post_ID.'" style="max-width: 100%; font-size: 10px;" class="clone-this-cabin">';
+        echo '<option>Select cabin</option>';
+        foreach($cabinas as $cabina){
+               echo '<option value="'.$cabina->ID.'">'.$cabina->post_title.'</option>';
+        }
+        echo '</select>';
     }
     if ($column_name == 'dispo_code') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'dispo_ID', TRUE ); // Devuelve Array
