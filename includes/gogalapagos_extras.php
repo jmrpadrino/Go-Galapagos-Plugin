@@ -314,6 +314,7 @@ function gogalapagos_admin_menu() {
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'South America Tour Groups', 'gogalapagos' ), __( 'South America Tour Groups', 'gogalapagos' ), 'manage_options', 'edit-tags.php?taxonomy=go_sa_tours');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Special Offers', 'gogalapagos' ), __( 'Special Offers', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggspecialoffer');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs', 'gogalapagos' ), __( 'FAQs', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggfaqs');
+    add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'FAQs Groups', 'gogalapagos' ), __( 'FAQs Groups', 'gogalapagos' ), 'upload_files', 'edit-tags.php?taxonomy=go_faqs');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Testimonials', 'gogalapagos' ), __( 'Testimonials', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggtestimonial');
     add_submenu_page( 'go-galapagos-dashboard', '<i class="dashicons dashicons-controls-play"></i>' . __( 'Memberships', 'gogalapagos' ), __( 'Memberships', 'gogalapagos' ), 'upload_files', 'edit.php?post_type=ggmembership');
 
@@ -369,11 +370,12 @@ function gg_get_featured_image($post_ID) {
 }
 function gg_columns_head($defaults) {
     if ( $_GET['post_type'] == 'ggcabins' ){
-        $defaults['dispo_cid'] = 'Eligos CabinID';
-        $defaults['dispo_code'] = 'Eligos Code';
-        //$defaults['dispo_alias'] = 'Eligos Alias';
-        $defaults['dispo_yearid'] = 'Eligos YearID';
-        $defaults['dispo_year'] = 'Eligos Year';
+//        $defaults['dispo_cid'] = 'Eligos CabinID';
+//        $defaults['dispo_code'] = 'Eligos Code';
+//        $defaults['dispo_ship_code'] = 'Eligos Ship Code';
+//        $defaults['dispo_yearid'] = 'Eligos YearID';
+//        $defaults['dispo_year'] = 'Eligos Year';
+        $defaults['cabin_eligos'] = '<i class="fa fa-database" aria-hidden="true"></i> Eligos';
         $defaults['cabin_ship'] = '<i class="fa fa-ship" aria-hidden="true"></i> Cabin Ship';
         $defaults['cabin_deck'] = '<i class="fa fa-thumb-tack" aria-hidden="true"></i> Cabin Deck';
         //$defaults['cabin_gallery'] = '<i class="fa fa-picture-o" aria-hidden="true"></i> Cabin Gallery';
@@ -405,6 +407,16 @@ function gg_columns_content($column_name, $post_ID) {
     );
     $cabinas = get_posts($args);
     // Columnas para Barcos
+    
+    if ($column_name == 'cabin_eligos') {
+        $cabin_eligos_id = get_post_meta( $post_ID, $prefix . 'cabin_eligos_id', TRUE );
+        $dispo_code = get_post_meta( $post_ID, $prefix . 'dispo_ID', TRUE );
+        $cabin_eligos_ship_code = get_post_meta( $post_ID, $prefix . 'cabin_eligos_ship_code', TRUE );
+        $cabin_year_id = get_post_meta( $post_ID, $prefix . 'cabin_year_id', TRUE );
+        $cabin_year = get_post_meta( $post_ID, $prefix . 'cabin_year', TRUE );
+        echo '|' . $cabin_eligos_id . ' - ' . $dispo_code . ' - ' . $cabin_eligos_ship_code . '|<br />' . $cabin_year;
+    }
+    
     if ($column_name == 'dispo_cid') {
         $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_eligos_id', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
@@ -414,7 +426,6 @@ function gg_columns_content($column_name, $post_ID) {
         }
     }
     if ($column_name == 'cabin_clone_content') {
-        echo '<span style="font-height: bold;">Clone from</span>';
         echo '<select id="'.$post_ID.'" style="max-width: 100%; font-size: 10px;" class="clone-this-cabin">';
         echo '<option>Select cabin</option>';
         foreach($cabinas as $cabina){
@@ -430,8 +441,8 @@ function gg_columns_content($column_name, $post_ID) {
             echo esc_html($ship_dispo_code);
         }
     }
-    if ($column_name == 'dispo_alias') {
-        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_quote_system_alias', TRUE ); // Devuelve Array
+    if ($column_name == 'dispo_ship_code') {
+        $ship_dispo_code = get_post_meta( $post_ID, $prefix . 'cabin_eligos_ship_code', TRUE ); // Devuelve Array
         if ( empty ( $ship_dispo_code ) ){
             echo '<span style="color: #ff8000; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>';
         }else{

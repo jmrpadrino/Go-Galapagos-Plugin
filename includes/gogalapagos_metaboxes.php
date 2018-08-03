@@ -573,7 +573,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
     );
 
     $meta_boxes[] = array(
-        'id'         => 'ship_info_360',
+        'id'         => 'ship_extended',
         'title'      => '<i class="dashicons dashicons-editor-table"></i> ' . __( 'Extended Cruises Itineraries Images', 'gogalapagos' ),
         'post_types' => 'ggships',
         'context'    => 'normal',
@@ -905,7 +905,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ),                
-                'readonly'  => true,
+                'readonly'  => $disabled,
             ),
             array(
                 'name' => 'ELIGOS Cabin ID',
@@ -914,7 +914,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ), 
-                'readonly'  => true,
+                'readonly'  => $disabled,
             ),
             array(
                 'name' => 'ELIGOS Ship CODE',
@@ -923,7 +923,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ), 
-                'readonly'  => true,
+                'readonly'  => $disabled,
             ),
             array(
                 'name' => 'Dispo CODE',
@@ -933,7 +933,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                     'class' => 'eligos-field'
                 ),
                 'maxlength' => 10,
-                'readonly' => true
+                'readonly' => $disabled
             ),
             array(
                 'name' => 'ELIGOS Cabin CODE',
@@ -942,7 +942,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ), 
-                'readonly'  => true,
+                'readonly'  => $disabled,
             ),            
             array(
                 'name' => 'Year ID',
@@ -951,7 +951,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ), 
-                'readonly'  => true,
+                'readonly'  => $disabled,
             ),            
             array(
                 'name' => 'Year',
@@ -960,7 +960,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'attributes' => array(
                     'class' => 'eligos-field'
                 ), 
-                'readonly'  => true,
+                'readonly'  => $disabled,
             )
         ),
         'context' => 'side',
@@ -1498,9 +1498,6 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
             ),
             'validation' => array(
                 'rules'  => array(
-                    $prefix . 'itinerary_active_day_' . $i => array(
-                        'required'  => true,
-                    ),
                     $prefix . 'itinerary_am_activities_list_day_' . $i => array(
                         'required'  => true,
                     ),

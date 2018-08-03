@@ -22,6 +22,11 @@ function sync_from_eligos() {
             // RECORRER EL ARREGLO PARA RECUPERAR LOS VALORES
             // PARA ACTUALIZAR LOS METADATOS DEL POST_TYPE => ggcabins
             
+//            echo '<pre>';
+//            var_dump($json);
+//            echo '</pre>';
+//            die();
+            
             foreach($json as $element){
                 
                 $args = array(
@@ -41,6 +46,10 @@ function sync_from_eligos() {
                         array(
                             'key' => $prefix . 'dispo_ID',
                             'value' => $element->codigo
+                        ),
+                        array(
+                            'key' => $prefix . 'cabin_eligos_ship_code',
+                            'value' => $element->barco_id
                         ),
                     )
                 );
@@ -69,7 +78,8 @@ function sync_from_eligos() {
                             $prefix . 'cabin_year' => $element->anio,
                             $prefix . 'dispo_ID' => $element->codigo,
                             $prefix . 'cabin_eligos_code' => $element->codigo,
-                            $prefix . 'cabin_eligos_ship_code' => $element->codigo,
+                            $prefix . 'cabin_eligos_ship_code' => $element->barco_id,
+                            $prefix . 'cabin_category_color' => $element->color,
                         )
                     );
 
