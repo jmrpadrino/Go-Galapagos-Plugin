@@ -2749,7 +2749,7 @@ function gogalapagos_register_meta_boxes( $meta_boxes ) {
                 'id' => $prefix . 'dispo_ID',
                 'name' => '<i class="dashicons dashicons-arrow-right"></i> ' . esc_html__( 'Dispo Code', 'gogalapagos' ),
                 'type' => 'text',
-                'readonly' => true
+                'readonly' => TRUE
             )
         )
     );

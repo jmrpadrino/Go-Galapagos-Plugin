@@ -184,57 +184,105 @@ add_shortcode( 'gogabrochure', 'show_brochure_box' );
 
 // Add admin menu page for Go Galapagos Dashboard
 function gg_admin_dashboard(){
+    $claseGogalapagos = new Gogalapagos;
 ?>
-<h1>Go Galapagos Dashboard</h1>
-<p><?php echo URLPLUGINGOGALAPAGOS; ?></p>
+<div class="row">
+    <div class="col-xs-12">
+        <h1><?= _e('Go Galapagos Dashboard','gogalapagos') ?></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <h2><?= _e('Ships', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggships') ?>
+    </div>
+    <div class="col-md-3">
+        <h2><?= _e('Decks', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggdecks') ?>
+    </div>
+    <div class="col-md-3">
+        <h2><?= _e('Cabins', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggcabins') ?>
+    </div>
+    <div class="col-md-3">
+        <h2><?= _e('Social areas', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggsocialarea') ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <hr />
+        <h2><?= _e('Packages', 'gogalapagos')?></h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2><?= _e('Go Packages', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggpackage') ?>
+    </div>
+    <div class="col-md-4">
+        <h2><?= _e('Ecuador Tours', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggtour') ?>
+    </div>
+    <div class="col-md-4">
+        <h2><?= _e('South America Tours', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggsatour') ?>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <hr />
+        <h2><?= _e('Special offers', 'gogalapagos')?></h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2><?= _e('Go Packages', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggspecialoffer') ?>
+    </div>
+</div>
+
 <?php 
-      if( is_user_logged_in() ) {
-          $user = wp_get_current_user();
-          $role = ( array ) $user->roles;            
-          echo '<pre>';
-          print_r($role);
-          echo '</pre>';
-      } else {
-          return false;
-      }
-      $usuariosVentas = get_role('pasantias');
-      echo '<pre>';
-      print_r($usuariosVentas);
-      echo '</pre>';
 } // FIN FUNCION ADMIN DASHBOARD
 
-
-
 // Add admin menu page for Go Galapagos Dashboard
-function galapagos_admin_dashboard($hook){
+function galapagos_admin_dashboard($hook)
+{
+    global $hook;
+    $claseGogalapagos = new Gogalapagos;
 ?>
-<h1>Galapagos Dashboard <?= $hook ?></h1>
+<h1><?= _e('Galapagos Dashboard','gogalapagos') ?></h1>
 <p><?= _e('This list shows the information published in the frontend about the destination.','gogalapagos')?></p>
-<p> <span class="fa fa-globe"></span>Mas informacion luego.</p>
+<p> <span class="fa fa-globe"></span> Mas informacion luego.</p>
 <div class="row">
     <div class="col-xs-4">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur modi numquam, corporis veritatis quasi magnam voluptatem, facilis consequuntur laborum, rem repellat ea asperiores et odio exercitationem placeat! Mollitia, inventore, deserunt!</p>
     </div>
     <div class="col-xs-4">
         <h2><?= _e('Islands', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggisland') ?>
     </div>
     <div class="col-xs-4">
         <h2><?= _e('Animals', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('gganimal') ?>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-4">
         <h2><?= _e('Visitor Sites', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('gglocation') ?>
     </div>
     <div class="col-xs-4">
         <h2><?= _e('Activities', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggactivity') ?>
     </div>
     <div class="col-xs-4">
         <h2><?= _e('Special Interests', 'gogalapagos')?></h2>
+        <?php $claseGogalapagos->listarPosttype('ggspecialinterest') ?>
     </div>
 </div>
 <?php 
-                                         }
+ }
 
 
 /*-----------------------------------------------------------------------------*/
