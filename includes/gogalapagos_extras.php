@@ -2,12 +2,7 @@
 /**
 *   Documento para crear los elementos extras del soporte de Go Galapagos
 *   Ver 0.1
-*
 */
-
-// Incluir librerias
-//require 'sendgrid-php/vendor/autoload.php';
-//require("sendgrid-php/vendor/autoload.php");
 
 // definir la zona horaria
 date_default_timezone_set ( 'America/Bogota' );
@@ -42,10 +37,8 @@ function gogalapagos_set_users_roles(){
     $usuariosVentas->add_cap('edit_private_posts');
     $usuariosVentas->add_cap('upload_files');
     $usuariosVentas->remove_cap('manage_links');
-    //$usuariosVentas->add_cap('edit_others_posts');
     /*--------------*/
-    //$usuariosVentas->remove_cap('read_private_posts');
-    //$usuariosVentas->remove_cap('edit_others_posts');
+
     $usuariosVentas->remove_cap('manage_categories');
     $usuariosVentas->remove_cap('manage_options');
     $usuariosVentas->remove_cap('level_0');
@@ -60,42 +53,7 @@ function gogalapagos_set_users_roles(){
     $usuariosVentas->remove_cap('level_9');
     $usuariosVentas->remove_cap('level_10');
 
-    //$usuariosVentas->remove_cap('edit_others_ggships');
-    /*$usuariosVentas->remove_cap('create_post');
-$usuariosVentas->remove_cap('delete_post');
-$usuariosVentas->remove_cap('publish_post');*/
-
     flush_rewrite_rules();
-    //remove_role("adinistrator");
-    /*
-        array( 
-            //'read' => true, // true allows this capability
-            //'edit_posts' => true, // Allows user to edit their own posts
-            //'edit_pages' => true, // Allows user to edit pages
-            /*
-            'edit_others_posts' => false, // Allows user to edit others posts not just their own
-            'create_posts' => true, // Allows user to create new posts
-            'manage_categories' => true, // Allows user to manage post categories
-            'publish_posts' => true, // Allows the user to publish, otherwise posts stays in draft mode
-            'manage_options' => true,
-            'edit_themes' => false, // false denies this capability. User can’t edit your theme
-            'install_plugins' => false, // User cant add new plugins
-            'update_plugin' => false, // User can’t update any plugins
-            'update_core' => false, // user cant perform core updates
-
-            'level_0' => true,
-            'level_1' => true,
-            'level_2' => true,
-            'level_3' => true,
-            'level_4' => true,
-            'level_5' => true,
-            'level_6' => true,
-            'level_7' => true,
-            'level_8' => true,
-            'level_9' => true,
-            'level_10' => true,
-        )
-    */
 }
 add_action( 'admin_init', 'gogalapagos_set_users_roles' );
 
